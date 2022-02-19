@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_rutinas">
+
+    --sdfdsfd
+
+    <fragment
+        android:id="@+id/nav_rutinas"
+        android:name="com.example.menuprueba.ui.rutinas.RutinasFragment"
+        android:label="@string/rutinas"
+        tools:layout="@layout/fragment_rutinas" />
+
+    <fragment
+        android:id="@+id/nav_logros"
+        android:name="com.example.menuprueba.ui.logros.LogrosFragment"
+        android:label="@string/logros"
+        tools:layout="@layout/fragment_logros" />
+
+    <fragment
+        android:id="@+id/nav_recordatorios"
+        android:name="com.example.menuprueba.ui.recordatorios.RecordatoriosFragment"
+        android:label="@string/recordatorios"
+        tools:layout="@layout/fragment_recordatorios" />
+    <fragment
+        android:id="@+id/nav_carrera"
+        android:name="com.example.menuprueba.ui.carrera.CarreraFragment"
+        android:label="Modo Carrera"
+        tools:layout="@layout/fragment_carrera"/>
+    <fragment
+        android:id="@+id/nav_informe"
+        android:name="com.example.menuprueba.ui.informe.InformeActividadesFragment"
+        android:label="Informe de Actividades"
+        tools:layout="@layout/fragment_informe_actividades"/>
+
+</navigation>

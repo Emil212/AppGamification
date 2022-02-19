@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MenuPrueba</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuación</string>
+
+    <string name="logros">Logros</string>
+    <string name="rutinas">Rutinas</string>
+    <string name="recordatorios">Recordatorios</string>
+    <string name="informe">Informe de Actividades</string>
+    <string name="carrera">Modo Carrera</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
