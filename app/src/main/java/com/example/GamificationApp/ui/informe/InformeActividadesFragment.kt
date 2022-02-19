@@ -1,4 +1,4 @@
-package com.example.menuprueba.ui.informe
+package com.example.GamificationApp.ui.informe
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.menuprueba.R
-import com.example.menuprueba.databinding.FragmentInformeActividadesBinding
-import com.example.menuprueba.databinding.FragmentLogrosBinding
-import com.example.menuprueba.ui.logros.LogrosViewModel
+import com.example.GamificationApp.databinding.FragmentInformeActividadesBinding
 
 class InformeActividadesFragment : Fragment() {
     private lateinit var informeActividadesViewModel : InformeActividadesViewModel

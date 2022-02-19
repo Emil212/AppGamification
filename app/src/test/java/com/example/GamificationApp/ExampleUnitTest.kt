@@ -1,4 +1,4 @@
-package com.example.menuprueba
+package com.example.GamificationApp
 
 import org.junit.Test
 

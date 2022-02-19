@@ -1,4 +1,4 @@
-package com.example.menuprueba.ui.carrera
+package com.example.GamificationApp.ui.carrera
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.menuprueba.databinding.FragmentCarreraBinding
-import com.example.menuprueba.databinding.FragmentLogrosBinding
-import com.example.menuprueba.ui.logros.LogrosViewModel
+import com.example.GamificationApp.databinding.FragmentCarreraBinding
 
 class CarreraFragment : Fragment() {
     private lateinit var carreraViewModel: CarreraViewModel

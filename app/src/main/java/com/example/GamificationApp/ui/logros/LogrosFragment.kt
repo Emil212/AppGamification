@@ -1,4 +1,4 @@
-package com.example.menuprueba.ui.logros
+package com.example.GamificationApp.ui.logros
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.menuprueba.databinding.FragmentRutinasBinding
-import com.example.menuprueba.databinding.FragmentRecordatoriosBinding
-import com.example.menuprueba.databinding.FragmentCarreraBinding
-import com.example.menuprueba.databinding.FragmentInformeActividadesBinding
-import com.example.menuprueba.databinding.FragmentLogrosBinding
+import com.example.GamificationApp.databinding.FragmentLogrosBinding
 
 class LogrosFragment : Fragment() {
 

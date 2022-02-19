@@ -1,13 +1,12 @@
-package com.example.menuprueba.ui.recordatorios
+package com.example.GamificationApp.ui.logros
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class RecordatoriosViewModel : ViewModel() {
-
+class LogrosViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "Fragmento Recordatorios"
+        value = "Fragmento Logros"
     }
     val text: LiveData<String> = _text
 }

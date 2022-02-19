@@ -1,12 +1,12 @@
-package com.example.menuprueba.ui.informe
+package com.example.GamificationApp.ui.rutinas
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class InformeActividadesViewModel: ViewModel() {
+class RutinasViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "Fragmento Informe de Actividades"
+        value = "Fragmento Rutinas"
     }
     val text: LiveData<String> = _text
 }

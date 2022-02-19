@@ -9,29 +9,29 @@
 
     <fragment
         android:id="@+id/nav_rutinas"
-        android:name="com.example.menuprueba.ui.rutinas.RutinasFragment"
+        android:name="com.example.GamificationApp.ui.rutinas.RutinasFragment"
         android:label="@string/rutinas"
         tools:layout="@layout/fragment_rutinas" />
 
     <fragment
         android:id="@+id/nav_logros"
-        android:name="com.example.menuprueba.ui.logros.LogrosFragment"
+        android:name="com.example.GamificationApp.ui.logros.LogrosFragment"
         android:label="@string/logros"
         tools:layout="@layout/fragment_logros" />
 
     <fragment
         android:id="@+id/nav_recordatorios"
-        android:name="com.example.menuprueba.ui.recordatorios.RecordatoriosFragment"
+        android:name="com.example.GamificationApp.ui.recordatorios.RecordatoriosFragment"
         android:label="@string/recordatorios"
         tools:layout="@layout/fragment_recordatorios" />
     <fragment
         android:id="@+id/nav_carrera"
-        android:name="com.example.menuprueba.ui.carrera.CarreraFragment"
+        android:name="com.example.GamificationApp.ui.carrera.CarreraFragment"
         android:label="Modo Carrera"
         tools:layout="@layout/fragment_carrera"/>
     <fragment
         android:id="@+id/nav_informe"
-        android:name="com.example.menuprueba.ui.informe.InformeActividadesFragment"
+        android:name="com.example.GamificationApp.ui.informe.InformeActividadesFragment"
         android:label="Informe de Actividades"
         tools:layout="@layout/fragment_informe_actividades"/>
 

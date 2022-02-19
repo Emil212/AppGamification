@@ -1,4 +1,4 @@
-package com.example.menuprueba
+package com.example.GamificationApp
 
 import android.os.Bundle
 import android.view.Menu
@@ -11,8 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.example.menuprueba.databinding.ActivityMainBinding
-import com.google.android.material.snackbar.Snackbar
+import com.example.GamificationApp.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
