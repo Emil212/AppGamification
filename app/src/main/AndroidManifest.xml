@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MenuPrueba">
         <activity
-            android:name="com.example.GamificationApp.MainActivity"
+            android:name="com.example.GamificationApp.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MenuPrueba.NoActionBar">

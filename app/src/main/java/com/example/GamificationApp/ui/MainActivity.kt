@@ -1,4 +1,4 @@
-package com.example.GamificationApp
+package com.example.GamificationApp.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.GamificationApp.R
 import com.example.GamificationApp.databinding.ActivityMainBinding
 
 
@@ -35,7 +36,11 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_recordatorios, R.id.nav_rutinas, R.id.nav_logros, R.id.nav_informe, R.id.nav_carrera
+                R.id.nav_recordatorios,
+                R.id.nav_rutinas,
+                R.id.nav_logros,
+                R.id.nav_informe,
+                R.id.nav_carrera
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
