@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390073583492",
+    "project_id": "gamificationapp-2ff7c",
+    "storage_bucket": "gamificationapp-2ff7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390073583492:android:2c34202d3b94b619cebfd1",
+        "android_client_info": {
+          "package_name": "com.example.menuprueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390073583492-c6en1c2cmou9m1jkthjqcc95f4b7lcfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGRpE0AjedM6EgyAXx2rdA9vrOzRgQjfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390073583492-c6en1c2cmou9m1jkthjqcc95f4b7lcfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
