@@ -42,6 +42,22 @@
         <action
             android:id="@+id/action_loginFragment_to_nav_rutinas"
             app:destination="@id/nav_rutinas" />
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.menuprueba.ui.auth.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_nav_rutinas"
+            app:destination="@id/nav_rutinas" />
     </fragment>
 
 </navigation>

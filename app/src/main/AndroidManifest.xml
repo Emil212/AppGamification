@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.menuprueba">
-    <!--Prueba 2 -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MenuPrueba">
         <activity
-            android:name="com.example.menuprueba.ui.MainActivity"
+            android:name=".ui.DisplayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MenuPrueba.NoActionBar">

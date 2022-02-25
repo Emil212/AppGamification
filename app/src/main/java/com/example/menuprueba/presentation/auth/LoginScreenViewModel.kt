@@ -18,8 +18,7 @@ class LoginScreenViewModel(private val repo: LoginRepo): ViewModel() {
     }
 }
 
-class LoginScreenViewModelFactory(private val repo:LoginRepo): ViewModelProvider.Factory{
-
+class LoginScreenViewModelFactory(private val repo: LoginRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return LoginScreenViewModel(repo) as T
     }
