@@ -1,60 +1,118 @@
 package com.example.menuprueba.ui.auth
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.menuprueba.R
+import com.example.menuprueba.core.Result
+import com.example.menuprueba.data.remote.auth.AuthDataSource
+import com.example.menuprueba.databinding.FragmentRegistrationBinding
+import com.example.menuprueba.domain.auth.AuthRepoImpl
+import com.example.menuprueba.presentation.auth.AuthViewModel
+import com.example.menuprueba.presentation.auth.AuthViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegistrationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class RegistrationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var binding: FragmentRegistrationBinding
+    private val viewModel by viewModels<AuthViewModel> {
+        AuthViewModelFactory(
+            AuthRepoImpl(
+                AuthDataSource()
+            )
+        )
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentRegistrationBinding.bind(view)
+        signUp()
+    }
+
+    private fun signUp() {
+        binding.btnSignUp.setOnClickListener {
+
+            val username = binding.editTextUserName.text.toString().trim()
+            val password = binding.editTextPassword.text.toString().trim()
+            val confirmPassword = binding.editTextConfirmPassword.text.toString().trim()
+            val email = binding.editTextEmail.text.toString().trim()
+
+            if (validateUserData(
+                    password,
+                    confirmPassword,
+                    username,
+                    email
+                )
+            ) return@setOnClickListener
+
+            createUser(email, password, username)
+
         }
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registration, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegistrationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegistrationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun createUser(email: String, password: String, username: String) {
+        viewModel.signUp(email, password, username).observe(viewLifecycleOwner, { result ->
+            when (result) {
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.btnSignUp.isEnabled = false
+                }
+                is Result.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    findNavController().navigate(R.id.action_registrationFragment_to_nav_rutinas)
+                }
+                is Result.Failure -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.btnSignUp.isEnabled = true
+                    Toast.makeText(
+                        requireContext(),
+                        "Error: ${result.exception}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
+
+        })
+
+    }
+
+    private fun validateUserData(
+        password: String,
+        confirmPassword: String,
+        username: String,
+        email: String
+    ): Boolean {
+        if (password != confirmPassword) {
+            binding.editTextPassword.error = "Las contraseñas no coinciden"
+            binding.editTextConfirmPassword.error = "Las contraseñas no coinciden"
+            return true
+        }
+
+        if (username.isEmpty()) {
+            binding.editTextUserName.error = "El correo electrónico esta vacio"
+            return true
+        }
+
+        if (email.isEmpty()) {
+            binding.editTextEmail.error = "El correo electronico esta vacio"
+            return true
+        }
+
+        if (password.isEmpty()) {
+            binding.editTextPassword.error = "La contraseña esta vacia"
+            return true
+        }
+
+        if (confirmPassword.isEmpty()) {
+            binding.editTextConfirmPassword.error = "La contraseña esta vacia"
+            return true
+        }
+
+        return false
     }
 }
