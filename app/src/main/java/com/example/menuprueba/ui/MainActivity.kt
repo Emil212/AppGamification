@@ -4,6 +4,7 @@ package com.example.menuprueba.ui
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -46,6 +46,30 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { controller, destination, argument ->
+            when (destination.id) {
+                R.id.loginFragment -> {
+                    binding.navView.visibility = View.GONE
+                   //binding.drawerLayout.visibility = View.GONE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
+
+                R.id.registrationFragment -> {
+                    binding.navView.visibility = View.GONE
+                    //binding.drawerLayout.visibility = View.GONE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+                }
+                else -> {
+                    binding.navView.visibility = View.VISIBLE
+                    //binding.drawerLayout.visibility = View.VISIBLE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
+
+                }
+            }
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
