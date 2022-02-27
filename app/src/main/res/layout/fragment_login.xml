@@ -3,40 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".ui.auth.LoginFragment">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo Electrónico"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Correo Electrónico"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout_pass"
+        android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
+        app:passwordToggleEnabled="true"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Contraseña"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
-    
+
     <Button
         android:id="@+id/btn_signin"
         android:layout_width="match_parent"
