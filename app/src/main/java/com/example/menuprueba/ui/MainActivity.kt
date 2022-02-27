@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.menuprueba.R
 import com.example.menuprueba.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,8 +34,6 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
-
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -49,29 +48,36 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        //Cierre de sesion
+        binding.navView.setNavigationItemSelectedListener {
+
+            when(it.itemId){
+                R.id.nav_logout -> FirebaseAuth.getInstance().signOut()
+               // R.id.nav_logros -> findNavController().navigate(R.layout.fragment_logros)
+            }
+            true
+        }
+
         navController.addOnDestinationChangedListener { controller, destination, argument ->
             when (destination.id) {
                 R.id.loginFragment -> {
-                    //binding.navView.visibility = View.GONE
-                    //binding.drawerLayout.visibility = View.GONE
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                     //Deshabilita el botón de "atrás"
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 }
 
                 R.id.registrationFragment -> {
-                    //binding.navView.visibility = View.GONE
-                    //binding.drawerLayout.visibility = View.GONE
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-
                 }
                 else -> {
                     binding.navView.visibility = View.VISIBLE
-                    //binding.drawerLayout.visibility = View.VISIBLE
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
                 }
             }
         }
+
+
+
 
     }
 
@@ -82,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 */
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
