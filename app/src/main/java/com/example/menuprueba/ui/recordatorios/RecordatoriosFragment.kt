@@ -8,37 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.menuprueba.databinding.FragmentRecordatoriosBinding
+import com.example.menuprueba.R
+import com.example.menuprueba.databinding.FragmentRutinasBinding
 
-class RecordatoriosFragment : Fragment() {
 
-    private lateinit var recordatoriosViewModel: RecordatoriosViewModel
-    private var _binding: FragmentRecordatoriosBinding? = null
+class RecordatoriosFragment : Fragment(R.layout.fragment_recordatorios) {
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        recordatoriosViewModel =
-            ViewModelProvider(this).get(RecordatoriosViewModel::class.java)
-
-        _binding = FragmentRecordatoriosBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textRecordatorios
-        recordatoriosViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 }
