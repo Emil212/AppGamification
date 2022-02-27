@@ -5,8 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/loginFragment">
 
-    --sdfdsfd
-
+--asfsdfdsf
     <fragment
         android:id="@+id/nav_rutinas"
         android:name="com.example.menuprueba.ui.rutinas.RutinasFragment"
@@ -55,9 +54,6 @@
         android:name="com.example.menuprueba.ui.auth.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
-        <action
-            android:id="@+id/action_registrationFragment_to_nav_rutinas"
-            app:destination="@id/nav_rutinas" />
     </fragment>
 
 </navigation>
