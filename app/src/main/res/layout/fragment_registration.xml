@@ -10,61 +10,67 @@
     tools:context=".ui.auth.RegistrationFragment">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Usuario"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Usuario"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo Electrónico"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Correo Electrónico"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout_pass"
+        android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
-        android:hint="Contraseña"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Contraseña"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout_confirm_pass"
+        android:id="@+id/editTextConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
         app:passwordToggleEnabled="true"
-        android:hint="Confirmar Contraseña"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Confirmar Contraseña"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
