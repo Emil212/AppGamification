@@ -11,6 +11,10 @@
     <string name="recordatorios">Recordatorios</string>
     <string name="informe">Informe de Actividades</string>
     <string name="carrera">Modo Carrera</string>
+    <string name="login">Inicio de Sesión</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="help">Ayuda</string>
+
     <!-- TODO: Remove or change this placeholder text -->
 
 
