@@ -52,7 +52,7 @@
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.menuprueba.ui.auth.RegistrationFragment"
-        android:label="fragment_registration"
+        android:label="@string/registro"
         tools:layout="@layout/fragment_registration" >
         <action
             android:id="@+id/action_registrationFragment_to_nav_rutinas"
