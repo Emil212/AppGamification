@@ -3,6 +3,7 @@ package com.example.menuprueba.ui.auth
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.util.PatternsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import com.example.menuprueba.databinding.FragmentRegistrationBinding
 import com.example.menuprueba.domain.auth.AuthRepoImpl
 import com.example.menuprueba.presentation.auth.AuthViewModel
 import com.example.menuprueba.presentation.auth.AuthViewModelFactory
+import java.util.regex.Pattern
 
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
@@ -87,6 +89,17 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         username: String,
         email: String
     ): Boolean {
+
+        val passwordRegex = Pattern.compile(
+            "^" +
+                    "(?=.*[0-9])" +     //at least 1 digit
+                    "(?=.*[a-z])" +     //at leat 1 lower case
+                    "(?=.*[A-Z])" +     //at leat 1 upper case
+                    ".{6,}" +           //at leats 4 characters
+                    "$"
+        )
+
+
         if (password != confirmPassword) {
             binding.editTextPassword.error = "Las contraseñas no coinciden"
             binding.editTextConfirmPassword.error = "Las contraseñas no coinciden"
@@ -103,6 +116,11 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             return true
         }
 
+        if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.editTextEmail.error = "Ingrese un correo electrónico válido"
+            return true
+        }
+
         if (password.isEmpty()) {
             binding.editTextPassword.error = "La contraseña esta vacia"
             return true
@@ -110,6 +128,12 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
         if (confirmPassword.isEmpty()) {
             binding.editTextConfirmPassword.error = "La contraseña esta vacia"
+            return true
+        }
+
+        if (!passwordRegex.matcher(password).matches()) {
+            binding.editTextPassword.error =
+                "La contraseña debe de contener al menos 6 caracteres, una mayúscula, una minúscula y un número"
             return true
         }
 
