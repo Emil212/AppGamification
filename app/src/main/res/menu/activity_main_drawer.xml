@@ -24,6 +24,14 @@
             android:id="@+id/nav_carrera"
             android:icon="@drawable/ic_carrera"
             android:title="@string/carrera" />
+        <item
+            android:id="@+id/nav_ayuda"
+            android:icon="@drawable/ic_help"
+            android:title="@string/help" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
     </group>
 
 </menu>

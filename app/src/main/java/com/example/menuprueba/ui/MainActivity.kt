@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-
+        //Deshabilita el botón de "atrás"
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
 
         // Passing each menu ID as a set of Ids because each
