@@ -2,8 +2,9 @@ package com.example.menuprueba.ui.auth
 
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,7 +17,6 @@ import com.example.menuprueba.domain.auth.AuthRepoImpl
 import com.example.menuprueba.presentation.auth.AuthViewModel
 import com.example.menuprueba.presentation.auth.AuthViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
-import java.util.regex.Pattern
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -46,9 +46,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun doLogin() {
         binding.btnSignin.setOnClickListener {
-            val email = binding.editTextEmail.text.toString().trim()
-            val password = binding.editTextPassword.text.toString().trim()
-            validateCredentials(email, password)
+            val email = binding.editTextEmail.editText?.text.toString().trim()
+            val password = binding.editTextPassword.editText?.text.toString().trim()
+            if(validateCredentials(email, password)) return@setOnClickListener
             signIn(email, password)
         }
     }
@@ -59,35 +59,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
-    private fun validateCredentials(email: String, password: String) {
-        val passwordRegex = Pattern.compile(
-            "^" +
-                    "(?=.*[0-9])" +     //at least 1 digit
-                    "(?=.*[a-z])" +     //at leat 1 lower case
-                    "(?=.*[A-Z])" +     //at leat 1 upper case
-                    "(?=.*[@#$%])" +    //at leats  special character
-                    "(?=\\S+$)" +       //no white spaces
-                    ".{4,}" +           //at lears 4 characters
-                    "$"
-        )
+    private fun validateCredentials(email: String, password: String): Boolean {
 
-        if (email.isEmpty()) {
-            binding.editTextEmail.error = "El correo electrónico esta en blanco"
-            return
+        return when {
+            email.isEmpty() -> {
+                binding.editTextEmail.error="El correo electrónico esta en blanco"
+                true
+            }
+            password.isEmpty() -> {
+                binding.editTextPassword.error = "La contraseña esta en blanco"
+                true
+            }
+            else -> {
+                binding.editTextPassword.error = null
+                false
+            }
+
         }
-        if (password.isEmpty()) {
-            binding.editTextEmail.error = "La contraseña esta en blanco"
-            return
-        }
-//        if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
-//            binding.editTextEmail.error = "Ingrese un correo electrónico válido"
-//            return
-//        }
-//        if (!passwordRegex.matcher(password).matches()) {
-//            binding.editTextEmail.error =
-//                "La contraeña debe de contener al menos 4 caracteres, una mayuscula, una minuscula, un numero y un caracter especial"
-//            return
-//        }
+
     }
 
     private fun signIn(email: String, password: String) {
@@ -102,13 +91,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     findNavController().navigate(R.id.action_loginFragment_to_nav_rutinas)
                 }
                 is Result.Failure -> {
-                    binding.progressBar.visibility = View.GONE
-                    binding.btnSignin.isEnabled = true
+
+                    Handler(Looper.getMainLooper()).postDelayed(
+                        {
+                            binding.progressBar.visibility = View.GONE
+                            binding.btnSignin.isEnabled = true
+                            binding.editTextEmail.error=null
+                            binding.editTextPassword.error=null
+                        }, 2000 // value in milliseconds
+                    )
+
+
+
+                    /*
                     Toast.makeText(
                         requireContext(),
                         "Error: ${result.exception}",
                         Toast.LENGTH_SHORT
-                    ).show()
+                    ).show()*/
                 }
             }
         })

@@ -32,8 +32,7 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        //Deshabilita el botón de "atrás"
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
 
 
         // Passing each menu ID as a set of Ids because each
@@ -56,6 +55,8 @@ class MainActivity : AppCompatActivity() {
                     //binding.navView.visibility = View.GONE
                     //binding.drawerLayout.visibility = View.GONE
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    //Deshabilita el botón de "atrás"
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 }
 
                 R.id.registrationFragment -> {

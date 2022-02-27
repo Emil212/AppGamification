@@ -1,8 +1,9 @@
 package com.example.menuprueba.ui.auth
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
-import android.widget.Toast
 import androidx.core.util.PatternsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -38,10 +39,10 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     private fun signUp() {
         binding.btnSignUp.setOnClickListener {
 
-            val username = binding.editTextUserName.text.toString().trim()
-            val password = binding.editTextPassword.text.toString().trim()
-            val confirmPassword = binding.editTextConfirmPassword.text.toString().trim()
-            val email = binding.editTextEmail.text.toString().trim()
+            val username = binding.editTextUserName.editText?.text.toString().trim()
+            val password = binding.editTextPassword.editText?.text.toString().trim()
+            val confirmPassword = binding.editTextConfirmPassword.editText?.text.toString().trim()
+            val email = binding.editTextEmail.editText?.text.toString().trim()
 
             if (validateUserData(
                     password,
@@ -69,13 +70,25 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                     findNavController().navigate(R.id.action_registrationFragment_to_nav_rutinas)
                 }
                 is Result.Failure -> {
-                    binding.progressBar.visibility = View.GONE
-                    binding.btnSignUp.isEnabled = true
+
+                    Handler(Looper.getMainLooper()).postDelayed(
+                        {
+                            binding.progressBar.visibility = View.GONE
+                            binding.btnSignUp.isEnabled = true
+                            binding.editTextUserName.error=null
+                            binding.editTextEmail.error=null
+                            binding.editTextPassword.error=null
+                            binding.editTextConfirmPassword.error=null
+                        }, 2000 // value in milliseconds
+                    )
+
+                    /*
                     Toast.makeText(
                         requireContext(),
                         "Error: ${result.exception}",
                         Toast.LENGTH_SHORT
                     ).show()
+                     */
                 }
             }
 
@@ -101,13 +114,13 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
 
         if (password != confirmPassword) {
-            binding.editTextPassword.error = "Las contraseñas no coinciden"
+            //binding.editTextPassword.error = "Las contraseñas no coinciden"
             binding.editTextConfirmPassword.error = "Las contraseñas no coinciden"
             return true
         }
 
         if (username.isEmpty()) {
-            binding.editTextUserName.error = "El correo electrónico esta vacio"
+            binding.editTextUserName.error = "El usuario esta vacio"
             return true
         }
 
