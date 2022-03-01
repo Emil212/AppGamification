@@ -1,10 +1,13 @@
 package com.example.menuprueba.ui
 
-//import com.google.android.material.snackbar.Snackbar
-
 import android.os.Bundle
+
+import android.os.PersistableBundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,6 +16,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.menuprueba.R
 import com.example.menuprueba.databinding.ActivityMainBinding
+import com.example.menuprueba.ui.carrera.CarreraFragment
+import com.example.menuprueba.ui.informe.InformeActividadesFragment
+import com.example.menuprueba.ui.logros.LogrosFragment
+import com.example.menuprueba.ui.recordatorios.RecordatoriosFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -42,31 +49,35 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_rutinas,
                 R.id.nav_logros,
                 R.id.nav_informe,
-                R.id.nav_carrera
+                R.id.nav_carrera,
+                R.id.loginFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         //Cierre de sesion
-        binding.navView.setNavigationItemSelectedListener {
+       /* binding.navView.setNavigationItemSelectedListener {
 
             when(it.itemId){
                 R.id.nav_logout -> FirebaseAuth.getInstance().signOut()
                // R.id.nav_logros -> findNavController().navigate(R.layout.fragment_logros)
             }
             true
-        }
+        }*/
 
         navController.addOnDestinationChangedListener { controller, destination, argument ->
             when (destination.id) {
                 R.id.loginFragment -> {
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                    //Deshabilita el botón de "atrás"
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 }
 
                 R.id.registrationFragment -> {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
+
+                R.id.videosFragment ->{ //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
                 else -> {
@@ -75,10 +86,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
-
     }
 
 /*
@@ -93,5 +100,4 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
 }
