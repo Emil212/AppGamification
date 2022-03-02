@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_rutinas_to_videosFragment"
             app:destination="@id/videosFragment" />
+        <action
+            android:id="@+id/action_nav_rutinas_to_listaEjerciciosFragment"
+            app:destination="@id/listaEjerciciosFragment" />
     </fragment>
 
     <fragment
@@ -66,6 +69,11 @@
         android:name="com.example.menuprueba.ui.rutinas.VideosFragment"
         android:label="fragment_videos"
         tools:layout="@layout/fragment_videos" />
+    <fragment
+        android:id="@+id/listaEjerciciosFragment"
+        android:name="com.example.menuprueba.ui.rutinas.ListaEjerciciosFragment"
+        android:label="fragment_lista_ejercicios"
+        tools:layout="@layout/fragment_lista_ejercicios" />
 
 
 </navigation>

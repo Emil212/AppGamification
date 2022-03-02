@@ -80,6 +80,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.videosFragment ->{ //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
+
+                R.id.listaEjerciciosFragment ->{ //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
                 else -> {
                     binding.navView.visibility = View.VISIBLE
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)

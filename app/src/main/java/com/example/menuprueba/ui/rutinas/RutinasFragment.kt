@@ -17,12 +17,22 @@ import com.example.menuprueba.databinding.FragmentRutinasBinding
 
 class RutinasFragment : Fragment(R.layout.fragment_rutinas) {
 
+    private lateinit var binding: FragmentRutinasBinding
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentRutinasBinding.bind(view)
 
-        val boton_comenzar = view.findViewById<Button>(R.id.button_comenzar)
-        boton_comenzar.setOnClickListener {
+        val boton_start = binding.buttonStart
+        boton_start.setOnClickListener {
             findNavController().navigate(R.id.action_nav_rutinas_to_videosFragment)
         }
+
+        val boton_add = binding.buttonAdd
+        boton_add.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_rutinas_to_listaEjerciciosFragment)
+        }
+
+
     }
 }
