@@ -40,22 +40,19 @@
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/content_main.xml" value="0.12364130434782608" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_carrera.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_lista_ejercicios.xml" value="0.1" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_lista_ejercicios.xml" value="0.2" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_logoff.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_recordatorios.xml" value="0.10416666666666667" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_registration.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_rutinas.xml" value="0.1" />
-        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_videos.xml" value="0.1" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_rutinas.xml" value="0.22" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_videos.xml" value="0.25" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/Gamification/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_videos.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

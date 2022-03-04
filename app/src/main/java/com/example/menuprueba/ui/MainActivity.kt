@@ -85,8 +85,8 @@ class MainActivity : AppCompatActivity() {
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
                 else -> {
-                    binding.navView.visibility = View.VISIBLE
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
+                    //binding.navView.visibility = View.VISIBLE
+                    //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
                 }
             }
         }

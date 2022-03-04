@@ -22,7 +22,6 @@ class RutinasFragment : Fragment(R.layout.fragment_rutinas) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRutinasBinding.bind(view)
-
         val boton_start = binding.buttonStart
         boton_start.setOnClickListener {
             findNavController().navigate(R.id.action_nav_rutinas_to_videosFragment)
