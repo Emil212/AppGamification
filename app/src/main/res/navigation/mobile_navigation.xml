@@ -72,7 +72,7 @@
     <fragment
         android:id="@+id/listaEjerciciosFragment"
         android:name="com.example.menuprueba.ui.rutinas.ListaEjerciciosFragment"
-        android:label="fragment_lista_ejercicios"
+        android:label="Ejercicios"
         tools:layout="@layout/fragment_lista_ejercicios" />
 
 

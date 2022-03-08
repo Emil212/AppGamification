@@ -7,24 +7,4 @@
     tools:context=".ui.rutinas.ListaEjerciciosFragment"
     android:orientation="vertical">
 
-
-
-    <EditText
-        android:id="@+id/edit_text_rutinas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de la rutina" />
-    <Button
-        android:id="@+id/button_add_rutina"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agregar Rutina"/>
-
-    <ListView
-        android:id="@+id/lista_rutinas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-
 </LinearLayout>

@@ -7,51 +7,30 @@
     tools:context=".ui.rutinas.RutinasFragment">
 
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/browser_actions_bg_grey"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_rutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_start"
-        android:layout_width="259dp"
-        android:layout_height="62dp"
-        android:text="Comenzar"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="125dp" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
 
-    <Button
-        android:id="@+id/button_add"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agregar Rutina"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="517dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
