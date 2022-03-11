@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.menuprueba">
 
+    <!--Para hacer el set y get de información a través de Internet-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +12,7 @@
         android:roundIcon="@drawable/ic_main"
         android:supportsRtl="true"
         android:theme="@style/Theme.MenuPrueba">
-        <activity
-            android:name=".ui.DisplayActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"

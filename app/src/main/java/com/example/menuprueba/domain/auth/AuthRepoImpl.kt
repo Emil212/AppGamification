@@ -3,7 +3,7 @@ package com.example.menuprueba.domain.auth
 import com.example.menuprueba.data.remote.auth.AuthDataSource
 import com.google.firebase.auth.FirebaseUser
 
-//Repositorio que implementa la interfaz, la interfaz es una coleccion de metodos
+//Repositorio que implementa la interfaz (Los métodos de busqueda del servidor)
 
 class AuthRepoImpl (private val dataSource:AuthDataSource): AuthRepo{
 
