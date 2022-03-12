@@ -6,6 +6,5 @@ data class Ejercicios(
     val Nombre: String = "Sin Nombre",
     val Video: String = "Sin Video"
 )
-data class EjerciciosList (val ejercicios : List<Ejercicios> = listOf())
 
 
