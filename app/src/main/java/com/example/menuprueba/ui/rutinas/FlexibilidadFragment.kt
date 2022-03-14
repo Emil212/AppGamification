@@ -5,23 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import com.example.menuprueba.R
-import com.example.menuprueba.databinding.FragmentListaEjerciciosBinding
-import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.menuprueba.R
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
-import com.example.menuprueba.databinding.FragmentRutinasBinding
+import com.example.menuprueba.databinding.FragmentAerobicosBinding
+import com.example.menuprueba.databinding.FragmentFlexibilidadBinding
 import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinasViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
-class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
+class FlexibilidadFragment : Fragment(R.layout.fragment_flexibilidad) {
 
-    private lateinit var binding: FragmentListaEjerciciosBinding
+    private lateinit var binding: FragmentFlexibilidadBinding
     private val viewModel by viewModels<RutinasViewModel> {
         RutinasViewModelFactory(
             EjerciciosRepoImpl(
@@ -32,19 +28,16 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentListaEjerciciosBinding.bind(view)
-        prueba()
+        binding = FragmentFlexibilidadBinding.bind(view)
+        getAerobicos()
     }
 
-
-    //////////////////////////Todos los documentos
-
-    fun getAllResistencia() {
-        binding.buttonGetResistencia.setOnClickListener {
+    fun getAerobicos (){
+        binding.buttonNextFlexibility.setOnClickListener {
+/*            viewModel.getAllFlexibilidad()
             viewModel.getAllResistencia()
+            viewModel.getAllAerobicos()*/
+            findNavController().navigate(R.id.action_nav_flexibilidadFragment_to_aerobicosFragment)
         }
-    }
-    fun prueba(){
-        getAllResistencia()
     }
 }

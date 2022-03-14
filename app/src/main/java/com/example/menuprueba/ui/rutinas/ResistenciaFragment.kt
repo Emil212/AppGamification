@@ -5,23 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import com.example.menuprueba.R
-import com.example.menuprueba.databinding.FragmentListaEjerciciosBinding
-import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.menuprueba.R
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
-import com.example.menuprueba.databinding.FragmentRutinasBinding
+import com.example.menuprueba.databinding.FragmentAerobicosBinding
+import com.example.menuprueba.databinding.FragmentResistenciaBinding
 import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinasViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
-class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
+class ResistenciaFragment : Fragment(R.layout.fragment_resistencia) {
 
-    private lateinit var binding: FragmentListaEjerciciosBinding
+    private lateinit var binding: FragmentResistenciaBinding
     private val viewModel by viewModels<RutinasViewModel> {
         RutinasViewModelFactory(
             EjerciciosRepoImpl(
@@ -32,19 +28,14 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentListaEjerciciosBinding.bind(view)
-        prueba()
+        binding = FragmentResistenciaBinding.bind(view)
+        save()
     }
 
-
-    //////////////////////////Todos los documentos
-
-    fun getAllResistencia() {
-        binding.buttonGetResistencia.setOnClickListener {
-            viewModel.getAllResistencia()
+    fun save (){
+        binding.buttonSave.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_resistenciaFragment_to_nav_rutinas)
+            //Aquí va la lógica del para guardar las rutinas
         }
-    }
-    fun prueba(){
-        getAllResistencia()
     }
 }

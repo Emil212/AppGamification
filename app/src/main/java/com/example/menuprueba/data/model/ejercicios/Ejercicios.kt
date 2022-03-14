@@ -6,5 +6,8 @@ data class Ejercicios(
     val Nombre: String = "Sin Nombre",
     val Video: String = "Sin Video"
 )
+data class  EjerciciosNombre (
+    val Nombre: String = "Sin Nombre"
+        )
 
 

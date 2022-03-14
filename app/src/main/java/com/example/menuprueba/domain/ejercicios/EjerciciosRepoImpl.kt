@@ -5,21 +5,38 @@ import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
 
 ////////////////////////2da Capa/////////////////
 
-class EjerciciosRepoImpl (val dataSource: EjerciciosDataSource) {
+class EjerciciosRepoImpl(val dataSource: EjerciciosDataSource) {
 
-   suspend fun getFlexibilidad () { //corrutina
+    ///////////////////////////////Objetos individuales
+    suspend  fun getFlexibilidad() {
         dataSource.getFlexibilidad()
     }
+    suspend fun getAerobicos() {
+        dataSource.getAerobicos()
+    }
+    fun getResistencia() {
+        dataSource.getResistencia()
+    }
 
-    fun getAllFlexibilidad(){ //sin corrutina
+    /////////////////////////////////Nombres
+    fun getFlexibilidadNombres() {
+        dataSource.getFlexibilidadNombres()
+    }
+    fun getAerobicosNombres(){
+        dataSource.getAerobicosNombres()
+    }
+    fun getResistenciaNombres(){
+        dataSource.getResistenciaNombres()
+    }
+
+    /////////////////////////////Todos los documentos
+    fun getAllFlexibilidad() {
         dataSource.getAllFlexibilidadDocuments()
     }
-/////////////////////////////////////////////////
-    suspend fun getResistencia() {
-        TODO("Not yet implemented")
+    fun getAllResistencia(){
+        dataSource.getAllResistenciaDocuments()
     }
-
-    suspend fun getAerobicos() {
-        TODO("Not yet implemented")
+    fun getAllAerobicos(){
+        dataSource.getAllAerobicosDocuments()
     }
 }

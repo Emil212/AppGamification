@@ -19,7 +19,6 @@ import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinasViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
-////////////////////////////////////////////////////////////////4ta Capa/////
 class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
 
     private lateinit var binding: FragmentRutinasBinding
@@ -31,26 +30,79 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         )
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRutinasBinding.bind(view)
-
-        //getFlexibilidad() //Obtener un solo dato de la collección
-
-        getAllFlexibilidad() //Obtener todos los documentos de la collección
+        getFlexibilidad()
     }
 
 
+/*    ////////////////////////////Individuales
     fun getFlexibilidad() {
         binding.buttonGetFlexibilidad.setOnClickListener {
             viewModel.getFlexibilidad()
         }
     }
-
-    fun getAllFlexibilidad() {
+    fun getAerobicos() {
         binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getAllFlexibilidad()
+            viewModel.getAerobicos()
         }
     }
+    fun getResistencia() {
+        binding.buttonGetFlexibilidad.setOnClickListener {
+            viewModel.getResistencia()
+        }
+    }
+
+    ////////////////////////////Nombres
+    fun getFlexibilidadNombres() {
+        binding.buttonGetFlexibilidad.setOnClickListener {
+            viewModel.getFlexibilidadNombres()
+        }
+    }
+    fun getResistenciaNombres() {
+        binding.buttonGetFlexibilidad.setOnClickListener {
+            viewModel.getResistenciaNombres()
+        }
+    }
+    fun getAerobicosNombres() {
+        binding.buttonGetFlexibilidad.setOnClickListener {
+            viewModel.getAerobicosNombres()
+        }
+    }*/
+
+    //////////////////////////Todos los documentos
+    fun getFlexibilidad() {
+        binding.buttonAddRutina.setOnClickListener {
+            //viewModel.getAllFlexibilidad()
+            viewModel.getAllFlexibilidad()
+            viewModel.getAllResistencia()
+            viewModel.getAllAerobicos()
+            findNavController().navigate(R.id.action_nav_rutinas_to_flexibilidadFragment)
+        }
+    }
+/*    fun getAllResistencia() {
+        binding.buttonGetFlexibilidad.setOnClickListener {
+            viewModel.getAllResistencia()
+        }
+    }
+    fun getAllAerobicos() {
+        binding.buttonGetFlexibilidad.setOnClickListener {
+            viewModel.getAllAerobicos()
+        }
+    }*/
+
+/*    fun prueba(){
+        getFlexibilidad()
+        getAerobicos()
+        getResistencia()
+
+        getAllFlexibilidad()
+        getAllAerobicos()
+        getAllResistencia()
+
+        getFlexibilidadNombres()
+        getAerobicosNombres()
+        getResistenciaNombres()
+    }*/
 }
