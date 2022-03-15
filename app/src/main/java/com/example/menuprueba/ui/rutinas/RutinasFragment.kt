@@ -36,5 +36,8 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         binding.buttonAddRutina.setOnClickListener {
             findNavController().navigate(R.id.action_nav_rutinas_to_listaEjerciciosFragment)
         }
+        binding.buttonStart.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_rutinas_to_videosFragment)
+        }
     }
 }

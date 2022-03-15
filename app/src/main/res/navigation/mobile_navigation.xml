@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_rutinas_to_listaEjerciciosFragment"
             app:destination="@id/nav_listaEjerciciosFragment" />
+        <action
+            android:id="@+id/action_nav_rutinas_to_videosFragment"
+            app:destination="@id/videosFragment" />
     </fragment>
 
     <fragment

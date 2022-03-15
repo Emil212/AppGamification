@@ -4,6 +4,8 @@
 
     <!--Para hacer el set y get de información a través de Internet-->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.perm3aion. READ EXTERNAL STORAGE"/>
+
 
     <application
         android:allowBackup="true"
