@@ -32,19 +32,16 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentListaEjerciciosBinding.bind(view)
-        prueba()
-    }
-
-
-    //////////////////////////Todos los documentos
-
-    fun getAllResistencia() {
+        getRutinas()
+        binding= FragmentListaEjerciciosBinding.bind(view)
         binding.buttonGetResistencia.setOnClickListener {
-            viewModel.getAllResistencia()
+            findNavController().navigate(R.id.action_listaEjerciciosFragment_to_nav_rutinas)
         }
     }
-    fun prueba(){
-        getAllResistencia()
+
+    fun getRutinas(){
+        viewModel.getAllResistencia()
+        viewModel.getAllAerobicos()
+        viewModel.getAllFlexibilidad()
     }
 }

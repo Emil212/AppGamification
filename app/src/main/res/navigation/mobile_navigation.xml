@@ -10,10 +10,9 @@
         android:name="com.example.menuprueba.ui.rutinas.RutinasFragment"
         android:label="@string/rutinas"
         tools:layout="@layout/fragment_rutinas" >
-
         <action
-            android:id="@+id/action_nav_rutinas_to_flexibilidadFragment"
-            app:destination="@id/nav_flexibilidadFragment" />
+            android:id="@+id/action_nav_rutinas_to_listaEjerciciosFragment"
+            app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
 
     <fragment
@@ -68,30 +67,12 @@
         android:label="Acción!!"
         tools:layout="@layout/fragment_videos" />
     <fragment
-        android:id="@+id/nav_aerobicosFragment"
-        android:name="com.example.menuprueba.ui.rutinas.AerobicosFragment"
-        android:label="Aeróbicos"
-        tools:layout="@layout/fragment_aerobicos" >
+        android:id="@+id/nav_listaEjerciciosFragment"
+        android:name="com.example.menuprueba.ui.rutinas.ListaEjerciciosFragment"
+        android:label="Ejercicios"
+        tools:layout="@layout/fragment_lista_ejercicios" >
         <action
-            android:id="@+id/action_nav_aerobicosFragment_to_nav_resistenciaFragment"
-            app:destination="@id/nav_resistenciaFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_flexibilidadFragment"
-        android:name="com.example.menuprueba.ui.rutinas.FlexibilidadFragment"
-        android:label="Flexibilidad"
-        tools:layout="@layout/fragment_flexibilidad" >
-        <action
-            android:id="@+id/action_nav_flexibilidadFragment_to_aerobicosFragment"
-            app:destination="@id/nav_aerobicosFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_resistenciaFragment"
-        android:name="com.example.menuprueba.ui.rutinas.ResistenciaFragment"
-        android:label="Resistencia"
-        tools:layout="@layout/fragment_resistencia" >
-        <action
-            android:id="@+id/action_nav_resistenciaFragment_to_nav_rutinas"
+            android:id="@+id/action_listaEjerciciosFragment_to_nav_rutinas"
             app:destination="@id/nav_rutinas" />
     </fragment>
 

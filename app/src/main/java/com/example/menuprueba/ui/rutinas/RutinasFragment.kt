@@ -33,76 +33,8 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRutinasBinding.bind(view)
-        getFlexibilidad()
-    }
-
-
-/*    ////////////////////////////Individuales
-    fun getFlexibilidad() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getFlexibilidad()
-        }
-    }
-    fun getAerobicos() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getAerobicos()
-        }
-    }
-    fun getResistencia() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getResistencia()
-        }
-    }
-
-    ////////////////////////////Nombres
-    fun getFlexibilidadNombres() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getFlexibilidadNombres()
-        }
-    }
-    fun getResistenciaNombres() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getResistenciaNombres()
-        }
-    }
-    fun getAerobicosNombres() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getAerobicosNombres()
-        }
-    }*/
-
-    //////////////////////////Todos los documentos
-    fun getFlexibilidad() {
         binding.buttonAddRutina.setOnClickListener {
-            //viewModel.getAllFlexibilidad()
-            viewModel.getAllFlexibilidad()
-            viewModel.getAllResistencia()
-            viewModel.getAllAerobicos()
-            findNavController().navigate(R.id.action_nav_rutinas_to_flexibilidadFragment)
+            findNavController().navigate(R.id.action_nav_rutinas_to_listaEjerciciosFragment)
         }
     }
-/*    fun getAllResistencia() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getAllResistencia()
-        }
-    }
-    fun getAllAerobicos() {
-        binding.buttonGetFlexibilidad.setOnClickListener {
-            viewModel.getAllAerobicos()
-        }
-    }*/
-
-/*    fun prueba(){
-        getFlexibilidad()
-        getAerobicos()
-        getResistencia()
-
-        getAllFlexibilidad()
-        getAllAerobicos()
-        getAllResistencia()
-
-        getFlexibilidadNombres()
-        getAerobicosNombres()
-        getResistenciaNombres()
-    }*/
 }

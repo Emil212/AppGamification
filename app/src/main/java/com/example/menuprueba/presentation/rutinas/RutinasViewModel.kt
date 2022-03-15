@@ -22,6 +22,7 @@ class RutinasViewModel(val RepoImpl: EjerciciosRepoImpl) : ViewModel() {
              emit(Result.Failure(e))
          }
      }
+
     //con corrutina
     fun getAerobicos() = liveData(Dispatchers.IO) {
         emit(Result.Loading())

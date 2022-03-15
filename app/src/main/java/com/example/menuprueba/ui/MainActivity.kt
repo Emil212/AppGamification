@@ -81,18 +81,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.videosFragment ->{ //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
-
-                R.id.nav_flexibilidadFragment ->{ //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
+                R.id.nav_listaEjerciciosFragment -> { //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)//Botón de "atrás"
-                }
-                R.id.nav_aerobicosFragment ->{
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                supportActionBar?.setDisplayHomeAsUpEnabled(false)//Botón de "atrás"
-                }
-                R.id.nav_resistenciaFragment ->{
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)//Botón de "atrás"
                 }
                 else -> {
                     //binding.navView.visibility = View.VISIBLE
