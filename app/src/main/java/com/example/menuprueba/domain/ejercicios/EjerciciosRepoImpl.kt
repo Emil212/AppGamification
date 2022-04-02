@@ -1,12 +1,15 @@
 package com.example.menuprueba.domain.ejercicios
 
 
+import com.example.menuprueba.core.Result
+import com.example.menuprueba.data.model.ejercicios.Ejercicios
+import com.example.menuprueba.data.model.ejercicios.videosGif
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
 
 ////////////////////////2da Capa/////////////////
 
 class EjerciciosRepoImpl(val dataSource: EjerciciosDataSource) {
-
+/*
     ///////////////////////////////Objetos individuales
     suspend  fun getFlexibilidad() {
         dataSource.getFlexibilidad()
@@ -14,7 +17,7 @@ class EjerciciosRepoImpl(val dataSource: EjerciciosDataSource) {
     suspend fun getAerobicos() {
         dataSource.getAerobicos()
     }
-    fun getResistencia() {
+    suspend fun getResistencia() {
         dataSource.getResistencia()
     }
 
@@ -39,4 +42,8 @@ class EjerciciosRepoImpl(val dataSource: EjerciciosDataSource) {
     fun getAllAerobicos(){
         dataSource.getAllAerobicosDocuments()
     }
+
+    suspend fun getGif () : MutableList<videosGif> = dataSource.getGif(){
+    }*/
+
 }

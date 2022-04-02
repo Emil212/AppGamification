@@ -21,27 +21,31 @@ import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
 class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
 
+    val videos : VideosFragment = VideosFragment()
+
+
     private lateinit var binding: FragmentListaEjerciciosBinding
-    private val viewModel by viewModels<RutinasViewModel> {
+/*    private val viewModel by viewModels<RutinasViewModel> {
         RutinasViewModelFactory(
             EjerciciosRepoImpl(
                 EjerciciosDataSource()
             )
         )
-    }
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getRutinas()
+        //getRutinas()
         binding= FragmentListaEjerciciosBinding.bind(view)
         binding.buttonGetResistencia.setOnClickListener {
             findNavController().navigate(R.id.action_listaEjerciciosFragment_to_nav_rutinas)
         }
     }
-
+/*
     fun getRutinas(){
         viewModel.getAllResistencia()
         viewModel.getAllAerobicos()
         viewModel.getAllFlexibilidad()
-    }
+        //videos.getGif()
+    }*/
 }

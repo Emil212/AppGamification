@@ -1,23 +1,21 @@
 package com.example.menuprueba.data.remote.ejercicios
 
 import android.util.Log
-import androidx.browser.customtabs.PostMessageService
+import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.Ejercicios
 import com.example.menuprueba.data.model.ejercicios.EjerciciosNombre
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
-import com.example.menuprueba.core.Result
-import com.example.menuprueba.core.Result.Loading
-import kotlinx.coroutines.flow.flow
+import com.example.menuprueba.data.model.ejercicios.videosGif
+import com.example.menuprueba.domain.network.IRepo
 
 //Lógica para traer los datos del servidor (1ra Capa)
-class EjerciciosDataSource {
+class EjerciciosDataSource : IRepo{
 
     private val db = FirebaseFirestore.getInstance()
 
     ///////////////////////Objetos individuales
-    //////Flexibilidad
+/*    //////Flexibilidad
     suspend fun getFlexibilidad() {
         val docRef = db.collection("Flexibilidad").document("Prueba")
         docRef.get()
@@ -60,7 +58,7 @@ class EjerciciosDataSource {
                     Log.d("Descripcion: No existe ", "No hay")
                 }
             }
-    }
+    }*/
     ///////////////////////////////////Lista de Nombres
     //////Flexibilidad
     fun getFlexibilidadNombres() {
@@ -115,7 +113,7 @@ class EjerciciosDataSource {
     }
     ///////////////////////////////////Todos los doucmentos
     ///////////Flexibilidad
-    fun getAllFlexibilidadDocuments() {
+   /* fun getAllFlexibilidadDocuments() {
         val listaEjercicios =
             mutableListOf<Ejercicios>() //Crea una lista editable de tipo Ejercicios
         //"Ejercicios(data\model\ejercicios\ejercicios)"
@@ -164,5 +162,31 @@ class EjerciciosDataSource {
                 }
                 Log.d("Ejercicios Aerobicos", "$listaEjercicios") //Muestra la lista
             }
+    }
+*/
+
+
+    override suspend fun getRutinaRepo(): Result<MutableList<videosGif>> {
+        val db = FirebaseFirestore.getInstance()
+        val listaVideos =
+            mutableListOf<videosGif>() //Crea una lista editable de tipo Ejercicios
+        //"Ejercicios(data\model\ejercicios\ejercicios)"
+        val docRef = db.collection("Flexibilidad")
+        docRef.get()
+            .addOnSuccessListener {
+                for (documento in it) {
+                    val ejercicios =
+                        documento.toObject(videosGif::class.java)      //Toma los valores del documento
+                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
+                    listaVideos.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
+                }
+                Log.d("Lista de videos", "$listaVideos") //Muestra la lista
+            }
+            .addOnFailureListener {
+                Log.d("Lista de videos", "Error")
+            }
+            .await()
+
+        return Result.Success(listaVideos)
     }
 }

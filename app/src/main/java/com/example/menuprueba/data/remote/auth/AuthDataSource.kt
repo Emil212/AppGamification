@@ -1,6 +1,6 @@
 package com.example.menuprueba.data.remote.auth
 
-import com.example.menuprueba.data.model.User
+import com.example.menuprueba.data.model.user.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore

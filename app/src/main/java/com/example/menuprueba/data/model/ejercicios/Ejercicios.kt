@@ -10,4 +10,8 @@ data class  EjerciciosNombre (
     val Nombre: String = "Sin Nombre"
         )
 
+data class  videosGif (val Video : String = "Video")
+
+
+
 

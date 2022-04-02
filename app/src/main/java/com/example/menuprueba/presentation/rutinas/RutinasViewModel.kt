@@ -1,37 +1,34 @@
 package com.example.menuprueba.presentation.rutinas
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
-import com.example.menuprueba.domain.auth.AuthRepo
-import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
-import com.example.menuprueba.presentation.auth.AuthViewModel
 import kotlinx.coroutines.Dispatchers
 import com.example.menuprueba.core.Result
+import com.example.menuprueba.domain.ejercicios.EjerciciosRepo
 
 ///////3ra capa///////////////
 
-class RutinasViewModel(val RepoImpl: EjerciciosRepoImpl) : ViewModel() {
+class RutinasViewModel(private val RepoImpl: EjerciciosRepo) : ViewModel() {
 
     //con corrutina
-    fun getFlexibilidad() = liveData(Dispatchers.IO) {
+/*    fun getFlexibilidad() = liveData(Dispatchers.IO) {
          emit(Result.Loading())
          try {
              emit(Result.Success(RepoImpl.getFlexibilidad()))
          } catch (e: Exception) {
              emit(Result.Failure(e))
          }
-     }
+     }*/
 
     //con corrutina
-    fun getAerobicos() = liveData(Dispatchers.IO) {
+/*    fun getAerobicos() = liveData(Dispatchers.IO) {
         emit(Result.Loading())
         try {
             emit(Result.Success(RepoImpl.getAerobicos()))
         } catch (e: Exception) {
             emit(Result.Failure(e))
         }
-    }
+    }*/
 
     ///////////////////////Objetos individuales
     /*fun getFlexibilidad() {
@@ -40,12 +37,12 @@ class RutinasViewModel(val RepoImpl: EjerciciosRepoImpl) : ViewModel() {
     fun getAerobicos(){
         RepoImpl.getAerobico()
     }*/
-    fun getResistencia(){
+/*    suspend fun getResistencia(){
         RepoImpl.getResistencia()
-    }
+    }*/
 
 
-    ////////////////////////Nombres
+/*    ////////////////////////Nombres
     fun getFlexibilidadNombres(){
         RepoImpl.getFlexibilidadNombres()
     }
@@ -65,13 +62,32 @@ class RutinasViewModel(val RepoImpl: EjerciciosRepoImpl) : ViewModel() {
     }
     fun getAllAerobicos(){
         RepoImpl.getAllAerobicos()
+    }*/
+
+
+/*    fun getGif() = liveData(Dispatchers.IO) {
+        emit(Result.Loading())
+        try {
+            emit(Result.Success(RepoImpl.getGif()))
+        } catch (e: Exception) {
+            emit(Result.Failure(e))
+        }
+        return@liveData
+    }*/
+
+    fun getAllResistencia() {
+        TODO("Not yet implemented")
+    }
+
+    fun getAllAerobicos() {
+        TODO("Not yet implemented")
+    }
+
+    fun getAllFlexibilidad() {
+        TODO("Not yet implemented")
     }
 }
 
 
 ///Implementacion de ViewModel
-class RutinasViewModelFactory(private val repo: EjerciciosRepoImpl) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return RutinasViewModel(repo) as T
-    }
-}
+

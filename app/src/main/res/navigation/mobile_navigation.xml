@@ -10,12 +10,10 @@
         android:name="com.example.menuprueba.ui.rutinas.RutinasFragment"
         android:label="@string/rutinas"
         tools:layout="@layout/fragment_rutinas" >
+
         <action
-            android:id="@+id/action_nav_rutinas_to_listaEjerciciosFragment"
-            app:destination="@id/nav_listaEjerciciosFragment" />
-        <action
-            android:id="@+id/action_nav_rutinas_to_videosFragment"
-            app:destination="@id/videosFragment" />
+            android:id="@+id/action_nav_rutinas_to_presentacionFragment"
+            app:destination="@id/presentacionFragment" />
     </fragment>
 
     <fragment
@@ -67,8 +65,12 @@
     <fragment
         android:id="@+id/videosFragment"
         android:name="com.example.menuprueba.ui.rutinas.VideosFragment"
-        android:label="Acción!!"
-        tools:layout="@layout/fragment_videos" />
+        android:label="Videos"
+        tools:layout="@layout/fragment_videos" >
+        <action
+            android:id="@+id/action_videosFragment_to_nav_rutinas"
+            app:destination="@id/nav_rutinas" />
+    </fragment>
     <fragment
         android:id="@+id/nav_listaEjerciciosFragment"
         android:name="com.example.menuprueba.ui.rutinas.ListaEjerciciosFragment"
@@ -77,6 +79,15 @@
         <action
             android:id="@+id/action_listaEjerciciosFragment_to_nav_rutinas"
             app:destination="@id/nav_rutinas" />
+    </fragment>
+    <fragment
+        android:id="@+id/presentacionFragment"
+        android:name="com.example.menuprueba.ui.rutinas.PresentacionFragment"
+        android:label="Preparación"
+        tools:layout="@layout/fragment_presentacion" >
+        <action
+            android:id="@+id/action_presentacionFragment_to_videosFragment"
+            app:destination="@id/videosFragment" />
     </fragment>
 
 

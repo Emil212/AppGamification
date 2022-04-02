@@ -1,8 +1,9 @@
 package com.example.menuprueba.domain.ejercicios
 
+import com.example.menuprueba.core.Result
+import com.example.menuprueba.data.model.ejercicios.videosGif
+
 
 interface EjerciciosRepo {
-    suspend fun getFlexibilidad ()
-    suspend fun getResistencia ()
-    suspend fun getAerobicos ()
+    suspend fun getRutina () : Result<MutableList<videosGif>>
 }

@@ -37,19 +37,23 @@
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/drawable/ic_recordatorio.xml" value="0.2203125" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/activity_main.xml" value="0.14977973568281938" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/app_bar_main.xml" value="0.22" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/card_layout.xml" value="0.25" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/content_main.xml" value="0.12364130434782608" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_aerobicos.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_carrera.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_flexibilidad.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_informe_actividades.xml" value="0.12409420289855072" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_lista_ejercicios.xml" value="0.25" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_logoff.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_presentacion.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_recordatorios.xml" value="0.10416666666666667" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_registration.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_resistencia.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_rutinas.xml" value="0.22" />
-        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_videos.xml" value="0.1" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_rutina.xml" value="0.25" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_rutinas.xml" value="0.1729957805907173" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/fragment_videos.xml" value="0.22" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />

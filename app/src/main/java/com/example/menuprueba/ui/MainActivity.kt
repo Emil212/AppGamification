@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.videosFragment ->{ //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 }
                 R.id.nav_listaEjerciciosFragment -> { //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)

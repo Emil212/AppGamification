@@ -25,7 +25,6 @@ class AuthViewModel(private val repo: AuthRepo): ViewModel() {
             emit(Result.Failure(e))
         }
     }
-
 }
 
 class AuthViewModelFactory(private val repo: AuthRepo) : ViewModelProvider.Factory {
