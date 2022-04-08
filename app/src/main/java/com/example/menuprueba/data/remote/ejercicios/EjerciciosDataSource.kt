@@ -2,176 +2,25 @@ package com.example.menuprueba.data.remote.ejercicios
 
 import android.util.Log
 import com.example.menuprueba.core.Result
-import com.example.menuprueba.data.model.ejercicios.Ejercicios
-import com.example.menuprueba.data.model.ejercicios.EjerciciosNombre
+import com.example.menuprueba.data.model.ejercicios.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
-import com.example.menuprueba.data.model.ejercicios.videosGif
 import com.example.menuprueba.domain.network.IRepo
+import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.Source
+import com.google.firebase.firestore.local.Persistence
+import com.google.firebase.ktx.Firebase
 
 //Lógica para traer los datos del servidor (1ra Capa)
 class EjerciciosDataSource : IRepo{
 
-    private val db = FirebaseFirestore.getInstance()
-
-    ///////////////////////Objetos individuales
-/*    //////Flexibilidad
-    suspend fun getFlexibilidad() {
-        val docRef = db.collection("Flexibilidad").document("Prueba")
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val descripcion = document.getString("Descripcion")
-                    print(descripcion)
-                    Log.d("Descripcion: ", "$descripcion")
-                    Log.d("AL", "Holi")
-                } else {
-                    Log.d("Descripcion: No existe ", "No hay")
-                }
-            }
-            .await()
-    }
-    //////Aerobicos
-    suspend fun getAerobicos() {
-        val docRef = db.collection("Aerobicos").document("Prueba")
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val descripcion = document.getString("Descripcion")
-                    Log.d("Descripcion: ", "$descripcion")
-                } else {
-                    Log.d("Descripcion: No existe ", "No hay")
-                }
-            }
-            .await()
-    }
-
-    //////Resistencia
-    fun getResistencia() {
-        val docRef = db.collection("Resistencia").document("Prueba")
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val descripcion = document.getString("Descripcion")
-                    Log.d("Descripcion: ", "$descripcion")
-                } else {
-                    Log.d("Descripcion: No existe ", "No hay")
-                }
-            }
-    }*/
-    ///////////////////////////////////Lista de Nombres
-    //////Flexibilidad
-    fun getFlexibilidadNombres() {
-        val listaEjercicios =
-            mutableListOf<EjerciciosNombre>() //Crea una lista editable de tipo Ejercicios
-        //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Flexibilidad")
-        docRef.get()
-            .addOnSuccessListener {
-                for (documento in it) {
-                    val ejercicios =
-                        documento.toObject(EjerciciosNombre::class.java)         //Toma los valores del documento
-                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
-                    listaEjercicios.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
-                }
-                Log.d("Ejercicios Flexibilidad", "$listaEjercicios") //Muestra la lista
-            }
-    }
-    ///////Resistencia
-    fun getResistenciaNombres() {
-        val listaEjercicios =
-            mutableListOf<EjerciciosNombre>() //Crea una lista editable de tipo Ejercicios
-        //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Resistencia")
-        docRef.get()
-            .addOnSuccessListener {
-                for (documento in it) {
-                    val ejercicios =
-                        documento.toObject(EjerciciosNombre::class.java)         //Toma los valores del documento
-                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
-                    listaEjercicios.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
-                }
-                Log.d("Ejercicios Resistencia", "$listaEjercicios") //Muestra la lista
-            }
-    }
-    ///////Aerobicos
-    fun getAerobicosNombres() {
-        val listaEjercicios =
-            mutableListOf<EjerciciosNombre>() //Crea una lista editable de tipo Ejercicios
-        //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Aerobicos")
-        docRef.get()
-            .addOnSuccessListener {
-                for (documento in it) {
-                    val ejercicios =
-                        documento.toObject(EjerciciosNombre::class.java)         //Toma los valores del documento
-                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
-                    listaEjercicios.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
-                }
-                Log.d("Ejercicios Aerobicos", "$listaEjercicios") //Muestra la lista
-            }
-    }
-    ///////////////////////////////////Todos los doucmentos
-    ///////////Flexibilidad
-   /* fun getAllFlexibilidadDocuments() {
-        val listaEjercicios =
-            mutableListOf<Ejercicios>() //Crea una lista editable de tipo Ejercicios
-        //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Flexibilidad")
-        docRef.get()
-            .addOnSuccessListener {
-                for (documento in it) {
-                    val ejercicios =
-                        documento.toObject(Ejercicios::class.java)         //Toma los valores del documento
-                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
-                    listaEjercicios.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
-                }
-                Log.d("Ejercicios Flexibilidad", "$listaEjercicios") //Muestra la lista
-            }
-    }
-    //////////////////Resistencia
-    fun getAllResistenciaDocuments() {
-        val listaEjercicios =
-            mutableListOf<Ejercicios>() //Crea una lista editable de tipo Ejercicios
-        //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Resistencia")
-        docRef.get()
-            .addOnSuccessListener {
-                for (documento in it) {
-                    val ejercicios =
-                        documento.toObject(Ejercicios::class.java)         //Toma los valores del documento
-                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
-                    listaEjercicios.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
-                }
-                Log.d("Ejercicios Resistencia", "$listaEjercicios") //Muestra la lista
-            }
-    }
-    //////////////////Aerobicos
-    fun getAllAerobicosDocuments() {
-        val listaEjercicios =
-            mutableListOf<Ejercicios>() //Crea una lista editable de tipo Ejercicios
-        //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Aerobicos")
-        docRef.get()
-            .addOnSuccessListener {
-                for (documento in it) {
-                    val ejercicios =
-                        documento.toObject(Ejercicios::class.java)         //Toma los valores del documento
-                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
-                    listaEjercicios.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
-                }
-                Log.d("Ejercicios Aerobicos", "$listaEjercicios") //Muestra la lista
-            }
-    }
-*/
-
-
     override suspend fun getRutinaRepo(): Result<MutableList<videosGif>> {
+        val source = Source.CACHE //source se pasa como parametro en get()
         val db = FirebaseFirestore.getInstance()
         val listaVideos =
             mutableListOf<videosGif>() //Crea una lista editable de tipo Ejercicios
         //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Flexibilidad")
+        val docRef = db.collection("Rutina0")
         docRef.get()
             .addOnSuccessListener {
                 for (documento in it) {
@@ -188,5 +37,49 @@ class EjerciciosDataSource : IRepo{
             .await()
 
         return Result.Success(listaVideos)
+    }
+
+    override suspend fun getAllRepo(): Result<MutableList<All>> {
+        val source = Source.CACHE
+        val db = FirebaseFirestore.getInstance()
+        val lista =
+            mutableListOf<All>()
+        val docRef = db.collection("Rutinas")
+        docRef.get()
+            .addOnSuccessListener {
+                for (documento in it) {
+                    val todo =
+                        documento.toObject(All::class.java)         //Toma los valores del documento
+                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
+                    lista.add(todo) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
+                }
+                Log.d("Lista de rutinas", "$lista") //Muestra la lista
+            }
+            .addOnFailureListener {
+                Log.d("Lista de rutinas", "Error")
+            }
+            .await()
+        return Result.Success(lista)
+    }
+
+    override suspend fun getInfoEjerciciosRepo(): Result<MutableList<infoEjercicios>> {
+        val db = FirebaseFirestore.getInstance()
+        val lista = mutableListOf<infoEjercicios>()
+        val docRef = db.collection("Rutinas")
+        docRef.get()
+            .addOnSuccessListener {
+                for (documento in it) {
+                    val todo =
+                        documento.toObject(infoEjercicios::class.java)         //Toma los valores del documento
+                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
+                    lista.add(todo) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
+                }
+                Log.d("Lista de rutinas", "$lista") //Muestra la lista
+            }
+            .addOnFailureListener {
+                Log.d("Lista de rutinas", "Error")
+            }
+            .await()
+        return Result.Success(lista)
     }
 }

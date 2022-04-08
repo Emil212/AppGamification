@@ -68,8 +68,8 @@
         android:label="Videos"
         tools:layout="@layout/fragment_videos" >
         <action
-            android:id="@+id/action_videosFragment_to_nav_rutinas"
-            app:destination="@id/nav_rutinas" />
+            android:id="@+id/action_videosFragment_to_congratulationsFragment"
+            app:destination="@id/congratulationsFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_listaEjerciciosFragment"
@@ -88,6 +88,15 @@
         <action
             android:id="@+id/action_presentacionFragment_to_videosFragment"
             app:destination="@id/videosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/congratulationsFragment"
+        android:name="com.example.menuprueba.ui.rutinas.CongratulationsFragment"
+        android:label="Felicidades"
+        tools:layout="@layout/fragment_congratulations" >
+        <action
+            android:id="@+id/action_congratulationsFragment_to_nav_rutinas"
+            app:destination="@id/nav_rutinas" />
     </fragment>
 
 
