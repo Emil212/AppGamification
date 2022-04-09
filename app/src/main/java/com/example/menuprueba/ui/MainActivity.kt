@@ -21,6 +21,7 @@ import com.example.menuprueba.ui.informe.InformeActividadesFragment
 import com.example.menuprueba.ui.logros.LogrosFragment
 import com.example.menuprueba.ui.recordatorios.RecordatoriosFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -58,14 +61,14 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //Cierre de sesion
-       /* binding.navView.setNavigationItemSelectedListener {
+        /* binding.navView.setNavigationItemSelectedListener {
 
-            when(it.itemId){
-                R.id.nav_logout -> FirebaseAuth.getInstance().signOut()
-               // R.id.nav_logros -> findNavController().navigate(R.layout.fragment_logros)
-            }
-            true
-        }*/
+             when(it.itemId){
+                 R.id.nav_logout -> FirebaseAuth.getInstance().signOut()
+                // R.id.nav_logros -> findNavController().navigate(R.layout.fragment_logros)
+             }
+             true
+         }*/
 
         navController.addOnDestinationChangedListener { controller, destination, argument ->
             when (destination.id) {
@@ -78,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
 
-                R.id.videosFragment ->{ //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
+                R.id.videosFragment -> { //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 }
@@ -98,6 +101,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
 /*
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -105,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 */
-    
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

@@ -7,6 +7,7 @@ import com.example.menuprueba.domain.ejercicios.EjerciciosRepo
 import kotlinx.coroutines.Dispatchers
 
 class RutinaViewModel(repo : EjerciciosRepo) : ViewModel() {
+
         val getRutina = liveData(Dispatchers.IO){
             emit(Result.Loading())
             try {
@@ -16,6 +17,8 @@ class RutinaViewModel(repo : EjerciciosRepo) : ViewModel() {
                 emit(Result.Failure(e))
             }
         }
+
+
 
     val getAll = liveData(Dispatchers.IO){
         emit(Result.Loading())

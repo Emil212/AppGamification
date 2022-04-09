@@ -1,3 +1,3 @@
 package com.example.menuprueba.data.model.user
 
-data class User(val email: String = "", val username: String = "", val photo_url: String = "")
+data class User(val email: String = "", val username: String = "", val points: Long = 0)

@@ -5,17 +5,12 @@ import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
-import com.example.menuprueba.domain.network.IRepo
-import com.google.firebase.firestore.FirebaseFirestoreSettings
-import com.google.firebase.firestore.Source
-import com.google.firebase.firestore.local.Persistence
-import com.google.firebase.ktx.Firebase
-
+import com.example.menuprueba.domain.ejercicios.IRepo
 //Lógica para traer los datos del servidor (1ra Capa)
-class EjerciciosDataSource : IRepo{
+class EjerciciosDataSource : IRepo {
 
     override suspend fun getRutinaRepo(): Result<MutableList<videosGif>> {
-        val source = Source.CACHE //source se pasa como parametro en get()
+        //val source = Source.CACHE //source se pasa como parametro en get()
         val db = FirebaseFirestore.getInstance()
         val listaVideos =
             mutableListOf<videosGif>() //Crea una lista editable de tipo Ejercicios
@@ -40,7 +35,7 @@ class EjerciciosDataSource : IRepo{
     }
 
     override suspend fun getAllRepo(): Result<MutableList<All>> {
-        val source = Source.CACHE
+        //val source = Source.CACHE
         val db = FirebaseFirestore.getInstance()
         val lista =
             mutableListOf<All>()
@@ -53,7 +48,7 @@ class EjerciciosDataSource : IRepo{
                     //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
                     lista.add(todo) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
                 }
-                Log.d("Lista de rutinas", "$lista") //Muestra la lista
+                Log.d("VP1", "$lista") //Muestra la lista
             }
             .addOnFailureListener {
                 Log.d("Lista de rutinas", "Error")

@@ -13,9 +13,9 @@ import com.example.menuprueba.databinding.FragmentCongratulationsBinding
 
 class CongratulationsFragment : Fragment(R.layout.fragment_congratulations) {
     private val  imgCong = "https://firebasestorage.googleapis.com/v0/b/" +
-            "gamificationapp-2ff7c.appspot.com/o/Presentacion_Descanso%2F" +
-            "Congratulations.png?alt=media&token=37d88dd6-1a74-4cda-bbf6-" +
-            "7fb7dc66cfe8"
+            "gamificationapp-2ff7c.appspot.com/o/Presentacion_Descanso%2" +
+            "FCongratulations.png?alt=media&token=10fcd0ee-32d5-43bb-b4b" +
+            "b-823056a73f74"
     private lateinit var binding: FragmentCongratulationsBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,7 +28,7 @@ class CongratulationsFragment : Fragment(R.layout.fragment_congratulations) {
 
         setFragmentResultListener("requestKey"){ key, bundle ->
             val result = bundle.getString("bundleKey")
-            puntos.setText("${result}")
+            puntos.setText("¡Felicidades!\nhas ganado\n${result}\npuntos")
         }
 
         Glide

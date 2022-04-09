@@ -1,4 +1,4 @@
-package com.example.menuprueba.domain.network
+package com.example.menuprueba.domain.ejercicios
 
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.All

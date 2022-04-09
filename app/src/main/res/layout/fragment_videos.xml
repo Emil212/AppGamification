@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.rutinas.VideosFragment">
+    tools:context=".ui.rutinas.VideosFragment"
+    android:background="@color/white"
+    >
 
     <ProgressBar
         android:id="@+id/progressbar"

@@ -52,6 +52,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_loginFragment_to_nav_logros2"
+            app:destination="@id/nav_logros" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -61,6 +64,9 @@
         <action
             android:id="@+id/action_registrationFragment_to_nav_rutinas"
             app:destination="@id/nav_rutinas" />
+        <action
+            android:id="@+id/action_registrationFragment_to_nav_logros2"
+            app:destination="@id/nav_logros" />
     </fragment>
     <fragment
         android:id="@+id/videosFragment"

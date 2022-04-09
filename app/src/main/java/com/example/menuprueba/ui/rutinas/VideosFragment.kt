@@ -45,22 +45,22 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         selectRoutine()
     }
 
-    private fun selectRoutine (){
-            val indexRutina = 0 //indexRutina es el indice de la rutna
-            when (indexRutina){
-                0->{
-                    observeData0()
-                }
-                1->{
-
-                }
-                2->{
-
-                }
-                3->{
-
-                }
+    private fun selectRoutine() {
+        val indexRutina = 0 //indexRutina es el indice de la rutna
+        when (indexRutina) {
+            0 -> {
+                observeData0()
             }
+            1 -> {
+
+            }
+            2 -> {
+
+            }
+            3 -> {
+
+            }
+        }
     }
 
     private fun playListRoutine(video0: String, video1: String, video2: String, video3: String, puntuacion: Long) {
@@ -89,7 +89,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     }
 
 
-
     private fun setUpPuntuacion() {
         //seteo de la puntuación a la DB
     }
@@ -110,8 +109,8 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         binding.progressbar.visibility = View.GONE
     }
 
-    fun showRoutine(elemento: String, duracion : Long) {
-        indexContador ++
+    fun showRoutine(elemento: String, duracion: Long) {
+        indexContador++
 
         val imageview = binding.imageView
         val seeTime = binding.time
@@ -153,6 +152,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                 val mostrar = String.format("%02d", segundos)
                 seeTime.setText(mostrar)
             }
+
             override fun onFinish() {
                 showButton()
                 Log.d("onFinish Descanso", "Finish")
@@ -168,7 +168,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         return elemento
     }
 
-     fun observeData0() {
+    fun observeData0() {
         viewModel.getRutina.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Result.Loading -> {
@@ -178,7 +178,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     var lista = result.data //Lista de tipo MutableList<videosGif>
                     Log.d("Lista ", "${makeListVideos(lista)}")
                     val videos = makeListVideos(lista)
-                    playListRoutine(videos[0],videos[1], videos[2],videos[3], 100) //Los videos y la puntuacón se mandan por parametro
+                    playListRoutine(videos[0], videos[1], videos[2], videos[3], 200) //Los videos y la puntuacón se mandan por parametro
                     hideProgressBar()
                 }
                 is Result.Failure -> {
@@ -192,31 +192,16 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         })
     }
 
-    private fun makeListVideos(lista: MutableList<videosGif>) : MutableList<String>{
+    private fun makeListVideos(lista: MutableList<videosGif>): MutableList<String> {
         var newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux.toString()
-            modific = modific.subSequence(startIndex = 16, endIndex = (modific.length - 1)) as String
+            modific =
+                modific.subSequence(startIndex = 16, endIndex = (modific.length - 1)) as String
             newList.add(modific)
         }
         return newList
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     fun observeData2() {
@@ -244,7 +229,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         })
     }
 
-    private fun makeListNombres(elemento: infoEjercicios) : MutableList<String>{
+    private fun makeListNombres(elemento: infoEjercicios): MutableList<String> {
         var modific = elemento.toString()
         modific = modific.subSequence(startIndex = 24, endIndex = (modific.length - 2)) as String
         var x: MutableList<String> = modific.split(",") as MutableList<String>

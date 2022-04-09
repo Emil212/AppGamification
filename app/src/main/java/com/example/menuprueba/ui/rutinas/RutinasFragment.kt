@@ -12,6 +12,7 @@ import com.example.menuprueba.R
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.All
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
+import com.example.menuprueba.data.remote.logros.LogrosDataSource
 import com.example.menuprueba.databinding.FragmentRutinasBinding
 import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImplement
 import com.example.menuprueba.presentation.rutinas.RutinaViewModel
@@ -54,13 +55,12 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
                     val titulos = makeListTitulos(newList)
                     val detalles = makeListDescripcion(newList)
                     val vP = makeListVP(newList)
-                   /* Log.d("VP:", "${lista}")
-                    Log.d("TP:", "${makeListTitulos(makeList(lista))[1].length}")
-                    Log.d("DP:", "${makeListDescripcion(makeList(lista))[1].length}")*/
+                    Log.d("VP2:", "${lista}")
+                    //Log.d("TP:", "${makeListTitulos(makeList(lista))[1].length}")
+                    //Log.d("DP:", "${makeListDescripcion(makeList(lista))[1].length}")
                     val adapter = CustomAdapter(titulos, detalles, vP, requireContext())
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
-
                 }
                 is Result.Failure -> {
                     Toast.makeText(
@@ -103,7 +103,7 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         }
         return newList
     }
-    private fun makeListVP(lista: MutableList<String>) : MutableList<String>{//160 caracteres de VP con nombre VP_R####.jpg
+    private fun makeListVP(lista: MutableList<String>) : MutableList<String>{//150 caracteres de VP con nombre VP_R####.jpg
         var newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
