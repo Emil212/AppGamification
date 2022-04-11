@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/nav_listaEjerciciosFragment"
         android:name="com.example.menuprueba.ui.rutinas.ListaEjerciciosFragment"
-        android:label="Ejercicios"
+        android:label="Rutinas"
         tools:layout="@layout/fragment_lista_ejercicios" >
         <action
             android:id="@+id/action_nav_listaEjerciciosFragment_to_presentacionFragment"
@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/presentacionFragment"
         android:name="com.example.menuprueba.ui.rutinas.PresentacionFragment"
-        android:label="Preparación"
+        android:label="Lista de Ejercicios"
         tools:layout="@layout/fragment_presentacion" >
         <action
             android:id="@+id/action_presentacionFragment_to_videosFragment"
