@@ -6,15 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.rutinas.PresentacionFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="true"
+        android:paddingTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+
+    <!--<ImageView
         android:id="@+id/presentacion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -31,23 +42,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar"
-        app:layout_constraintBottom_toBottomOf="@+id/presentacion"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="423dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_end="62dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

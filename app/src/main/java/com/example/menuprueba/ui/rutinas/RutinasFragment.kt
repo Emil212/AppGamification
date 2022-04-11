@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.graphics.component1
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -61,6 +64,13 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
                     val adapter = CustomAdapter(titulos, detalles, vP, requireContext())
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
+                    ////////////////////Envia dato prueba
+                    val iRutina = 0
+                    val result = iRutina
+                    Log.d("iRutina", "$iRutina sendr" )
+                    setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+                    ////////////////////Fin de enviar dato prueba
+
                 }
                 is Result.Failure -> {
                     Toast.makeText(
@@ -112,4 +122,5 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         }
         return newList
     }
+
 }

@@ -8,10 +8,10 @@ import kotlinx.coroutines.Dispatchers
 
 class RutinaViewModel(repo : EjerciciosRepo) : ViewModel() {
 
-        val getRutina = liveData(Dispatchers.IO){
+        val getRutina0 = liveData(Dispatchers.IO){
             emit(Result.Loading())
             try {
-                val lista = repo.getRutina()
+                val lista = repo.getRutina0()
                 emit(lista)
             }catch (e: Exception){
                 emit(Result.Failure(e))

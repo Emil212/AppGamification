@@ -9,7 +9,7 @@ import com.example.menuprueba.domain.ejercicios.IRepo
 //Lógica para traer los datos del servidor (1ra Capa)
 class EjerciciosDataSource : IRepo {
 
-    override suspend fun getRutinaRepo(): Result<MutableList<videosGif>> {
+    override suspend fun getRutina0Repo(): Result<MutableList<videosGif>> {
         //val source = Source.CACHE //source se pasa como parametro en get()
         val db = FirebaseFirestore.getInstance()
         val listaVideos =
@@ -34,6 +34,12 @@ class EjerciciosDataSource : IRepo {
         return Result.Success(listaVideos)
     }
 
+
+
+
+
+
+    ////////Obtiene la información para los CardView (Título, descroipción y ista previa)
     override suspend fun getAllRepo(): Result<MutableList<All>> {
         //val source = Source.CACHE
         val db = FirebaseFirestore.getInstance()
@@ -57,6 +63,7 @@ class EjerciciosDataSource : IRepo {
         return Result.Success(lista)
     }
 
+    ////////Obtiene el array de nombres de los ejercicios de las rutinas
     override suspend fun getInfoEjerciciosRepo(): Result<MutableList<infoEjercicios>> {
         val db = FirebaseFirestore.getInstance()
         val lista = mutableListOf<infoEjercicios>()

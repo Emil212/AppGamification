@@ -14,7 +14,8 @@ class LogrosDataSource : IRepo {
     val db = FirebaseFirestore.getInstance()
     val docRef = db.collection("users")
     override suspend fun getInfoUserRepo(): Result.Success<MutableList<*>> {
-        fun getUID(): String? {
+
+        fun getUID(): String? {/////////////////////////////Obtiene el UID
             user.currentUser.let {
                 return user.uid
             }

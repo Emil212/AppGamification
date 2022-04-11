@@ -7,7 +7,7 @@ import com.example.menuprueba.data.model.ejercicios.videosGif
 
 
 interface EjerciciosRepo {
-    suspend fun getRutina () : Result<MutableList<videosGif>>
+    suspend fun getRutina0 () : Result<MutableList<videosGif>>
     suspend fun getAll(): Result<MutableList<All>>
     suspend fun getInfoEjercicios(): Result<MutableList<infoEjercicios>>
 }
