@@ -67,7 +67,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    findNavController().navigate(R.id.action_registrationFragment_to_nav_rutinas)
+                    findNavController().navigate(R.id.action_registrationFragment_to_nav_listaEjerciciosFragment)
                 }
                 is Result.Failure -> {
 

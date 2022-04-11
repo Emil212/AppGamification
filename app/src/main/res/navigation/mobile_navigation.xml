@@ -6,17 +6,6 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/nav_rutinas"
-        android:name="com.example.menuprueba.ui.rutinas.RutinasFragment"
-        android:label="@string/rutinas"
-        tools:layout="@layout/fragment_rutinas" >
-
-        <action
-            android:id="@+id/action_nav_rutinas_to_presentacionFragment"
-            app:destination="@id/presentacionFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/nav_logros"
         android:name="com.example.menuprueba.ui.logros.LogrosFragment"
         android:label="@string/logros"
@@ -43,9 +32,6 @@
         android:label="@string/login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_nav_rutinas"
-            app:destination="@id/nav_rutinas" />
-        <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -55,6 +41,9 @@
         <action
             android:id="@+id/action_loginFragment_to_nav_logros2"
             app:destination="@id/nav_logros" />
+        <action
+            android:id="@+id/action_loginFragment_to_nav_listaEjerciciosFragment"
+            app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -62,11 +51,11 @@
         android:label="@string/registro"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registrationFragment_to_nav_rutinas"
-            app:destination="@id/nav_rutinas" />
-        <action
             android:id="@+id/action_registrationFragment_to_nav_logros2"
             app:destination="@id/nav_logros" />
+        <action
+            android:id="@+id/action_registrationFragment_to_nav_listaEjerciciosFragment"
+            app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
     <fragment
         android:id="@+id/videosFragment"
@@ -83,8 +72,8 @@
         android:label="Ejercicios"
         tools:layout="@layout/fragment_lista_ejercicios" >
         <action
-            android:id="@+id/action_listaEjerciciosFragment_to_nav_rutinas"
-            app:destination="@id/nav_rutinas" />
+            android:id="@+id/action_nav_listaEjerciciosFragment_to_presentacionFragment"
+            app:destination="@id/presentacionFragment" />
     </fragment>
     <fragment
         android:id="@+id/presentacionFragment"
@@ -101,8 +90,8 @@
         android:label="Felicidades"
         tools:layout="@layout/fragment_congratulations" >
         <action
-            android:id="@+id/action_congratulationsFragment_to_nav_rutinas"
-            app:destination="@id/nav_rutinas" />
+            android:id="@+id/action_congratulationsFragment_to_nav_listaEjerciciosFragment"
+            app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
 
 

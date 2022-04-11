@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.menuprueba.R
 
-class CustomAdapterPresentation(private val nombres: MutableList<String>, private val context: Context) : RecyclerView.Adapter<CustomAdapterPresentation.ViewHolder>() {
+class CustomAdapterPresentation(private val nombres: MutableList<String>, private val context: Context,private val vp: MutableList<String> ) : RecyclerView.Adapter<CustomAdapterPresentation.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_presentation, viewGroup, false)
         return ViewHolder(v)
@@ -45,10 +45,11 @@ class CustomAdapterPresentation(private val nombres: MutableList<String>, privat
         }
     }
 
-    val vp = mutableListOf(
+/*    val vp = mutableListOf(
         "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VP%2FVP_R0001.jpg?alt=media&token=3382882a-9581-4ed7-b575-8b4ebcfa695b",
         "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VP%2FVP_R0001.jpg?alt=media&token=3382882a-9581-4ed7-b575-8b4ebcfa695b",
         "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VP%2FVP_R0001.jpg?alt=media&token=3382882a-9581-4ed7-b575-8b4ebcfa695b",
         "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VP%2FVP_R0001.jpg?alt=media&token=3382882a-9581-4ed7-b575-8b4ebcfa695b"
-    )
+    )*/
 }
+

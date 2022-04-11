@@ -10,16 +10,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.menuprueba.R
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.remote.logros.LogrosDataSource
 import com.example.menuprueba.databinding.FragmentLogrosBinding
-import com.example.menuprueba.databinding.FragmentRutinasBinding
 import com.example.menuprueba.domain.logros.LogrosRepoImplement
 import com.example.menuprueba.presentation.logros.LogrosViewModel
 import com.example.menuprueba.presentation.logros.LogrosViewModelFactory
-import com.example.menuprueba.ui.rutinas.CustomAdapter
 
 class LogrosFragment : Fragment(R.layout.fragment_logros) {
 

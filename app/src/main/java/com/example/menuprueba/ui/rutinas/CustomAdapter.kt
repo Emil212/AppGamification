@@ -37,7 +37,7 @@ class CustomAdapter(private val titulos: MutableList<String>, private val detall
             itemView.setOnClickListener {
                 Log.d("Rutina: ", "$i")
                 Navigation.findNavController(itemView)
-                    .navigate(R.id.action_nav_rutinas_to_presentacionFragment)
+                    .navigate(R.id.action_nav_listaEjerciciosFragment_to_presentacionFragment)
                 //para comenzar con la rutina seleccionada
             }
         }

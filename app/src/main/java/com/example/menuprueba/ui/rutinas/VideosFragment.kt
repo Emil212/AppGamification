@@ -67,6 +67,8 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     observeRoutine0()
                 }
                 1 -> {
+
+                    Log.d("nuevo", "el indice es: $indexRutina")
                     Toast.makeText(
                         requireContext(),
                         "Elegiste la rutina $indexRutina",

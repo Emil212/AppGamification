@@ -14,6 +14,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.menuprueba.R
+import com.example.menuprueba.application.AppConstants.vp0
+import com.example.menuprueba.application.AppConstants.vp1
+import com.example.menuprueba.application.AppConstants.vp2
+import com.example.menuprueba.application.AppConstants.vp3
+import com.example.menuprueba.application.AppConstants.vp4
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.infoEjercicios
 import com.example.menuprueba.data.model.ejercicios.videosGif
@@ -38,7 +43,6 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPresentacionBinding.bind(view)
-        //seePresentation()
         gotoVideosFragment()
         viewRoutine0()
     }
@@ -53,43 +57,26 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
             //indexRutina es el indice de la rutna
             when (indexRutina) {
                 0 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Estos son los ejercicios de la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
                     nombres = makeListNombres(lista[0])
-                    val adapter = CustomAdapterPresentation(nombres, requireContext())
+                    val adapter1 = CustomAdapterPresentation(nombres, requireContext(), vp0)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    recyclerView.adapter = adapter
-
+                    recyclerView.adapter = adapter1
                     ////////////////////Envia dato prueba
                     sedIndex(indexRutina)
                     ////////////////////Fin de enviar dato prueba
                 }
                 1 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Estos son los ejercicios de la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
                     nombres = makeListNombres(lista[1])
-                    val adapter = CustomAdapterPresentation(nombres, requireContext())
+                    val adapter = CustomAdapterPresentation(nombres, requireContext(), vp1)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
                     ////////////////////Envia dato prueba
                     sedIndex(indexRutina)
                     ////////////////////Fin de enviar dato prueba
-
                 }
                 2 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Estos son los ejercicios de la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
                     nombres = makeListNombres(lista[2])
-                    val adapter = CustomAdapterPresentation(nombres, requireContext())
+                    val adapter = CustomAdapterPresentation(nombres, requireContext(), vp2)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
                     ////////////////////Envia dato prueba
@@ -103,7 +90,7 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
                         Toast.LENGTH_LONG
                     ).show()
                     nombres = makeListNombres(lista[3])
-                    val adapter = CustomAdapterPresentation(nombres, requireContext())
+                    val adapter = CustomAdapterPresentation(nombres, requireContext(), vp3)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
                     ////////////////////Envia dato prueba
@@ -111,13 +98,8 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
                     ////////////////////Fin de enviar dato prueba
                 }
                 4 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Estos son los ejercicios de la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
                     nombres = makeListNombres(lista[4])
-                    val adapter = CustomAdapterPresentation(nombres, requireContext())
+                    val adapter = CustomAdapterPresentation(nombres, requireContext(), vp4)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
                     ////////////////////Envia dato prueba
@@ -136,8 +118,6 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
 
     fun viewRoutine0() {
         viewModel.getInfoEjercicios.observe(viewLifecycleOwner, Observer { result ->
-
-            ///obneter dato
             when (result) {
                 is Result.Loading -> {
                     showProgressBar()
@@ -146,10 +126,6 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
                     var lista = result.data //Lista de tipo MutableList<videosGif>
                     Log.d("Nombres", "${lista}")
                     selectRoutine(lista)
-                    val iRutina = makeListNombres(lista[1])
-                    Log.d("ElementoP", "$iRutina")
-                    val iElementoRutina = iRutina [0]
-                    Log.d("ElementoS", "${iElementoRutina}")
                     hideProgressBar()
                 }
                 is Result.Failure -> {
@@ -175,18 +151,6 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
             findNavController().navigate(R.id.action_presentacionFragment_to_videosFragment)
         }
     }
-
-/*    private fun seePresentation() {
-        val imageview = binding.presentacion
-        val Image =
-            "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/Presentacion_Descanso%2FPresentacion.png?alt=media&token=9bf4369a-1895-420c-a039-943b3cbe3455"
-        Glide
-            .with(this@PresentacionFragment)
-            .load(Image)
-            .fitCenter()
-            .centerCrop()
-            .into(imageview)
-    }*/
     private fun showProgressBar() {
         binding.progressbar.visibility = View.VISIBLE
     }

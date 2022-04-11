@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_logros"
             android:title="@string/logros" />
         <item
-            android:id="@+id/nav_rutinas"
+            android:id="@+id/nav_listaEjerciciosFragment"
             android:icon="@drawable/ic_rutinas"
             android:title="@string/rutinas" />
         <item

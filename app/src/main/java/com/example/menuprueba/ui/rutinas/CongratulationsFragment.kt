@@ -23,7 +23,7 @@ class CongratulationsFragment : Fragment(R.layout.fragment_congratulations) {
         val puntos = binding.PX
 
         binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_congratulationsFragment_to_nav_rutinas)
+            findNavController().navigate(R.id.action_congratulationsFragment_to_nav_listaEjerciciosFragment)
         }
 
         setFragmentResultListener("requestKey"){ key, bundle ->

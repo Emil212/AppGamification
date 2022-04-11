@@ -40,7 +40,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun isUserLoggedIn() {
         firebaseAuth.currentUser?.let {
-            findNavController().navigate(R.id.action_loginFragment_to_nav_rutinas)
+            findNavController().navigate(R.id.action_loginFragment_to_nav_listaEjerciciosFragment)
         }
     }
 
@@ -88,7 +88,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    findNavController().navigate(R.id.action_loginFragment_to_nav_rutinas)
+                    findNavController().navigate(R.id.action_loginFragment_to_nav_listaEjerciciosFragment)
                 }
                 is Result.Failure -> {
 
