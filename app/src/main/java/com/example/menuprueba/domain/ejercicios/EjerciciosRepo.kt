@@ -10,4 +10,5 @@ interface EjerciciosRepo {
     suspend fun getRutina0 () : Result<MutableList<videosGif>>
     suspend fun getAll(): Result<MutableList<All>>
     suspend fun getInfoEjercicios(): Result<MutableList<infoEjercicios>>
+    suspend fun incrementPuntuacion(puntuacion: Long)
 }

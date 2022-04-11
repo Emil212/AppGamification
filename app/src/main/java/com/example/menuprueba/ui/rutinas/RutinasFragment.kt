@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.core.graphics.component1
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
@@ -15,9 +14,8 @@ import com.example.menuprueba.R
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.All
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
-import com.example.menuprueba.data.remote.logros.LogrosDataSource
 import com.example.menuprueba.databinding.FragmentRutinasBinding
-import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImplement
+import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinaViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
@@ -26,7 +24,7 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
     private val viewModel by lazy {
         ViewModelProvider(
             this,
-            RutinasViewModelFactory(EjerciciosRepoImplement(EjerciciosDataSource()))
+            RutinasViewModelFactory(EjerciciosRepoImpl(EjerciciosDataSource()))
         ).get(RutinaViewModel::class.java)
     }
 

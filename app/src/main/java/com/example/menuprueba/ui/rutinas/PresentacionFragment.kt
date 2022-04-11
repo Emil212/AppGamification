@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.menuprueba.R
 import com.example.menuprueba.application.AppConstants.vp0
 import com.example.menuprueba.application.AppConstants.vp1
@@ -21,10 +20,9 @@ import com.example.menuprueba.application.AppConstants.vp3
 import com.example.menuprueba.application.AppConstants.vp4
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.infoEjercicios
-import com.example.menuprueba.data.model.ejercicios.videosGif
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
 import com.example.menuprueba.databinding.FragmentPresentacionBinding
-import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImplement
+import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinaViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
@@ -34,7 +32,7 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
     private val viewModel by lazy {
         ViewModelProvider(
             this,
-            RutinasViewModelFactory(EjerciciosRepoImplement(EjerciciosDataSource()))
+            RutinasViewModelFactory(EjerciciosRepoImpl(EjerciciosDataSource()))
         ).get(RutinaViewModel::class.java)
     }
     private lateinit var binding: FragmentPresentacionBinding

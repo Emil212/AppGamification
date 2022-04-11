@@ -14,11 +14,10 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.menuprueba.R
 import com.example.menuprueba.core.Result
-import com.example.menuprueba.data.model.ejercicios.infoEjercicios
 import com.example.menuprueba.data.model.ejercicios.videosGif
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
 import com.example.menuprueba.databinding.FragmentVideosBinding
-import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImplement
+import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinaViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 import java.util.*
@@ -36,7 +35,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     private val viewModel by lazy {
         ViewModelProvider(
             this,
-            RutinasViewModelFactory(EjerciciosRepoImplement(EjerciciosDataSource()))
+            RutinasViewModelFactory(EjerciciosRepoImpl(EjerciciosDataSource()))
         ).get(RutinaViewModel::class.java)
     }
 
@@ -115,19 +114,41 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     showRoutine(video3, 1000)
                 }
                 else -> {
-                    puntuacion
+                    //puntuacion
                     Log.d("Puntos", "Ganaste $puntuacion puntos")
                     val result = puntuacion.toString()
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
-                    setUpPuntuacion()
+                    setUpPuntuacion(puntuacion)
                 }
             }//when()
         }
     }
 
-    private fun setUpPuntuacion() {
-        //seteo de la puntuación a la DB
+    private fun setUpPuntuacion(puntuacion: Long) {
+        viewModel.incrementPuntuacion(puntuacion).observe(viewLifecycleOwner, { result ->
+            when (result) {
+                is Result.Loading -> {
+                    Log.d("Cargando", "Cargando puntuacion")
+                }
+
+                is Result.Success -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Incremento: ${puntuacion}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                is Result.Failure -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Error: ${result.exception}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
     }
 
     private fun showButton() {

@@ -9,4 +9,6 @@ interface IRepo {
     suspend fun getRutina0Repo() : Result<MutableList<videosGif>>
     suspend fun getAllRepo(): Result<MutableList<All>>
     suspend fun getInfoEjerciciosRepo():Result<MutableList<infoEjercicios>>
+    suspend fun incrementPuntuacion(puntuacion: Long)
+
 }

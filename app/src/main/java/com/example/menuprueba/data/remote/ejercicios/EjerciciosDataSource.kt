@@ -6,6 +6,9 @@ import com.example.menuprueba.data.model.ejercicios.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import com.example.menuprueba.domain.ejercicios.IRepo
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+
 //Lógica para traer los datos del servidor (1ra Capa)
 class EjerciciosDataSource : IRepo {
 
@@ -84,4 +87,16 @@ class EjerciciosDataSource : IRepo {
             .await()
         return Result.Success(lista)
     }
+
+    override suspend fun incrementPuntuacion(puntuacion: Long) {
+        val authResult = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
+
+        authResult.currentUser?.uid?.let { uid ->
+            val docRef = db.collection("users").document(uid)
+            docRef.update("points", FieldValue.increment(puntuacion)).await()
+        }
+
+    }
+
 }
