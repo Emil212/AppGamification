@@ -54,21 +54,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_informe,
                 R.id.nav_carrera,
                 R.id.loginFragment,
-                R.id.nav_listaEjerciciosFragment/////////////***********
+                R.id.nav_listaEjerciciosFragment,
+                R.id.nav_logout
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        //Cierre de sesion
-        /* binding.navView.setNavigationItemSelectedListener {
-
-             when(it.itemId){
-                 R.id.nav_logout -> FirebaseAuth.getInstance().signOut()
-                // R.id.nav_logros -> findNavController().navigate(R.layout.fragment_logros)
-             }
-             true
-         }*/
 
         navController.addOnDestinationChangedListener { controller, destination, argument ->
             when (destination.id) {
@@ -76,7 +67,6 @@ class MainActivity : AppCompatActivity() {
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 }
-
                 R.id.registrationFragment -> {
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
@@ -91,7 +81,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.congratulationsFragment -> { //Cuando se elimina, el menú queda sobre el fragment evitando la navegación
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
                 }
                 else -> {
                     //binding.navView.visibility = View.VISIBLE
@@ -100,16 +89,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-/*
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-*/
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

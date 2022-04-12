@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -17,6 +18,13 @@ import com.example.menuprueba.domain.auth.AuthRepoImpl
 import com.example.menuprueba.presentation.auth.AuthViewModel
 import com.example.menuprueba.presentation.auth.AuthViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
+import android.content.Intent
+import android.util.Log
+import androidx.activity.OnBackPressedCallback
+
+import com.example.menuprueba.ui.MainActivity
+import kotlin.system.exitProcess
+
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -101,14 +109,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         }, 2000 // value in milliseconds
                     )
 
-
-
-                    /*
                     Toast.makeText(
                         requireContext(),
                         "Error: ${result.exception}",
                         Toast.LENGTH_SHORT
-                    ).show()*/
+                    ).show()
                 }
             }
         })

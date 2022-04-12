@@ -93,6 +93,18 @@
             android:id="@+id/action_congratulationsFragment_to_nav_listaEjerciciosFragment"
             app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.menuprueba.ui.auth.LogOutFragment"
+        android:label="fragment_sign_out"
+        tools:layout="@layout/fragment_log_out">
+        <action
+            android:id="@+id/action_logOutFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signOutFragment_to_nav_listaEjerciciosFragment"
+            app:destination="@id/nav_listaEjerciciosFragment" />
+    </fragment>
 
 
 </navigation>

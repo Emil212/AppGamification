@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import androidx.core.util.PatternsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -82,13 +83,11 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                         }, 2000 // value in milliseconds
                     )
 
-                    /*
                     Toast.makeText(
                         requireContext(),
                         "Error: ${result.exception}",
                         Toast.LENGTH_SHORT
                     ).show()
-                     */
                 }
             }
 

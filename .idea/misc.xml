@@ -64,6 +64,15 @@
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/AppGamification/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/AppTesis/Gamification/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/drawable/ic_logout.xml" value="0.3828125" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/drawable/ic_logros.xml" value="0.3828125" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/layout/fragment_log_out.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/layout/fragment_registration.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/layout/fragment_rutinas.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/layout/fragment_sign_out.xml" value="0.1" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/layout/fragment_videos.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
