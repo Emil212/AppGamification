@@ -24,8 +24,7 @@ import com.google.firebase.ktx.Firebase
 import kotlin.system.exitProcess
 
 
-class LogOutFragment : Fragment(R.layout.fragment_log_out) {
-
+class LogoutFragment : Fragment(R.layout.fragment_log_out) {
     private lateinit var binding: FragmentLogOutBinding
     private val viewModel by viewModels<AuthViewModel> {
         AuthViewModelFactory(

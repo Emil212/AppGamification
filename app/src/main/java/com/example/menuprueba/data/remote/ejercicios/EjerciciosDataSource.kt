@@ -95,6 +95,7 @@ class EjerciciosDataSource : IRepo {
         authResult.currentUser?.uid?.let { uid ->
             val docRef = db.collection("users").document(uid)
             docRef.update("points", FieldValue.increment(puntuacion)).await()
+            Log.d("Increment", "Aumento de puntuacion")
         }
 
     }

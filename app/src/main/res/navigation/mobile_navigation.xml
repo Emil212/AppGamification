@@ -95,8 +95,8 @@
     </fragment>
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.menuprueba.ui.auth.LogOutFragment"
-        android:label="fragment_sign_out"
+        android:name="com.example.menuprueba.ui.auth.LogoutFragment"
+        android:label="Cierre de sesión"
         tools:layout="@layout/fragment_log_out">
         <action
             android:id="@+id/action_logOutFragment_to_loginFragment"

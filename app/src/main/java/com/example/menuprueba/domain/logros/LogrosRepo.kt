@@ -4,5 +4,5 @@ import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.logros.infoUsers
 
 interface LogrosRepo {
-    suspend fun getInfoUser() : Result<MutableList<*>>
+    suspend fun getInfoUser() : Result<infoUsers>
 }

@@ -53,7 +53,6 @@ class RutinaViewModel(private val repo : EjerciciosRepo) : ViewModel() {
 
 class RutinasViewModelFactory(private val repo: EjerciciosRepoImpl) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        return modelClass.getConstructor(EjerciciosRepo::class.java).newInstance(repo)
     return RutinaViewModel(repo) as T
 
     }

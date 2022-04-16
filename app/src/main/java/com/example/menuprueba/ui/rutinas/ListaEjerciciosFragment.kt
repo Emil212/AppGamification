@@ -51,8 +51,10 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
             when (result) {
                 is Result.Loading -> {
                     showProgressBar()
+                    binding.scrollView.visibility=View.GONE
                 }
                 is Result.Success -> {
+                    binding.scrollView.visibility=View.VISIBLE
                     hideProgressBar()
                     var lista = result.data //Lista de tipo MutableList<Titulos>
                     val newList = makeList(lista)
@@ -64,6 +66,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
                     rutina(vP[2], titulos[2], detalles[2], 2, binding.itemImage2, binding.itemTitle2, binding.itemDetal2, binding.cardView2)
                     rutina(vP[3], titulos[3], detalles[3], 3, binding.itemImage3, binding.itemTitle3, binding.itemDetal3, binding.cardView3)
                     rutina(vP[4], titulos[4], detalles[4], 4, binding.itemImage4, binding.itemTitle4, binding.itemDetal4, binding.cardView4)
+
                 }
                 is Result.Failure -> {
                     Toast.makeText(
