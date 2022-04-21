@@ -29,7 +29,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
         ViewModelProvider(
             this,
             RutinasViewModelFactory(EjerciciosRepoImpl(EjerciciosDataSource()))
-        ).get(RutinaViewModel::class.java)
+        )[RutinaViewModel::class.java]
     }
 
     private lateinit var binding: FragmentListaEjerciciosBinding
@@ -40,13 +40,13 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
         observeData()
     }
 
-    fun showProgressBar (){
+    private fun showProgressBar (){
         binding.progressBar.visibility = View.VISIBLE
     }
-    fun hideProgressBar (){
+    private fun hideProgressBar (){
         binding.progressBar.visibility = View.GONE
     }
-    fun observeData() {
+    private fun observeData() {
         viewModel.getAll.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Result.Loading -> {
@@ -56,7 +56,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
                 is Result.Success -> {
                     binding.scrollView.visibility=View.VISIBLE
                     hideProgressBar()
-                    var lista = result.data //Lista de tipo MutableList<Titulos>
+                    val lista = result.data //Lista de tipo MutableList<Titulos>
                     val newList = makeList(lista)
                     val titulos = makeListTitulos(newList)
                     val detalles = makeListDescripcion(newList)
@@ -79,7 +79,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
         })
     }
     private fun makeList(lista: MutableList<All>) : MutableList<String>{
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux.toString()
             modific = modific.subSequence(startIndex = 4, endIndex = (modific.length - 1)) as String
@@ -88,7 +88,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
         return newList
     }
     private fun makeListTitulos(lista: MutableList<String>) : MutableList<String>{ //20 caracteres de titulos
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
             modific = modific.subSequence(startIndex = 91, endIndex = 110) as String
@@ -100,7 +100,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
 
     private fun makeListDescripcion(lista: MutableList<String>) : MutableList<String>{//70 caracteres de descripcion
         //El tamaño de la descripción debe de ser de 40 Caracteres -> 70
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
             modific = modific.subSequence(startIndex = 12, endIndex = 81) as String
@@ -110,7 +110,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
         return newList
     }
     private fun makeListVP(lista: MutableList<String>) : MutableList<String>{//150 caracteres de VP con nombre VP_R####.jpg
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
             modific = modific.subSequence(startIndex = 126, endIndex = (modific.length)) as String
@@ -120,14 +120,14 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
     }
 
     private fun rutina (vP: String, titulos : String, detalles: String, iRutina: Int, itemVP: ImageView,itemTitle : TextView, itemDetail: TextView, cardView: CardView){
-        itemDetail.setText(detalles)
+        itemDetail.text = detalles
         Glide
             .with(requireContext())
             .load(vP)
             .fitCenter()
             .centerCrop()
             .into(itemVP)
-        itemTitle.setText(titulos)
+        itemTitle.text = titulos
         cardView.setOnClickListener {
             findNavController().navigate(R.id.action_nav_listaEjerciciosFragment_to_presentacionFragment)
             val result = iRutina
@@ -136,6 +136,5 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
         }
 
     }
-
 
 }

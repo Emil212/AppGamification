@@ -28,7 +28,7 @@ class CongratulationsFragment : Fragment(R.layout.fragment_congratulations) {
 
         setFragmentResultListener("requestKey"){ key, bundle ->
             val result = bundle.getString("bundleKey")
-            puntos.setText("¡Felicidades!\nhas ganado\n${result}\npuntos")
+            puntos.text = "¡Felicidades!\nhas ganado\n${result}\npuntos"
         }
 
         Glide

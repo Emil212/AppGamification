@@ -32,5 +32,6 @@ class AuthDataSource {
         FirebaseAuth.getInstance().signOut()
         Log.d("Cerrar Sesion", "Se cierra la sesion")
     }
+
 }
 

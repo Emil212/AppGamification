@@ -25,7 +25,7 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         ViewModelProvider(
             this,
             RutinasViewModelFactory(EjerciciosRepoImpl(EjerciciosDataSource()))
-        ).get(RutinaViewModel::class.java)
+        )[RutinaViewModel::class.java]
     }
 
     private lateinit var binding: FragmentRutinasBinding
@@ -36,13 +36,13 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         observeData()
     }
 
-    fun showProgressBar (){
+    private fun showProgressBar (){
         binding.progressBar.visibility = View.VISIBLE
     }
-    fun hideProgressBar (){
+    private fun hideProgressBar (){
         binding.progressBar.visibility = View.GONE
     }
-    fun observeData() {
+    private fun observeData() {
         viewModel.getAll.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Result.Loading -> {
@@ -50,13 +50,13 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
                 }
                 is Result.Success -> {
                     hideProgressBar()
-                    var lista = result.data //Lista de tipo MutableList<Titulos>
+                    val lista = result.data //Lista de tipo MutableList<Titulos>
                     val recyclerView = binding.recyclerView
                     val newList = makeList(lista)
                     val titulos = makeListTitulos(newList)
                     val detalles = makeListDescripcion(newList)
                     val vP = makeListVP(newList)
-                    Log.d("VP2:", "${lista}")
+                    Log.d("VP2:", "$lista")
                     //Log.d("TP:", "${makeListTitulos(makeList(lista))[1].length}")
                     //Log.d("DP:", "${makeListDescripcion(makeList(lista))[1].length}")
                     val adapter = CustomAdapter(titulos, detalles, vP, requireContext())
@@ -81,7 +81,7 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         })
     }
     private fun makeList(lista: MutableList<All>) : MutableList<String>{
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux.toString()
             modific = modific.subSequence(startIndex = 4, endIndex = (modific.length - 1)) as String
@@ -90,7 +90,7 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         return newList
     }
     private fun makeListTitulos(lista: MutableList<String>) : MutableList<String>{ //20 caracteres de titulos
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
             modific = modific.subSequence(startIndex = 91, endIndex = 110) as String
@@ -102,7 +102,7 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
 
     private fun makeListDescripcion(lista: MutableList<String>) : MutableList<String>{//70 caracteres de descripcion
         //El tamaño de la descripción debe de ser de 40 Caracteres -> 70
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
             modific = modific.subSequence(startIndex = 12, endIndex = 81) as String
@@ -112,7 +112,7 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
         return newList
     }
     private fun makeListVP(lista: MutableList<String>) : MutableList<String>{//150 caracteres de VP con nombre VP_R####.jpg
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
             modific = modific.subSequence(startIndex = 126, endIndex = (modific.length)) as String

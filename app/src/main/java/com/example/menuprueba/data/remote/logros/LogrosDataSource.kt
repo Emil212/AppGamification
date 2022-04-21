@@ -18,12 +18,7 @@ class LogrosDataSource {
     var puntos: Long = -1
     var infoUser = infoUsers(nombre, puntos)
 
-//    var infoUser : infoUsers
-
     suspend fun getInfoUserRepo(): Result<infoUsers> {
-
-        //data class infoUsers(val username: String = "SIN NOMBRE", val points : Long = -1)
-        //var infoUser: infoUsers
 
         user.uid?.let {
             docRef.document(it).get()
@@ -42,72 +37,8 @@ class LogrosDataSource {
         Thread.sleep(1000)
         Log.d("Prueba", "Manda a fragment $infoUser")
 
-
         return Result.Success(infoUser)
 
     }
 }
 
-/*
-        var infoUser = mutableListOf(nombre, puntos)
-        user.uid?.let {
-            docRef.document(it).get()
-                .addOnSuccessListener { document ->
-                    nombre = document.data?.get("username") as String
-                    puntos = document.data?.get("points") as Long
-                    infoUser = mutableListOf(nombre, puntos)
-                    (infoUser as MutableList<Any>)[0] = nombre
-                    (infoUser as MutableList<Any>)[1] = puntos
-                    Log.d("Prueba1", "$infoUser")
-                }
-                .addOnFailureListener {
-                    Log.d("Error", "Error")
-                }.await()
-            Thread.sleep(100)
-
-            return Result.Success(infoUser)
-
-
-        }
-
-
-/*
-
-
-        fun getUID(): String? {
-            user.currentUser.let {
-                return user.uid
-            }
-        }
-        var nombre = "SIN NOMBRE"
-        var puntos: Long = -1
-        var infoUser = mutableListOf(nombre, puntos)
-        getUID()?.let {
-            docRef.document(it).get()
-                .addOnSuccessListener { document ->
-                    nombre = document.data?.get("username") as String
-                    puntos = document.data?.get("points") as Long
-                    infoUser = mutableListOf(nombre, puntos)
-                    infoUser.set(0, nombre)
-                    infoUser.set(1, puntos)
-                    Log.d("Prueba1", "$infoUser")
-                    Log.d("UID", "${getUID()}")
-                }
-                .addOnFailureListener {
-                    Log.d("Error", "Error")
-                }.await()
-            Thread.sleep(100)
-        }
-        return Result.Success(infoUser)
-        */
-        return Result.Success(infoUser)
-
-
-
-    }
-
-
-}
-
-
- */

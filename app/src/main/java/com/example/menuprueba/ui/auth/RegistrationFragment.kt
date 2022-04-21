@@ -3,6 +3,7 @@ package com.example.menuprueba.ui.auth
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.util.PatternsCompat
@@ -16,6 +17,7 @@ import com.example.menuprueba.databinding.FragmentRegistrationBinding
 import com.example.menuprueba.domain.auth.AuthRepoImpl
 import com.example.menuprueba.presentation.auth.AuthViewModel
 import com.example.menuprueba.presentation.auth.AuthViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
 import java.util.regex.Pattern
 
 
@@ -68,10 +70,16 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    findNavController().navigate(R.id.action_registrationFragment_to_nav_listaEjerciciosFragment)
+                    Toast.makeText(
+                        requireContext(),
+                        "El usuario se ha creado exitosamente, favor de iniciar sesion",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
+                    Log.d("Registro", "Se ha registrado al usuario")
+
                 }
                 is Result.Failure -> {
-
                     Handler(Looper.getMainLooper()).postDelayed(
                         {
                             binding.progressBar.visibility = View.GONE
@@ -113,7 +121,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
 
         if (password != confirmPassword) {
-            //binding.editTextPassword.error = "Las contraseñas no coinciden"
             binding.editTextConfirmPassword.error = "Las contraseñas no coinciden"
             return true
         }

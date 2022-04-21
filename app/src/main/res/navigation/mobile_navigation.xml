@@ -54,8 +54,8 @@
             android:id="@+id/action_registrationFragment_to_nav_logros2"
             app:destination="@id/nav_logros" />
         <action
-            android:id="@+id/action_registrationFragment_to_nav_listaEjerciciosFragment"
-            app:destination="@id/nav_listaEjerciciosFragment" />
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/videosFragment"

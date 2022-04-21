@@ -1,6 +1,7 @@
 package com.example.menuprueba.ui.logros
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,6 +16,8 @@ import com.example.menuprueba.databinding.FragmentLogrosBinding
 import com.example.menuprueba.domain.logros.LogrosRepoImplement
 import com.example.menuprueba.presentation.logros.LogrosViewModel
 import com.example.menuprueba.presentation.logros.LogrosViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 
 class LogrosFragment : Fragment(R.layout.fragment_logros) {
@@ -40,6 +43,15 @@ class LogrosFragment : Fragment(R.layout.fragment_logros) {
                     binding.progressBar.visibility = View.GONE
                     binding.textLogros.visibility = View.VISIBLE
                     val infoUser = it.data
+                    ////////////////////////
+                    val user = FirebaseAuth.getInstance().currentUser!!
+                    user.sendEmailVerification()
+
+                    Log.d("Verificacion", "Email enviado a ${user.email}")
+
+
+                    ////////////////////////
+
                     clearInfoUser(infoUser)
                 }
                 is Result.Failure -> {
