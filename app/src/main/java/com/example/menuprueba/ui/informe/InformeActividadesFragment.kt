@@ -20,11 +20,5 @@ class InformeActividadesFragment : Fragment(R.layout.fragment_informe_actividade
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val user = FirebaseAuth.getInstance().currentUser!!
-        user.sendEmailVerification()
-        user.isEmailVerified
-
-        Log.d("Verificar usuario", user.isEmailVerified.toString())
-
     }
 }

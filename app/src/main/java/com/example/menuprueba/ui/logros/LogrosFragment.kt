@@ -43,15 +43,6 @@ class LogrosFragment : Fragment(R.layout.fragment_logros) {
                     binding.progressBar.visibility = View.GONE
                     binding.textLogros.visibility = View.VISIBLE
                     val infoUser = it.data
-                    ////////////////////////
-                    val user = FirebaseAuth.getInstance().currentUser!!
-                    user.sendEmailVerification()
-
-                    Log.d("Verificacion", "Email enviado a ${user.email}")
-
-
-                    ////////////////////////
-
                     clearInfoUser(infoUser)
                 }
                 is Result.Failure -> {

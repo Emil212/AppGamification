@@ -72,7 +72,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(
                         requireContext(),
-                        "El usuario se ha creado exitosamente, favor de iniciar sesion",
+                        "El usuario se ha creado exitosamente",
                         Toast.LENGTH_SHORT
                     ).show()
                     findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
