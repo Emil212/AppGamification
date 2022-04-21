@@ -42,10 +42,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             isUserLoggedIn()
         }
 
-        binding.txtSignup.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
-        }
-
         binding.btnSignin.setOnClickListener {
             val email = binding.editTextEmail.editText?.text.toString().trim()
             val password = binding.editTextPassword.editText?.text.toString().trim()
@@ -53,6 +49,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             signIn(email, password)
 
         }
+
+        binding.txtSignup.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+
+        binding.txtRecoveryPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_recoveryPasswordFragment)
+        }
+
 
     }
 
@@ -101,9 +106,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     binding.progressBar.visibility = View.GONE
                     val user = FirebaseAuth.getInstance().currentUser
                     user?.reload()
-                    Log.d("Email Verificacion", user.toString())
                     if (user?.isEmailVerified == false) {
-                        Log.d("Verificacion", "Estado del usuario: ${user.isEmailVerified}")
                         user.sendEmailVerification()
                         Toast.makeText(
                             requireContext(),
@@ -113,7 +116,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         binding.editTextEmail.editText?.text = null
                         binding.editTextPassword.editText?.text = null
                     } else {
-                        Log.d("Verificacion", "Estado del usuario: ${user?.isEmailVerified}")
                         findNavController().navigate(R.id.action_loginFragment_to_nav_listaEjerciciosFragment)
                     }
 

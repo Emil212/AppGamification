@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_loginFragment_to_nav_listaEjerciciosFragment"
             app:destination="@id/nav_listaEjerciciosFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_recoveryPasswordFragment"
+            app:destination="@id/recoveryPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -104,6 +107,15 @@
         <action
             android:id="@+id/action_signOutFragment_to_nav_listaEjerciciosFragment"
             app:destination="@id/nav_listaEjerciciosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recoveryPasswordFragment"
+        android:name="com.example.menuprueba.ui.auth.RecoveryPasswordFragment"
+        android:label="Restablecer contraseña"
+        tools:layout="@layout/fragment_recovery_password">
+        <action
+            android:id="@+id/action_recoveryPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
 

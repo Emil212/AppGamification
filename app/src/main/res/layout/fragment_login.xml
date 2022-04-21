@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ui.auth.LoginFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
-        app:errorIconDrawable="@null"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:errorIconDrawable="@null">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -27,12 +27,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
         app:errorEnabled="true"
         app:errorIconDrawable="@null"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -46,23 +46,30 @@
         android:id="@+id/btn_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:text="Iniciar Sesión" />
 
     <TextView
         android:id="@+id/txt_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="¿No tienes una cuenta? Registrate"/>
+        android:text="¿No tienes una cuenta? Registrate" />
+
+    <TextView
+        android:id="@+id/txt_recoveryPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="¿Olvidaste tu contraseña?" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
-
-
+        android:visibility="gone" />
 
 
 </LinearLayout>

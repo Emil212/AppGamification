@@ -14,7 +14,6 @@
         android:layout_height="wrap_content">
     </FrameLayout>
 
-
     <ProgressBar
         android:id="@+id/progress_bar"
         android:visibility="gone"
