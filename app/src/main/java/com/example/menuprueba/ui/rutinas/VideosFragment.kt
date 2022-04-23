@@ -1,5 +1,6 @@
 package com.example.menuprueba.ui.rutinas
 
+import android.content.Context
 import android.os.*
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -21,6 +22,14 @@ import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinaViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 import java.util.*
+import java.util.concurrent.TimeUnit
+import androidx.core.content.ContextCompat.getSystemService
+
+import android.os.Vibrator
+import android.view.HapticFeedbackConstants
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+
 
 class VideosFragment : Fragment(R.layout.fragment_videos) {
     private var indexContador = 0
@@ -44,6 +53,18 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         binding = FragmentVideosBinding.bind(view)
         selectRoutine()
         //getIRutina()
+    }
+
+    fun vibrateDevice(context: Context) {
+        val vibrator = getSystemService(context, Vibrator::class.java)
+        vibrator?.let {
+            if (Build.VERSION.SDK_INT >= 26) {
+                it.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
+            } else {
+                @Suppress("DEPRECATION")
+                it.vibrate(100)
+            }
+        }
     }
 
     private fun getIRutina(): Int {
@@ -105,13 +126,13 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 10000, 5000)
+                    showRoutine(video1, 1000, 5000)
                 }
                 2 -> {
-                    showRoutine(video2, 10000, 5000)
+                    showRoutine(video2, 1000, 5000)
                 }
                 3 -> {
-                    showRoutine(video3, 10000, 5000)
+                    showRoutine(video3, 65000, 65000)
                 }
                 else -> {
                     //puntuacion
@@ -169,8 +190,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
 
     fun showRoutine(elemento: String, duracion: Long, descanso:Long) {
         indexContador++
-
-
         val imageview = binding.imageView
         val seeTime = binding.time
         val temp: CountDownTimer? = object : CountDownTimer(duracion+100, 1000- 100) {
@@ -184,13 +203,19 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     //.fitCenter()
                     //.centerCrop()
                     .into(imageview)
-                val segundos = (p0 / 1000) % 60
-                val mostrar = String.format("%02d", segundos)
-                seeTime.setText(mostrar)
-
+                seeTime.setText(""+String.format("%02d:%02d",
+                    TimeUnit.MILLISECONDS.toMinutes(p0),
+                    TimeUnit.MILLISECONDS.toSeconds(p0) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(p0))))
             }
+
+
+            //@RequiresApi(Build.VERSION_CODES.S)
             override fun onFinish() {
+                vibrateDevice(requireContext())
                 timeBreak(descanso)
+              //  val vibratorManager:VibratorManager = requireContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+               // vibratorManager.defaultVibrator
             }
         }.start()
 
@@ -216,12 +241,14 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     //.fitCenter()
                     //.centerCrop()
                     .into(imageview)
-                val segundos = (p0 / 1000) % 60
-                val mostrar = String.format("%02d", segundos)
-                seeTime.setText(mostrar)
+                seeTime.setText(""+String.format("%02d:%02d",
+                    TimeUnit.MILLISECONDS.toMinutes(p0),
+                    TimeUnit.MILLISECONDS.toSeconds(p0) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(p0))))
             }
 
             override fun onFinish() {
+                vibrateDevice(requireContext())
                 showButton()
                 binding.cancel.isEnabled = false
             }
