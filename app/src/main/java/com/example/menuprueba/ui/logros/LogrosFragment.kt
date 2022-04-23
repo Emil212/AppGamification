@@ -16,15 +16,24 @@ import com.example.menuprueba.databinding.FragmentLogrosBinding
 import com.example.menuprueba.domain.logros.LogrosRepoImplement
 import com.example.menuprueba.presentation.logros.LogrosViewModel
 import com.example.menuprueba.presentation.logros.LogrosViewModelFactory
+import com.example.menuprueba.ui.rutinas.IOnBackPressed
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
 
-class LogrosFragment : Fragment(R.layout.fragment_logros) {
+class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
     private lateinit var binding: FragmentLogrosBinding
 
     private val viewModel by viewModels<LogrosViewModel> {
         LogrosViewModelFactory(LogrosRepoImplement(LogrosDataSource()))
+    }
+
+    override fun onBackPressed(): Boolean {
+        return if (1==1) {
+            true //permitir ir atrás
+        } else {
+            false //cancelar acción
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

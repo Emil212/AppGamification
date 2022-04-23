@@ -23,7 +23,7 @@ import com.example.menuprueba.domain.ejercicios.EjerciciosRepoImpl
 import com.example.menuprueba.presentation.rutinas.RutinaViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
-class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
+class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IOnBackPressed {
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -33,6 +33,13 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios) {
     }
 
     private lateinit var binding: FragmentListaEjerciciosBinding
+    override fun onBackPressed(): Boolean {
+        return if (1==1) {
+            true //permitir ir atrás
+        } else {
+            false //cancelar acción
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

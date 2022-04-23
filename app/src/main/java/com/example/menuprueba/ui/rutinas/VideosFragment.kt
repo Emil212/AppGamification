@@ -24,7 +24,6 @@ import java.util.*
 
 class VideosFragment : Fragment(R.layout.fragment_videos) {
     private var indexContador = 0
-    private var puntuacion = 0
     private lateinit var binding: FragmentVideosBinding
     private val Break =
         "https://firebasestorage.googleapis.com/v0/b/" +
@@ -38,6 +37,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
             RutinasViewModelFactory(EjerciciosRepoImpl(EjerciciosDataSource()))
         ).get(RutinaViewModel::class.java)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -101,17 +101,17 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     }
 
     private fun playListRoutine(video0: String, video1: String, video2: String, video3: String, puntuacion: Long) {
-        showRoutine(video0, 1000)
+        showRoutine(video0, 10000, 5000)
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 1000)
+                    showRoutine(video1, 10000, 5000)
                 }
                 2 -> {
-                    showRoutine(video2, 1000)
+                    showRoutine(video2, 10000, 5000)
                 }
                 3 -> {
-                    showRoutine(video3, 1000)
+                    showRoutine(video3, 10000, 5000)
                 }
                 else -> {
                     //puntuacion
@@ -167,44 +167,54 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         binding.progressbar.visibility = View.GONE
     }
 
-    fun showRoutine(elemento: String, duracion: Long) {
+    fun showRoutine(elemento: String, duracion: Long, descanso:Long) {
         indexContador++
+
 
         val imageview = binding.imageView
         val seeTime = binding.time
-        object : CountDownTimer(duracion, 1000) {
+        val temp: CountDownTimer? = object : CountDownTimer(duracion+100, 1000- 100) {
             override fun onTick(p0: Long) {
                 hideButton()
+                binding.cancel.isEnabled = true
                 Glide
                     .with(this@VideosFragment)
                     .load(elemento)
                     //.placeholder(R.drawable.ic_loading)//carga el drawable en lo que se ejecuta "load()"
-                    .fitCenter()
-                    .centerCrop()
+                    //.fitCenter()
+                    //.centerCrop()
                     .into(imageview)
                 val segundos = (p0 / 1000) % 60
                 val mostrar = String.format("%02d", segundos)
-                seeTime.setText("$mostrar s")
-            }
+                seeTime.setText(mostrar)
 
+            }
             override fun onFinish() {
-                timeBreak()
+                timeBreak(descanso)
             }
         }.start()
+
+        binding.cancel.setOnClickListener {
+            if (temp != null) {
+                temp.cancel()
+                findNavController().navigate(R.id.action_videosFragment_to_nav_listaEjerciciosFragment)
+            }
+        }
     }
 
-    private fun timeBreak() {
-        var imageview = binding.imageView
+    private fun timeBreak(descanso: Long) {
+        val imageview = binding.imageView
         val seeTime = binding.time
-        object : CountDownTimer(1000, 1000) {
+        val temp = object : CountDownTimer(descanso + 100, 1000-100) {
             override fun onTick(p0: Long) {
                 hideButton()
+                binding.cancel.isEnabled = true
                 Log.d("onTick Descanso", "Descanso")
                 Glide
                     .with(this@VideosFragment)
                     .load(Break)
-                    .fitCenter()
-                    .centerCrop()
+                    //.fitCenter()
+                    //.centerCrop()
                     .into(imageview)
                 val segundos = (p0 / 1000) % 60
                 val mostrar = String.format("%02d", segundos)
@@ -213,9 +223,16 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
 
             override fun onFinish() {
                 showButton()
-                Log.d("onFinish Descanso", "Finish")
+                binding.cancel.isEnabled = false
             }
         }.start()
+
+        binding.cancel.setOnClickListener {
+            if (temp != null) {
+                temp.cancel()
+                findNavController().navigate(R.id.action_videosFragment_to_nav_listaEjerciciosFragment)
+            }
+        }
     }
 
     fun observeRoutine0() {
@@ -225,7 +242,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     showProgressBar()
                 }
                 is Result.Success -> {
-                    var lista = result.data //Lista de tipo MutableList<videosGif>
+                    val lista = result.data //Lista de tipo MutableList<videosGif>
                     Log.d("Lista ", "${makeListVideos(lista)}")
                     val videos = makeListVideos(lista)
                     playListRoutine(videos[0], videos[1], videos[2], videos[3], 200) //Los videos y la puntuacón se mandan por parametro
@@ -243,7 +260,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     }
 
     private fun makeListVideos(lista: MutableList<videosGif>): MutableList<String> {
-        var newList = mutableListOf<String>()
+        val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux.toString()
             modific =

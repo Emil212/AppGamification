@@ -13,18 +13,6 @@
             android:icon="@drawable/ic_rutinas"
             android:title="@string/rutinas" />
         <item
-            android:id="@+id/nav_recordatorios"
-            android:icon="@drawable/ic_recordatorio"
-            android:title="@string/recordatorios" />
-        <item
-            android:id="@+id/nav_informe"
-            android:icon="@drawable/ic_informe"
-            android:title="@string/informe" />
-        <item
-            android:id="@+id/nav_carrera"
-            android:icon="@drawable/ic_carrera"
-            android:title="@string/carrera" />
-        <item
             android:id="@+id/nav_ayuda"
             android:icon="@drawable/ic_help"
             android:title="@string/help" />

@@ -2,12 +2,7 @@ package com.example.menuprueba.ui
 
 import android.os.Bundle
 
-import android.os.PersistableBundle
-import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -16,19 +11,29 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.menuprueba.R
 import com.example.menuprueba.databinding.ActivityMainBinding
-import com.example.menuprueba.ui.carrera.CarreraFragment
-import com.example.menuprueba.ui.informe.InformeActividadesFragment
-import com.example.menuprueba.ui.logros.LogrosFragment
-import com.example.menuprueba.ui.recordatorios.RecordatoriosFragment
+import com.example.menuprueba.ui.rutinas.IOnBackPressed
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.tabs.TabLayout
-import com.google.firebase.auth.FirebaseAuth
+
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+
+    override fun onBackPressed() {
+        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+        navHost?.let { navFragment ->
+            navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
+                (fragment as? IOnBackPressed)?.onBackPressed()?.not()?.let { isCanceled: Boolean ->
+                    if (!isCanceled) {
+                        super.onBackPressed()
+                    }
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -49,12 +54,10 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_recordatorios,
                 R.id.nav_logros,
-                R.id.nav_informe,
-                R.id.nav_carrera,
                 R.id.loginFragment,
                 R.id.nav_listaEjerciciosFragment,
+                R.id.nav_ayuda,
                 R.id.nav_logout
             ), drawerLayout
         )

@@ -27,7 +27,7 @@ import com.example.menuprueba.presentation.rutinas.RutinaViewModel
 import com.example.menuprueba.presentation.rutinas.RutinasViewModelFactory
 
 
-class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
+class PresentacionFragment : Fragment(R.layout.fragment_presentacion), IOnBackPressed {
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -37,6 +37,13 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion) {
     }
     private lateinit var binding: FragmentPresentacionBinding
 
+    override fun onBackPressed(): Boolean {
+        return if (1==1) {
+            true //permitir ir atrás
+        } else {
+            false //cancelar acción
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

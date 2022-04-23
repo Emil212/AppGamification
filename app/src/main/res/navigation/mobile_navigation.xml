@@ -12,21 +12,6 @@
         tools:layout="@layout/fragment_logros" />
 
     <fragment
-        android:id="@+id/nav_recordatorios"
-        android:name="com.example.menuprueba.ui.recordatorios.RecordatoriosFragment"
-        android:label="@string/recordatorios"
-        tools:layout="@layout/fragment_recordatorios" />
-    <fragment
-        android:id="@+id/nav_carrera"
-        android:name="com.example.menuprueba.ui.carrera.CarreraFragment"
-        android:label="Modo Carrera"
-        tools:layout="@layout/fragment_carrera"/>
-    <fragment
-        android:id="@+id/nav_informe"
-        android:name="com.example.menuprueba.ui.informe.InformeActividadesFragment"
-        android:label="Informe de Actividades"
-        tools:layout="@layout/fragment_informe_actividades"/>
-    <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.menuprueba.ui.auth.LoginFragment"
         android:label="@string/login"
@@ -68,6 +53,9 @@
         <action
             android:id="@+id/action_videosFragment_to_congratulationsFragment"
             app:destination="@id/congratulationsFragment" />
+        <action
+            android:id="@+id/action_videosFragment_to_nav_listaEjerciciosFragment"
+            app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_listaEjerciciosFragment"
@@ -117,6 +105,11 @@
             android:id="@+id/action_recoveryPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_ayuda"
+        android:name="com.example.menuprueba.ui.rutinas.AyudaFragment"
+        android:label="Ayuda"
+        tools:layout="@layout/fragment_ayuda" />
 
 
 </navigation>
