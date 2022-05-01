@@ -11,6 +11,4 @@ class EjerciciosRepoImpl(private val repo : IRepo) : EjerciciosRepo {
     override suspend fun getInfoEjercicios(): Result<MutableList<infoEjercicios>> = repo.getInfoEjerciciosRepo()
     override suspend fun incrementPuntuacion(puntuacion: Long) = repo.incrementPuntuacion(puntuacion)
     override suspend fun incrementRoutines(routine1 : Long, routine2 : Long, routine3 : Long) = repo.incrementRoutines(routine1,routine2,routine3)
-    override suspend fun incrementRoutine2() = repo.incrementRoutine2()
-    override suspend fun incrementRoutine3() = repo.incrementRoutine3()
 }

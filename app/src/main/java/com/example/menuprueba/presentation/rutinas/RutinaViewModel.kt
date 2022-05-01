@@ -58,23 +58,6 @@ class RutinaViewModel(private val repo : EjerciciosRepo) : ViewModel() {
         }
     }
 
- /*   fun incrementRoutine2() = liveData(Dispatchers.IO){
-        emit(Result.Loading())
-        try {
-            emit(Result.Success(repo.incrementRoutine1()))
-        }catch (e: Exception){
-            emit(Result.Failure(e))
-        }
-    }
-
-    fun incrementRoutine3() = liveData(Dispatchers.IO){
-        emit(Result.Loading())
-        try {
-            emit(Result.Success(repo.incrementRoutine1()))
-        }catch (e: Exception){
-            emit(Result.Failure(e))
-        }
-    }*/
 }
 
 class RutinasViewModelFactory(private val repo: EjerciciosRepoImpl) : ViewModelProvider.Factory {

@@ -12,6 +12,4 @@ interface EjerciciosRepo {
     suspend fun getInfoEjercicios(): Result<MutableList<infoEjercicios>>
     suspend fun incrementPuntuacion(puntuacion: Long)
     suspend fun incrementRoutines(routine1 : Long, routine2 : Long, routine3 : Long)
-    suspend fun incrementRoutine2()
-    suspend fun incrementRoutine3()
 }

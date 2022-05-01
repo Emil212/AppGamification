@@ -108,26 +108,4 @@ class EjerciciosDataSource : IRepo {
         }
     }
 
-    override suspend fun incrementRoutine2(){
-        val authResult = FirebaseAuth.getInstance()
-        val db = FirebaseFirestore.getInstance()
-
-        authResult.currentUser?.uid?.let { uid ->
-            val docRef = db.collection("users").document(uid)
-            docRef.update("repRoutine2", FieldValue.increment(1)).await()
-            Log.d("Increment", "Aumento de puntuacion")
-        }
-    }
-
-    override suspend fun incrementRoutine3(){
-        val authResult = FirebaseAuth.getInstance()
-        val db = FirebaseFirestore.getInstance()
-
-        authResult.currentUser?.uid?.let { uid ->
-            val docRef = db.collection("users").document(uid)
-            docRef.update("repRoutine3", FieldValue.increment(1)).await()
-            Log.d("Increment", "Aumento de puntuacion")
-        }
-    }
-
 }
