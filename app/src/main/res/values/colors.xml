@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name = "border_unlock">#FFD700</color>
+    <color name = "border_lock">#2F808080</color>
+    <color name = "filling_unlock">#2F3FFF</color>
+    <color name = "filling_lock">@android:color/transparent</color>
+
 </resources>

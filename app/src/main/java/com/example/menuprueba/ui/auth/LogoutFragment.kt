@@ -19,12 +19,13 @@ import com.example.menuprueba.presentation.auth.AuthViewModel
 import com.example.menuprueba.presentation.auth.AuthViewModelFactory
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.ui.MainActivity
+import com.example.menuprueba.ui.rutinas.IOnBackPressed
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import kotlin.system.exitProcess
 
 
-class LogoutFragment : Fragment(R.layout.fragment_log_out) {
+class LogoutFragment : Fragment(R.layout.fragment_log_out), IOnBackPressed {
     private lateinit var binding: FragmentLogOutBinding
     private val viewModel by viewModels<AuthViewModel> {
         AuthViewModelFactory(
@@ -32,6 +33,9 @@ class LogoutFragment : Fragment(R.layout.fragment_log_out) {
                 AuthDataSource()
             )
         )
+    }
+    override fun onBackPressed(): Boolean {
+        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

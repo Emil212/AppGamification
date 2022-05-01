@@ -140,13 +140,13 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     val result = puntuacion.toString()
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
-                    setUpPuntuacion(puntuacion)
+                    setUpPuntuacion(puntuacion, 1, 0, 0)
                 }
             }//when()
         }
     }
 
-    private fun setUpPuntuacion(puntuacion: Long) {
+    private fun setUpPuntuacion(puntuacion: Long, rutina1: Long, rutina2: Long, rutina3: Long) {
         viewModel.incrementPuntuacion(puntuacion).observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Loading -> {

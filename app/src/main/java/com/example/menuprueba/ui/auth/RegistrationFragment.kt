@@ -17,11 +17,12 @@ import com.example.menuprueba.databinding.FragmentRegistrationBinding
 import com.example.menuprueba.domain.auth.AuthRepoImpl
 import com.example.menuprueba.presentation.auth.AuthViewModel
 import com.example.menuprueba.presentation.auth.AuthViewModelFactory
+import com.example.menuprueba.ui.rutinas.IOnBackPressed
 import com.google.firebase.auth.FirebaseAuth
 import java.util.regex.Pattern
 
 
-class RegistrationFragment : Fragment(R.layout.fragment_registration) {
+class RegistrationFragment : Fragment(R.layout.fragment_registration), IOnBackPressed{
 
     private lateinit var binding: FragmentRegistrationBinding
     private val viewModel by viewModels<AuthViewModel> {
@@ -32,6 +33,9 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         )
     }
 
+    override fun onBackPressed(): Boolean {
+        return true
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

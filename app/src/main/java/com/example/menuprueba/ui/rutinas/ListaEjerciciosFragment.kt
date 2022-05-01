@@ -34,11 +34,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
 
     private lateinit var binding: FragmentListaEjerciciosBinding
     override fun onBackPressed(): Boolean {
-        return if (1==1) {
-            true //permitir ir atrás
-        } else {
-            false //cancelar acción
-        }
+        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

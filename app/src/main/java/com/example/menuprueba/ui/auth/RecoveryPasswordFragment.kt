@@ -10,11 +10,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.menuprueba.R
 import com.example.menuprueba.databinding.FragmentLoginBinding
 import com.example.menuprueba.databinding.FragmentRecoveryPasswordBinding
+import com.example.menuprueba.ui.rutinas.IOnBackPressed
 import com.google.firebase.auth.FirebaseAuth
 
-class RecoveryPasswordFragment : Fragment(R.layout.fragment_recovery_password) {
+class RecoveryPasswordFragment : Fragment(R.layout.fragment_recovery_password), IOnBackPressed {
 
     private lateinit var binding: FragmentRecoveryPasswordBinding
+    override fun onBackPressed(): Boolean {
+        return true
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
