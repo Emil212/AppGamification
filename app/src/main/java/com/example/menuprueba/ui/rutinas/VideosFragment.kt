@@ -26,9 +26,6 @@ import java.util.concurrent.TimeUnit
 import androidx.core.content.ContextCompat.getSystemService
 
 import android.os.Vibrator
-import android.view.HapticFeedbackConstants
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 
 
 class VideosFragment : Fragment(R.layout.fragment_videos) {
@@ -52,7 +49,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentVideosBinding.bind(view)
         selectRoutine()
-        //getIRutina()
     }
 
     fun vibrateDevice(context: Context) {
@@ -68,8 +64,8 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     }
 
     private fun getIRutina(): Int {
-        var index : Int = -1
-        setFragmentResultListener("requestKey2"){ key, bundle ->
+        var index: Int = -1
+        setFragmentResultListener("requestKey2") { key, bundle ->
             index = bundle.get("bundleKey2") as Int
             Log.d("iRutina", "$index receive")
         }
@@ -77,7 +73,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     }
 
     private fun selectRoutine() {
-        var indexRutina : Int
+        var indexRutina: Int
         setFragmentResultListener("requestKey2") { key, bundle ->  //recibe dato
             indexRutina = bundle.get("bundleKey2") as Int //recibe dato
             Log.d("iRutina", "$indexRutina receivev")
@@ -87,7 +83,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     observeRoutine0()
                 }
                 1 -> {
-
                     Log.d("nuevo", "el indice es: $indexRutina")
                     Toast.makeText(
                         requireContext(),
@@ -121,8 +116,17 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         }//setFragmentResultListener
     }
 
-    private fun playListRoutine(video0: String, video1: String, video2: String, video3: String, puntuacion: Long) {
-        showRoutine(video0, 10000, 5000)
+    private fun playListRoutine(
+        video0: String,
+        video1: String,
+        video2: String,
+        video3: String,
+        puntuacion: Long,
+        routine1: Long,
+        routine2: Long,
+        routine3: Long
+    ) {
+        showRoutine(video0, 1000, 5000)
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
@@ -132,7 +136,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     showRoutine(video2, 1000, 5000)
                 }
                 3 -> {
-                    showRoutine(video3, 65000, 65000)
+                    showRoutine(video3, 1000, 5000)
                 }
                 else -> {
                     //puntuacion
@@ -140,13 +144,14 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     val result = puntuacion.toString()
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
-                    setUpPuntuacion(puntuacion, 1, 0, 0)
+                    setUpRepRoutines(routine1, routine2, routine3)
+                    setUpPuntuacion(puntuacion)
                 }
             }//when()
         }
     }
 
-    private fun setUpPuntuacion(puntuacion: Long, rutina1: Long, rutina2: Long, rutina3: Long) {
+    private fun setUpPuntuacion(puntuacion: Long) {
         viewModel.incrementPuntuacion(puntuacion).observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Loading -> {
@@ -172,6 +177,35 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         })
     }
 
+    private fun setUpRepRoutines(routine1: Long, routine2: Long, routine3: Long) {
+        viewModel.incrementRoutines(routine1, routine2, routine3)
+            .observe(viewLifecycleOwner, { result ->
+                when (result) {
+                    is Result.Loading -> {
+                        Log.d("Cargando", "Cargando puntuacion")
+                    }
+
+                    is Result.Success -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Se incremento el contador de la rutina, R1: $routine1, R2: $routine2, R3: $routine3 ",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    is Result.Failure -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Error: ${result.exception}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+            })
+    }
+
+
     private fun showButton() {
         binding.siguinte.isEnabled = true
     }
@@ -188,11 +222,11 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         binding.progressbar.visibility = View.GONE
     }
 
-    fun showRoutine(elemento: String, duracion: Long, descanso:Long) {
+    fun showRoutine(elemento: String, duracion: Long, descanso: Long) {
         indexContador++
         val imageview = binding.imageView
         val seeTime = binding.time
-        val temp: CountDownTimer? = object : CountDownTimer(duracion+100, 1000- 100) {
+        val temp: CountDownTimer? = object : CountDownTimer(duracion + 100, 1000 - 100) {
             override fun onTick(p0: Long) {
                 hideButton()
                 binding.cancel.isEnabled = true
@@ -203,10 +237,14 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     //.fitCenter()
                     //.centerCrop()
                     .into(imageview)
-                seeTime.setText(""+String.format("%02d:%02d",
-                    TimeUnit.MILLISECONDS.toMinutes(p0),
-                    TimeUnit.MILLISECONDS.toSeconds(p0) -
-                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(p0))))
+                seeTime.setText(
+                    "" + String.format(
+                        "%02d:%02d",
+                        TimeUnit.MILLISECONDS.toMinutes(p0),
+                        TimeUnit.MILLISECONDS.toSeconds(p0) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(p0))
+                    )
+                )
             }
 
 
@@ -214,8 +252,8 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
             override fun onFinish() {
                 vibrateDevice(requireContext())
                 timeBreak(descanso)
-              //  val vibratorManager:VibratorManager = requireContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
-               // vibratorManager.defaultVibrator
+                //  val vibratorManager:VibratorManager = requireContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+                // vibratorManager.defaultVibrator
             }
         }.start()
 
@@ -230,7 +268,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     private fun timeBreak(descanso: Long) {
         val imageview = binding.imageView
         val seeTime = binding.time
-        val temp = object : CountDownTimer(descanso + 100, 1000-100) {
+        val temp = object : CountDownTimer(descanso + 100, 1000 - 100) {
             override fun onTick(p0: Long) {
                 hideButton()
                 binding.cancel.isEnabled = true
@@ -241,10 +279,14 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     //.fitCenter()
                     //.centerCrop()
                     .into(imageview)
-                seeTime.setText(""+String.format("%02d:%02d",
-                    TimeUnit.MILLISECONDS.toMinutes(p0),
-                    TimeUnit.MILLISECONDS.toSeconds(p0) -
-                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(p0))))
+                seeTime.setText(
+                    "" + String.format(
+                        "%02d:%02d",
+                        TimeUnit.MILLISECONDS.toMinutes(p0),
+                        TimeUnit.MILLISECONDS.toSeconds(p0) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(p0))
+                    )
+                )
             }
 
             override fun onFinish() {
@@ -263,7 +305,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     }
 
     fun observeRoutine0() {
-        viewModel.getRutina0.observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getRutina0.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Loading -> {
                     showProgressBar()
@@ -272,7 +314,16 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     val lista = result.data //Lista de tipo MutableList<videosGif>
                     Log.d("Lista ", "${makeListVideos(lista)}")
                     val videos = makeListVideos(lista)
-                    playListRoutine(videos[0], videos[1], videos[2], videos[3], 200) //Los videos y la puntuacón se mandan por parametro
+                    playListRoutine(
+                        videos[0],
+                        videos[1],
+                        videos[2],
+                        videos[3],
+                        200,
+                        1,
+                        0,
+                        0
+                    ) //Los videos y la puntuacón se mandan por parametro
                     hideProgressBar()
                 }
                 is Result.Failure -> {

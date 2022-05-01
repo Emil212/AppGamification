@@ -37,11 +37,6 @@ class EjerciciosDataSource : IRepo {
         return Result.Success(listaVideos)
     }
 
-
-
-
-
-
     ////////Obtiene la información para los CardView (Título, descroipción y ista previa)
     override suspend fun getAllRepo(): Result<MutableList<All>> {
         //val source = Source.CACHE
@@ -98,6 +93,41 @@ class EjerciciosDataSource : IRepo {
             Log.d("Increment", "Aumento de puntuacion")
         }
 
+    }
+
+    override suspend fun incrementRoutines(routine1 : Long, routine2 : Long, routine3 : Long){
+        val authResult = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
+
+        authResult.currentUser?.uid?.let { uid ->
+            val docRef = db.collection("users").document(uid)
+            docRef.update("repRoutine1", FieldValue.increment(routine1)).await()
+            docRef.update("repRoutine2", FieldValue.increment(routine2)).await()
+            docRef.update("repRoutine3", FieldValue.increment(routine3)).await()
+            Log.d("Increment", "Aumento de puntuacion")
+        }
+    }
+
+    override suspend fun incrementRoutine2(){
+        val authResult = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
+
+        authResult.currentUser?.uid?.let { uid ->
+            val docRef = db.collection("users").document(uid)
+            docRef.update("repRoutine2", FieldValue.increment(1)).await()
+            Log.d("Increment", "Aumento de puntuacion")
+        }
+    }
+
+    override suspend fun incrementRoutine3(){
+        val authResult = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
+
+        authResult.currentUser?.uid?.let { uid ->
+            val docRef = db.collection("users").document(uid)
+            docRef.update("repRoutine3", FieldValue.increment(1)).await()
+            Log.d("Increment", "Aumento de puntuacion")
+        }
     }
 
 }

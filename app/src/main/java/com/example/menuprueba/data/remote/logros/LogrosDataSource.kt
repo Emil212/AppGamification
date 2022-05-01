@@ -25,11 +25,17 @@ class LogrosDataSource {
                 .addOnSuccessListener { document ->
                     val username = document.get("username").toString()
                     val points = document.get("points") as Long
+                    val repRoutine1 = document.get("repRoutine1") as Long
+                    val repRoutine2 = document.get("repRoutine2") as Long
+                    val repRoutine3 = document.get("repRoutine3") as Long
                     Log.d("Pruebas", "nombre de usuario: $username")
                     Log.d("Pruebas", "puntos: $points")
                     Log.d("Pruebas", username)
                     Log.d("Pruebas", points.toString())
-                    infoUser = infoUsers(username, points)
+                    Log.d("Pruebas", repRoutine1.toString())
+                    Log.d("Pruebas", repRoutine2.toString())
+                    Log.d("Pruebas", repRoutine3.toString())
+                    infoUser = infoUsers(username, points, repRoutine1, repRoutine2, repRoutine3)
                     Log.d("Pruebas final", infoUser.toString())
                 }
 

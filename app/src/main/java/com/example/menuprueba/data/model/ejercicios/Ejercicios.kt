@@ -18,7 +18,7 @@ data class infoEjercicios(
     )
 )
 
-data class incrementPuntuacion(val Puntuacion: Long=0)
+//data class incrementPuntuacion(val Puntuacion: Long=0)
 
 
 

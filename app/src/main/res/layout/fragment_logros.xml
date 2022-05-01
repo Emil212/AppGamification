@@ -8,8 +8,6 @@
     tools:context=".ui.logros.LogrosFragment"
     android:orientation="vertical">
 
-
-
     <ProgressBar
         android:id="@+id/progress_bar"
         android:visibility="gone"
@@ -23,7 +21,6 @@
 
     <TextView
         android:id="@+id/text_logros"
-        android:text="Puntos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
