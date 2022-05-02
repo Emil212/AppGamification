@@ -3,10 +3,8 @@ package com.example.menuprueba.data.remote.logros
 import android.util.Log
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.logros.infoUsers
-import com.example.menuprueba.domain.logros.IRepo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
 
 class LogrosDataSource {
@@ -28,13 +26,6 @@ class LogrosDataSource {
                     val repRoutine1 = document.get("repRoutine1") as Long
                     val repRoutine2 = document.get("repRoutine2") as Long
                     val repRoutine3 = document.get("repRoutine3") as Long
-                    Log.d("Pruebas", "nombre de usuario: $username")
-                    Log.d("Pruebas", "puntos: $points")
-                    Log.d("Pruebas", username)
-                    Log.d("Pruebas", points.toString())
-                    Log.d("Pruebas", repRoutine1.toString())
-                    Log.d("Pruebas", repRoutine2.toString())
-                    Log.d("Pruebas", repRoutine3.toString())
                     infoUser = infoUsers(username, points, repRoutine1, repRoutine2, repRoutine3)
                     Log.d("Pruebas final", infoUser.toString())
                 }

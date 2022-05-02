@@ -39,7 +39,7 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLogrosBinding.bind(view)
         observeData()
-        logros(50)
+        logros(50, 200, 30)
     }
 
     private fun observeData() {
@@ -47,12 +47,12 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
             when (it) {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
-                    binding.scroll1.visibility = View.GONE
+                    binding.scrollView.visibility = View.GONE
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.textLogros.visibility = View.VISIBLE
-                    binding.scroll1.visibility = View.VISIBLE
+                    binding.scrollView.visibility = View.VISIBLE
                     val infoUser = it.data
                     clearInfoUser(infoUser)
                 }
@@ -80,87 +80,163 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         textView.text = "$username tiene $points puntos"
     }
 
-    private fun logros (meta: Int/*, meta2: Int, meta3: Int, meta4: Int*/){
+    private fun conditionToast(meta: Int, valor: Int){
+        if (valor >= meta){
+            Toast.makeText(requireContext(), "Lograste alcanzar el objetivo, $meta repeticiones", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), "Necesitas $meta repeticiones para alcanzar este logro y llevas $valor", Toast.LENGTH_LONG).show()
+        }
+    }
 
-        binding.logro1.setOnClickListener {
-            if (meta>=10){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${10 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }
-        }
-        binding.logro2.setOnClickListener {
-            if (meta>=30){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${30 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }
-        }
-        binding.logro3.setOnClickListener {
-            if (meta>=60){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${60 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }
-        }
-        binding.logro4.setOnClickListener {
-            if (meta>=100){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${100 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }
-        }
-        binding.logro5.setOnClickListener {
-            if (meta>=200){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${200 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }
-        }
-        while (meta>=10){
-            binding.logro1.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
-            binding.logro11.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+    private fun routineA (valor1: Int){
+        while (valor1>=10){
+            binding.logro1a.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro11a.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro111a.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
             break
         }
-        while (meta>=30){
-            binding.logro2.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
-            binding.logro22.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
-            /*if (meta>=30){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${30 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }*/
+        while (valor1>=30){
+            binding.logro2a.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro22a.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro222a.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
             break
         }
-        while (meta>=60){
-            binding.logro3.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
-            binding.logro33.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
-           /* if (meta>=60){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${60 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }*/
+        while (valor1>=60){
+            binding.logro3a.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro33a.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro333a.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
             break
         }
-        while (meta>=100){
-            binding.logro4.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
-            binding.logro44.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
-            /*if (meta>=100){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${100 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }*/
+        while (valor1>=100){
+            binding.logro4a.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro44a.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro444a.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
             break
         }
-        while (meta>=200){
-            binding.logro5.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
-            binding.logro55.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
-           /* if (meta>=200){
-                Toast.makeText(requireContext(), "Lograste alcanzar el objetivo máximo c:", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Te faltan ${200 - meta} repeticiones para alcanzar este logro", Toast.LENGTH_LONG).show()
-            }*/
+        while (valor1>=200){
+            binding.logro5a.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro55a.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro555a.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
             break
         }
+
+        binding.logro1a.setOnClickListener {
+            conditionToast(10, valor1)
+        }
+        binding.logro2a.setOnClickListener {
+            conditionToast(30, valor1)
+        }
+        binding.logro3a.setOnClickListener {
+            conditionToast(60, valor1)
+        }
+        binding.logro4a.setOnClickListener {
+            conditionToast(100, valor1)
+        }
+        binding.logro5a.setOnClickListener {
+            conditionToast(200, valor1)
+        }
+
+    }
+
+    private fun routineB (valor2: Int){
+        while (valor2>=10){
+            binding.logro1b.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro11b.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro111b.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor2>=30){
+            binding.logro2b.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro22b.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro222b.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor2>=60){
+            binding.logro3b.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro33b.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro333b.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor2>=100){
+            binding.logro4b.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro44b.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro444b.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor2>=200){
+            binding.logro5b.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro55b.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro555b.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        binding.logro1b.setOnClickListener {
+            conditionToast(10, valor2)
+        }
+        binding.logro2b.setOnClickListener {
+            conditionToast(30, valor2)
+        }
+        binding.logro3b.setOnClickListener {
+            conditionToast(60, valor2)
+        }
+        binding.logro4b.setOnClickListener {
+            conditionToast(100, valor2)
+        }
+        binding.logro5b.setOnClickListener {
+            conditionToast(200, valor2)
+        }
+    }
+
+    private fun routineC (valor3: Int){
+        while (valor3>=10){
+            binding.logro1c.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro11c.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro111c.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor3>=30){
+            binding.logro2c.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro22c.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro222c.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor3>=60){
+            binding.logro3c.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro33c.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro333c.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor3>=100){
+            binding.logro4c.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro44c.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro444c.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        while (valor3>=200){
+            binding.logro5c.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.border_unlock))
+            binding.logro55c.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.filling_unlock))
+            binding.logro555c.setColorFilter(ContextCompat.getColor(requireContext(),R.color.cup_unlock))
+            break
+        }
+        binding.logro1c.setOnClickListener {
+            conditionToast(10, valor3)
+        }
+        binding.logro2c.setOnClickListener {
+            conditionToast(30, valor3)
+        }
+        binding.logro3c.setOnClickListener {
+            conditionToast(60, valor3)
+        }
+        binding.logro4c.setOnClickListener {
+            conditionToast(100, valor3)
+        }
+        binding.logro5c.setOnClickListener {
+            conditionToast(200, valor3)
+        }
+    }
+
+    private fun logros (valor1: Int, valor2: Int, valor3: Int){
+        routineA(valor1)
+        routineB(valor2)
+        routineC(valor3)
     }
 }
