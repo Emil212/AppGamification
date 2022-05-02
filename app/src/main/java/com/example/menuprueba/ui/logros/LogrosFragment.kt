@@ -39,7 +39,7 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLogrosBinding.bind(view)
         observeData()
-        logros(50, 200, 30)
+        //logros(10, 30, 60)
     }
 
     private fun observeData() {
@@ -74,11 +74,39 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         infoUserCls = infoUserCls.split(", points=").toString()
         infoUserCls = infoUserCls.replace("[", "")
         infoUserCls = infoUserCls.replace("]", "")
+        infoUserCls = infoUserCls.replace("repRoutine1=", "")
+        infoUserCls = infoUserCls.replace("repRoutine2=", "")
+        infoUserCls = infoUserCls.replace("repRoutine3=", "")
         val username = infoUserCls.substringBefore(",")
-        val points = infoUserCls.substringAfter(", ")
+        var points = infoUserCls.substringAfter(", ")
+        points = points.substringBefore(", ")
         val textView = binding.textLogros
         textView.text = "$username tiene $points puntos"
+        Log.d("valor", "$points")
+
+
+
+
+        var valor1 = infoUserCls.substringAfter(", ")
+        Log.d("valor1", "$valor1")
+        var x = valor1.substringAfter(", ")
+        Log.d("valor2", "$x")
+        var xx = x.substringBefore(", ")
+        Log.d("valor3", "$xx")
+        val routine1 = xx
+        Log.d("valor4", "$routine1")
+        var y = x.substringAfter(", ")
+        Log.d("valor5", "$y")
+        var yy = y.substringBefore(",")
+        val routine2 = yy
+        Log.d("valor6", "$routine2")
+        var zz = y.substringAfter(", ")
+        val routine3 = zz
+        Log.d("valor7", "$routine3")
+        logros(routine1, routine2, routine3 )
+        //cuidar los espacios restantes para hacer el cast
     }
+
 
     private fun conditionToast(meta: Int, valor: Int){
         if (valor >= meta){
@@ -234,9 +262,9 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         }
     }
 
-    private fun logros (valor1: Int, valor2: Int, valor3: Int){
-        routineA(valor1)
-        routineB(valor2)
-        routineC(valor3)
+    private fun logros (valor1: String, valor2: String, valor3: String){
+        routineA(valor1.toInt())
+        routineB(valor2.toInt())
+        routineC(valor3.toInt())
     }
 }

@@ -60,6 +60,7 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
                     binding.scrollView.visibility=View.VISIBLE
                     hideProgressBar()
                     val lista = result.data //Lista de tipo MutableList<Titulos>
+                    Log.d("detail", "${lista[0]}")
                     val newList = makeList(lista)
                     val titulos = makeListTitulos(newList)
                     val detalles = makeListDescripcion(newList)
@@ -94,30 +95,37 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
         val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
-            modific = modific.subSequence(startIndex = 91, endIndex = 110) as String
-            modific = modific.replace(".", "")
-            newList.add(modific)
+            var titulos = modific.substringAfter(", ")
+            titulos = titulos.substringBefore(", ")
+            titulos = titulos.subSequence(startIndex =7, endIndex = titulos.length) as String
+            Log.d("title", "$titulos")
+            newList.add(titulos)
         }
         return newList
     }
 
-    private fun makeListDescripcion(lista: MutableList<String>) : MutableList<String>{//70 caracteres de descripcion
-        //El tamaño de la descripción debe de ser de 40 Caracteres -> 70
+    private fun makeListDescripcion(lista: MutableList<String>) : MutableList<String>{
+
         val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
-            modific = modific.subSequence(startIndex = 12, endIndex = 81) as String
-            modific = modific.replace(".", "")
-            newList.add(modific)
+            modific = modific.subSequence(startIndex = 12, endIndex = modific.length) as String
+            val description = modific.substringBefore(",")
+            Log.d("detail", "$description")
+            newList.add(description)
         }
         return newList
     }
-    private fun makeListVP(lista: MutableList<String>) : MutableList<String>{//150 caracteres de VP con nombre VP_R####.jpg
+    private fun makeListVP(lista: MutableList<String>) : MutableList<String>{
         val newList = mutableListOf<String>()
         for (aux in lista) {
             var modific = aux
-            modific = modific.subSequence(startIndex = 126, endIndex = (modific.length)) as String
-            newList.add(modific)
+            var image = modific.substringAfter(", ")
+            image = image.substringAfter(", ")
+            image = image.substringBefore(", ")
+            image = image.subSequence(startIndex = 13, endIndex = image.length) as String
+            Log.d("image", "$image")
+            newList.add(image)
         }
         return newList
     }
