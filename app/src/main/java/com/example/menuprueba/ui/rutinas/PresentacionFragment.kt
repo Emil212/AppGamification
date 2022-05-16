@@ -16,8 +16,6 @@ import com.example.menuprueba.R
 import com.example.menuprueba.application.AppConstants.vp0
 import com.example.menuprueba.application.AppConstants.vp1
 import com.example.menuprueba.application.AppConstants.vp2
-import com.example.menuprueba.application.AppConstants.vp3
-import com.example.menuprueba.application.AppConstants.vp4
 import com.example.menuprueba.core.Result
 import com.example.menuprueba.data.model.ejercicios.infoEjercicios
 import com.example.menuprueba.data.remote.ejercicios.EjerciciosDataSource
@@ -54,53 +52,24 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion), IOnBackPr
         var nombres : MutableList<String>
         setFragmentResultListener("requestKey") { key, bundle ->  //recibe dato
             indexRutina = bundle.get("bundleKey") as Int //recibe dato
-            Log.d("iRutina", "$indexRutina receivep")
-            //indexRutina es el indice de la rutna
             when (indexRutina) {
                 0 -> {
                     nombres = makeListNombres(lista[0])
                     val adapter1 = CustomAdapterPresentation(nombres, requireContext(), vp0)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter1
-                    ////////////////////Envia dato prueba
                     sedIndex(indexRutina)
-                    ////////////////////Fin de enviar dato prueba
                 }
                 1 -> {
                     nombres = makeListNombres(lista[1])
                     val adapter = CustomAdapterPresentation(nombres, requireContext(), vp1)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
-                    ////////////////////Envia dato prueba
                     sedIndex(indexRutina)
-                    ////////////////////Fin de enviar dato prueba
                 }
                 2 -> {
                     nombres = makeListNombres(lista[2])
                     val adapter = CustomAdapterPresentation(nombres, requireContext(), vp2)
-                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    recyclerView.adapter = adapter
-                    ////////////////////Envia dato prueba
-                    sedIndex(indexRutina)
-                    ////////////////////Fin de enviar dato prueba
-                }
-                3 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Estos son los ejercicios de la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    nombres = makeListNombres(lista[3])
-                    val adapter = CustomAdapterPresentation(nombres, requireContext(), vp3)
-                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    recyclerView.adapter = adapter
-                    ////////////////////Envia dato prueba
-                    sedIndex(indexRutina)
-                    ////////////////////Fin de enviar dato prueba
-                }
-                4 -> {
-                    nombres = makeListNombres(lista[4])
-                    val adapter = CustomAdapterPresentation(nombres, requireContext(), vp4)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
                     ////////////////////Envia dato prueba
@@ -124,7 +93,7 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion), IOnBackPr
                     showProgressBar()
                 }
                 is Result.Success -> {
-                    var lista = result.data //Lista de tipo MutableList<videosGif>
+                    val lista = result.data //Lista de tipo MutableList<videosGif>
                     Log.d("Nombres", "${lista}")
                     selectRoutine(lista)
                     hideProgressBar()
@@ -142,7 +111,7 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion), IOnBackPr
     private fun makeListNombres(elemento: infoEjercicios): MutableList<String> {
         var modific = elemento.toString()
         modific = modific.subSequence(startIndex = 24, endIndex = (modific.length - 2)) as String
-        var x: MutableList<String> = modific.split(",") as MutableList<String>
+        val x: MutableList<String> = modific.split(",") as MutableList<String>
         return x
     }
 

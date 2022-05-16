@@ -68,9 +68,6 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
                     rutina(vP[0], titulos[0], detalles[0], 0, binding.itemImage0, binding.itemTitle0, binding.itemDetal0, binding.cardView0)
                     rutina(vP[1], titulos[1], detalles[1], 1, binding.itemImage1, binding.itemTitle1, binding.itemDetal1, binding.cardView1)
                     rutina(vP[2], titulos[2], detalles[2], 2, binding.itemImage2, binding.itemTitle2, binding.itemDetal2, binding.cardView2)
-                    rutina(vP[3], titulos[3], detalles[3], 3, binding.itemImage3, binding.itemTitle3, binding.itemDetal3, binding.cardView3)
-                    rutina(vP[4], titulos[4], detalles[4], 4, binding.itemImage4, binding.itemTitle4, binding.itemDetal4, binding.cardView4)
-
                 }
                 is Result.Failure -> {
                     Toast.makeText(
@@ -94,11 +91,10 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
     private fun makeListTitulos(lista: MutableList<String>) : MutableList<String>{ //20 caracteres de titulos
         val newList = mutableListOf<String>()
         for (aux in lista) {
-            var modific = aux
+            val modific = aux
             var titulos = modific.substringAfter(", ")
             titulos = titulos.substringBefore(", ")
             titulos = titulos.subSequence(startIndex =7, endIndex = titulos.length) as String
-            Log.d("title", "$titulos")
             newList.add(titulos)
         }
         return newList
@@ -124,7 +120,6 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
             image = image.substringAfter(", ")
             image = image.substringBefore(", ")
             image = image.subSequence(startIndex = 13, endIndex = image.length) as String
-            Log.d("image", "$image")
             newList.add(image)
         }
         return newList

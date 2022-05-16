@@ -1,12 +1,9 @@
 package com.example.menuprueba.ui.logros
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,9 +16,6 @@ import com.example.menuprueba.domain.logros.LogrosRepoImplement
 import com.example.menuprueba.presentation.logros.LogrosViewModel
 import com.example.menuprueba.presentation.logros.LogrosViewModelFactory
 import com.example.menuprueba.ui.rutinas.IOnBackPressed
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import com.google.type.Color
 
 
 class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
@@ -82,31 +76,17 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         points = points.substringBefore(", ")
         val textView = binding.textLogros
         textView.text = "$username tiene $points puntos"
-        Log.d("valor", "$points")
-
-
-
-
-        var valor1 = infoUserCls.substringAfter(", ")
-        Log.d("valor1", "$valor1")
-        var x = valor1.substringAfter(", ")
-        Log.d("valor2", "$x")
-        var xx = x.substringBefore(", ")
-        Log.d("valor3", "$xx")
+        val valor1 = infoUserCls.substringAfter(", ")
+        val x = valor1.substringAfter(", ")
+        val xx = x.substringBefore(", ")
         val routine1 = xx
-        Log.d("valor4", "$routine1")
-        var y = x.substringAfter(", ")
-        Log.d("valor5", "$y")
-        var yy = y.substringBefore(",")
+        val y = x.substringAfter(", ")
+        val yy = y.substringBefore(",")
         val routine2 = yy
-        Log.d("valor6", "$routine2")
-        var zz = y.substringAfter(", ")
+        val zz = y.substringAfter(", ")
         val routine3 = zz
-        Log.d("valor7", "$routine3")
-        logros(routine1, routine2, routine3 )
-        //cuidar los espacios restantes para hacer el cast
+        logros(routine1, routine2, routine3 ) //cuidar que no queden espacios en blanco
     }
-
 
     private fun conditionToast(meta: Int, valor: Int){
         if (valor >= meta){

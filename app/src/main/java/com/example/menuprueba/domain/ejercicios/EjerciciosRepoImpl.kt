@@ -7,6 +7,8 @@ import com.example.menuprueba.data.model.ejercicios.videosGif
 
 class EjerciciosRepoImpl(private val repo : IRepo) : EjerciciosRepo {
     override suspend fun getRutina0(): Result<MutableList<videosGif>> = repo.getRutina0Repo()
+    override suspend fun getRutina1(): Result<MutableList<videosGif>> = repo.getRutina1Repo()
+    override suspend fun getRutina2(): Result<MutableList<videosGif>> = repo.getRutina2Repo()
     override suspend fun getAll(): Result<MutableList<All>> = repo.getAllRepo()
     override suspend fun getInfoEjercicios(): Result<MutableList<infoEjercicios>> = repo.getInfoEjerciciosRepo()
     override suspend fun incrementPuntuacion(puntuacion: Long) = repo.incrementPuntuacion(puntuacion)

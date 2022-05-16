@@ -20,6 +20,28 @@ class RutinaViewModel(private val repo : EjerciciosRepo) : ViewModel() {
             }
         }
 
+    val getRutina1 = liveData(Dispatchers.IO){
+        emit(Result.Loading())
+        try {
+            val lista = repo.getRutina1()
+            emit(lista)
+        }catch (e: Exception){
+            emit(Result.Failure(e))
+        }
+    }
+
+    val getRutina2 = liveData(Dispatchers.IO){
+        emit(Result.Loading())
+        try {
+            val lista = repo.getRutina2()
+            emit(lista)
+        }catch (e: Exception){
+            emit(Result.Failure(e))
+        }
+    }
+
+
+
     val getAll = liveData(Dispatchers.IO){
         emit(Result.Loading())
         try {

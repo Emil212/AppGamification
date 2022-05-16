@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -63,14 +62,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         }
     }
 
-    private fun getIRutina(): Int {
-        var index: Int = -1
-        setFragmentResultListener("requestKey2") { key, bundle ->
-            index = bundle.get("bundleKey2") as Int
-            Log.d("iRutina", "$index receive")
-        }
-        return index
-    }
 
     private fun selectRoutine() {
         var indexRutina: Int
@@ -83,38 +74,66 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     observeRoutine0()
                 }
                 1 -> {
-                    Log.d("nuevo", "el indice es: $indexRutina")
-                    Toast.makeText(
-                        requireContext(),
-                        "Elegiste la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    observeRoutine1()
                 }
                 2 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Elegiste la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                }
-                3 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Elegiste la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                4 -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Elegiste la rutina $indexRutina",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    observeRoutine2()
                 }
             }//when
         }//setFragmentResultListener
     }
+
+    private fun playListRoutine(
+        video0: String,
+        video1: String,
+        video2: String,
+        video3: String,
+        video4: String,
+        video5: String,
+        video6: String,
+        video7: String,
+        puntuacion: Long,
+        routine1: Long,
+        routine2: Long,
+        routine3: Long
+    ) {
+        showRoutine(video0, 5000, 5000)
+        binding.siguinte.setOnClickListener {
+            when (indexContador) {
+                1 -> {
+                    showRoutine(video1, 5000, 5000)
+                }
+                2 -> {
+                    showRoutine(video2, 5000, 5000)
+                }
+                3 -> {
+                    showRoutine(video3, 5000, 5000)
+                }
+                4 -> {
+                    showRoutine(video4, 5000, 5000)
+                }
+                5 -> {
+                    showRoutine(video5, 5000, 5000)
+                }
+                6 -> {
+                    showRoutine(video6, 5000, 5000)
+                }
+                7 -> {
+                    showRoutine(video7, 5000, 5000)
+                }
+                else -> {
+                    //puntuacion
+                    Log.d("Puntos", "Ganaste $puntuacion puntos")
+                    val result = puntuacion.toString()
+                    setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+                    findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
+                    setUpRepRoutines(routine1, routine2, routine3)
+                    setUpPuntuacion(puntuacion)
+                }
+            }//when()
+        }
+    }
+
 
     private fun playListRoutine(
         video0: String,
@@ -126,17 +145,44 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         routine2: Long,
         routine3: Long
     ) {
-        showRoutine(video0, 1000, 5000)
+        showRoutine(video0, 5000, 5000)
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 1000, 5000)
+                    showRoutine(video1, 5000, 5000)
                 }
                 2 -> {
-                    showRoutine(video2, 1000, 5000)
+                    showRoutine(video2, 5000, 5000)
                 }
                 3 -> {
-                    showRoutine(video3, 1000, 5000)
+                    showRoutine(video3, 5000, 5000)
+                }
+                else -> {
+                    //puntuacion
+                    Log.d("Puntos", "Ganaste $puntuacion puntos")
+                    val result = puntuacion.toString()
+                    setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+                    findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
+                    setUpRepRoutines(routine1, routine2, routine3)
+                    setUpPuntuacion(puntuacion)
+                }
+            }//when()
+        }
+    }
+
+    private fun playListRoutine(
+        video0: String,
+        video1: String,
+        puntuacion: Long,
+        routine1: Long,
+        routine2: Long,
+        routine3: Long
+    ) {
+        showRoutine(video0, 5000, 5000)
+        binding.siguinte.setOnClickListener {
+            when (indexContador) {
+                1 -> {
+                    showRoutine(video1, 5000, 5000)
                 }
                 else -> {
                     //puntuacion
@@ -234,8 +280,8 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     .with(this@VideosFragment)
                     .load(elemento)
                     //.placeholder(R.drawable.ic_loading)//carga el drawable en lo que se ejecuta "load()"
-                    //.fitCenter()
-                    //.centerCrop()
+                    .fitCenter()
+                    .centerCrop()
                     .into(imageview)
                 seeTime.setText(
                     "" + String.format(
@@ -319,10 +365,78 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                         videos[1],
                         videos[2],
                         videos[3],
+                        videos[4],
+                        videos[5],
+                        videos[6],
+                        videos[7],
                         200,
                         1,
                         0,
                         0
+                    ) //Los videos y la puntuacón se mandan por parametro
+                    hideProgressBar()
+                }
+                is Result.Failure -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocurrio un error: ${result.exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
+    }
+
+    fun observeRoutine1() {
+        viewModel.getRutina1.observe(viewLifecycleOwner, { result ->
+            when (result) {
+                is Result.Loading -> {
+                    showProgressBar()
+                }
+                is Result.Success -> {
+                    val lista = result.data //Lista de tipo MutableList<videosGif>
+                    Log.d("Lista ", "${makeListVideos(lista)}")
+                    val videos = makeListVideos(lista)
+                    playListRoutine(
+                        videos[0],
+                        videos[1],
+                        videos[2],
+                        videos[3],
+                        200,
+                        0,
+                        1,
+                        0
+                    ) //Los videos y la puntuacón se mandan por parametro
+                    hideProgressBar()
+                }
+                is Result.Failure -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocurrio un error: ${result.exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
+    }
+
+    fun observeRoutine2() {
+        viewModel.getRutina2.observe(viewLifecycleOwner, { result ->
+            when (result) {
+                is Result.Loading -> {
+                    showProgressBar()
+                }
+                is Result.Success -> {
+                    val lista = result.data //Lista de tipo MutableList<videosGif>
+                    Log.d("Lista ", "${makeListVideos(lista)}")
+                    val videos = makeListVideos(lista)
+                    playListRoutine(
+                        videos[0],
+                        videos[1],
+                        200,
+                        0,
+                        0,
+                        1
                     ) //Los videos y la puntuacón se mandan por parametro
                     hideProgressBar()
                 }

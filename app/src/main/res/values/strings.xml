@@ -16,6 +16,14 @@
     <string name="help">Ayuda</string>
     <string name="registro">Registro</string>
     <string name="home">Inicio</string>
+    <string name="Logros1">Fortalecimiento Muscular</string>
+    <string name="Logros2">Estiramientos</string>
+    <string name="Logros3">Aeróbicos</string>
+    <string name="Rep10">10 Repeticiones</string>
+    <string name="Rep30">30 Repeticiones</string>
+    <string name="Rep60">60 Repeticiones</string>
+    <string name="Rep100">100 Repeticiones</string>
+    <string name="Rep200">200 Repeticiones</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 

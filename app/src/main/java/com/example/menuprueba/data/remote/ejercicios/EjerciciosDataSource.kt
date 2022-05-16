@@ -18,7 +18,56 @@ class EjerciciosDataSource : IRepo {
         val listaVideos =
             mutableListOf<videosGif>() //Crea una lista editable de tipo Ejercicios
         //"Ejercicios(data\model\ejercicios\ejercicios)"
-        val docRef = db.collection("Rutina0")
+        val docRef = db.collection("Rutina1")
+        docRef.get()
+            .addOnSuccessListener {
+                for (documento in it) {
+                    val ejercicios =
+                        documento.toObject(videosGif::class.java)      //Toma los valores del documento
+                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
+                    listaVideos.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
+                }
+                Log.d("Lista de videos", "$listaVideos") //Muestra la lista
+            }
+            .addOnFailureListener {
+                Log.d("Lista de videos", "Error")
+            }
+            .await()
+
+        return Result.Success(listaVideos)
+    }
+
+    override suspend fun getRutina1Repo(): Result<MutableList<videosGif>> {
+        //val source = Source.CACHE //source se pasa como parametro en get()
+        val db = FirebaseFirestore.getInstance()
+        val listaVideos =
+            mutableListOf<videosGif>() //Crea una lista editable de tipo Ejercicios
+        //"Ejercicios(data\model\ejercicios\ejercicios)"
+        val docRef = db.collection("Rutina2")
+        docRef.get()
+            .addOnSuccessListener {
+                for (documento in it) {
+                    val ejercicios =
+                        documento.toObject(videosGif::class.java)      //Toma los valores del documento
+                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
+                    listaVideos.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
+                }
+                Log.d("Lista de videos", "$listaVideos") //Muestra la lista
+            }
+            .addOnFailureListener {
+                Log.d("Lista de videos", "Error")
+            }
+            .await()
+
+        return Result.Success(listaVideos)
+    }
+    override suspend fun getRutina2Repo(): Result<MutableList<videosGif>> {
+        //val source = Source.CACHE //source se pasa como parametro en get()
+        val db = FirebaseFirestore.getInstance()
+        val listaVideos =
+            mutableListOf<videosGif>() //Crea una lista editable de tipo Ejercicios
+        //"Ejercicios(data\model\ejercicios\ejercicios)"
+        val docRef = db.collection("Rutina3")
         docRef.get()
             .addOnSuccessListener {
                 for (documento in it) {
