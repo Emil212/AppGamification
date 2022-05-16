@@ -20,7 +20,7 @@ object AppConstants {
     )
 
     val vp2 = mutableListOf(
-        "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VistaIndividual%2FAe%2FSkipping.jpeg?alt=media&token=61118ed3-e6f3-4ec3-b3f2-93f7583f39c6",
-        "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VistaIndividual%2FAe%2FSC.jpeg?alt=media&token=17eac873-87df-4cc1-ae71-c3a3702350e2"
+        "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VistaIndividual%2FAe%2FSC.jpeg?alt=media&token=17eac873-87df-4cc1-ae71-c3a3702350e2",
+        "https://firebasestorage.googleapis.com/v0/b/gamificationapp-2ff7c.appspot.com/o/VistaIndividual%2FAe%2FSkipping.jpeg?alt=media&token=61118ed3-e6f3-4ec3-b3f2-93f7583f39c6"
     )
 }
