@@ -45,7 +45,8 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
                 }
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    binding.textLogros.visibility = View.VISIBLE
+                    binding.textName.visibility = View.VISIBLE
+                    binding.textGoals.visibility = View.VISIBLE
                     binding.scrollView.visibility = View.VISIBLE
                     val infoUser = it.data
                     clearInfoUser(infoUser)
@@ -74,8 +75,9 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         val username = infoUserCls.substringBefore(",")
         var points = infoUserCls.substringAfter(", ")
         points = points.substringBefore(", ")
-        val textView = binding.textLogros
-        textView.text = "$username tiene $points puntos"
+        calcLevel(points.toLong())
+        val textName = binding.textName
+        textName.text = username
         val valor1 = infoUserCls.substringAfter(", ")
         val x = valor1.substringAfter(", ")
         val xx = x.substringBefore(", ")
@@ -86,6 +88,55 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
         val zz = y.substringAfter(", ")
         val routine3 = zz
         logros(routine1, routine2, routine3 ) //cuidar que no queden espacios en blanco
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun calcLevel(Points: Long){
+        while ((Points>=0) and (Points <=300)){
+            binding.textGoals.text = "Nivel 1: $Points / 300"
+            break
+        }
+
+        while ((Points>=301) and (Points <=1000)){
+            binding.textGoals.text = "Nivel 2: $Points / 1000"
+            break
+        }
+
+        while ((Points>=1001) and (Points <= 2500)){
+            binding.textGoals.text = "Nivel 3: $Points / 2500"
+            break
+        }
+
+        while ((Points>=2501) and (Points <= 5500)){
+            binding.textGoals.text = "Nivel 4: $Points / 5500"
+            break
+        }
+
+        while ((Points>=5501) and (Points <=11500)){
+            binding.textGoals.text = "Nivel 5: $Points / 11500"
+            break
+        }
+
+        while ((Points>=115001) and (Points <=23500)){
+            binding.textGoals.text = "Nivel 6: $Points / 23500"
+            break
+        }
+
+        while ((Points>=23501) and (Points <=47500)){
+            binding.textGoals.text = "Nivel 7: $Points / 47500"
+            break
+        }
+
+        while ((Points>=47501) and (Points <=98500)){
+            binding.textGoals.text = "Nivel 8: $Points / 98500"
+            break
+        }
+
+        while (Points>=98501){
+            binding.textGoals.text = "Nivel Máximo: $Points / ∞"
+            break
+        }
+
     }
 
     private fun conditionToast(meta: Int, valor: Int){

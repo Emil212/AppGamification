@@ -13,7 +13,7 @@
     <string name="carrera">Modo Carrera</string>
     <string name="login">Inicio de Sesión</string>
     <string name="logout">Cerrar Sesión</string>
-    <string name="help">Ayuda</string>
+    <string name="help">Ayuda e Información</string>
     <string name="registro">Registro</string>
     <string name="home">Inicio</string>
     <string name="Logros1">Fortalecimiento Muscular</string>
@@ -24,6 +24,12 @@
     <string name="Rep60">60 Repeticiones</string>
     <string name="Rep100">100 Repeticiones</string>
     <string name="Rep200">200 Repeticiones</string>
+    <string name="Help"><b>Ayuda:\n</b>
+        La aplicacion se compone de dos secciones principales, <b>logros</b> y <b>rutinas</b> en la primera el usuario visualizará el acumulado de punto que ha obtenido, el nivel al que corresponde su puntaje y los diferentes logros que ha alcanzado en base a la cantidad de repeticiones de las rutinas, mientras en la sección de rutinas el usuario podrá elegir entre las tres rutinas disponibles, el usuario podra interrumpir la rutina si asi lo desea y tendra un tiempo de descanso entre cada ejercicio.\n\n
+        <b>Recomendaciones:\n</b>
+        La realización de los ejercicios se debe percibir esfuerzo, pero no dolor.\n\n
+        A los 2 o 3 días de haber comenzado, puede existir alguna molesta muscular pero no debe ser intensa ni dolorosa. Si ocurren dolores o molestias intensas, se recomienda disminuir el número de ejercicios o aumentar el tiempo de descanso entre los ejercicios o el de los ciclos.  En el caso de que las molestias y los dolores continúen, el entrenamiento se debe suspender y la persona debe consultar con un médico. Si se llega a presentar algún síntoma como matero, dolor de pecho, desmayo o dificultad para respirar, también se deben suspender las actividades y consultar con un médico para dar seguimiento a la situación.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
 
 

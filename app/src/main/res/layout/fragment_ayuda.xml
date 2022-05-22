@@ -14,32 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"
-        android:text="Siempre estás a mi lado y yo te lo agradezco.
-Cuando la cólera me muerde, o cuando estoy triste
-—untado con el bálsamo para la tristeza como para morirme—
-apareces distante, intocable, junto a mí.
-Me miras como a un niño y se me olvida todo
-y ya sólo te quiero alegre, dolorosamente.
-He pensado en la duración de Dios,
-en la manteca y el azufre de la locura,
-en todo lo que he podido mirar en mis breves días.
-Tú eres como la leche del mundo.
-Te conozco, estás siempre a mi lado más que yo mismo.
-¿Qué puedo darte sino el cielo?
-Recuerdo que los poetas han llamado a la luna con mil nombres
-—medalla, ojos de Dios, globo de plata,
-moneda de miel, mujer, gota de aire—
-pero la luna está en el cielo y sólo es luna,
-inagotable, milagrosa como tú.
-Yo quiero llorar a veces furiosamente
-porque no sé qué, por algo,
-porque no es posible poseerte, poseer nada,
-dejar de estar solo."
+        android:text="@string/Help"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="15sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

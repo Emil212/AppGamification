@@ -68,18 +68,10 @@
         tools:layout="@layout/fragment_videos" >
         <action
             android:id="@+id/action_videosFragment_to_congratulationsFragment"
-            app:destination="@id/congratulationsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/congratulationsFragment" />
         <action
             android:id="@+id/action_videosFragment_to_nav_listaEjerciciosFragment"
-            app:destination="@id/nav_listaEjerciciosFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_listaEjerciciosFragment"
@@ -88,11 +80,7 @@
         tools:layout="@layout/fragment_lista_ejercicios" >
         <action
             android:id="@+id/action_nav_listaEjerciciosFragment_to_presentacionFragment"
-            app:destination="@id/presentacionFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/presentacionFragment" />
     </fragment>
     <fragment
         android:id="@+id/presentacionFragment"
@@ -101,11 +89,7 @@
         tools:layout="@layout/fragment_presentacion" >
         <action
             android:id="@+id/action_presentacionFragment_to_videosFragment"
-            app:destination="@id/videosFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/videosFragment" />
     </fragment>
     <fragment
         android:id="@+id/congratulationsFragment"
@@ -114,11 +98,7 @@
         tools:layout="@layout/fragment_congratulations" >
         <action
             android:id="@+id/action_congratulationsFragment_to_nav_listaEjerciciosFragment"
-            app:destination="@id/nav_listaEjerciciosFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/nav_listaEjerciciosFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_logout"
