@@ -80,7 +80,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration), IOnBackPr
                         Toast.LENGTH_SHORT
                     ).show()
                     findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
-                    Log.d("Registro", "Se ha registrado al usuario")
 
                 }
                 is Result.Failure -> {

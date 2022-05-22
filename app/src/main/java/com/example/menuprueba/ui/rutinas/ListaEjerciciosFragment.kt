@@ -60,7 +60,6 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
                     binding.scrollView.visibility=View.VISIBLE
                     hideProgressBar()
                     val lista = result.data //Lista de tipo MutableList<Titulos>
-                    Log.d("detail", "${lista[0]}")
                     val newList = makeList(lista)
                     val titulos = makeListTitulos(newList)
                     val detalles = makeListDescripcion(newList)
@@ -107,7 +106,6 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
             var modific = aux
             modific = modific.subSequence(startIndex = 12, endIndex = modific.length) as String
             val description = modific.substringBefore(",")
-            Log.d("detail", "$description")
             newList.add(description)
         }
         return newList
@@ -137,7 +135,6 @@ class ListaEjerciciosFragment : Fragment(R.layout.fragment_lista_ejercicios), IO
         cardView.setOnClickListener {
             findNavController().navigate(R.id.action_nav_listaEjerciciosFragment_to_presentacionFragment)
             val result = iRutina
-            Log.d("iRutina", "$iRutina sendr" )
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
 

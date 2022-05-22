@@ -82,7 +82,6 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion), IOnBackPr
 
     private fun sedIndex(iRutina: Int){
         val result = iRutina
-        Log.d("iRutina", "$iRutina sendp" )
         setFragmentResult("requestKey2", bundleOf("bundleKey2" to result))
     }
 
@@ -94,7 +93,6 @@ class PresentacionFragment : Fragment(R.layout.fragment_presentacion), IOnBackPr
                 }
                 is Result.Success -> {
                     val lista = result.data //Lista de tipo MutableList<videosGif>
-                    Log.d("Nombres", "${lista}")
                     selectRoutine(lista)
                     hideProgressBar()
                 }

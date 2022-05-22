@@ -27,12 +27,11 @@ class LogrosDataSource {
                     val repRoutine2 = document.get("repRoutine2") as Long
                     val repRoutine3 = document.get("repRoutine3") as Long
                     infoUser = infoUsers(username, points, repRoutine1, repRoutine2, repRoutine3)
-                    Log.d("Pruebas final", infoUser.toString())
                 }
 
         }?.await()
         Thread.sleep(1000)
-        Log.d("Prueba", "Manda a fragment $infoUser")
+
 
         return Result.Success(infoUser)
 

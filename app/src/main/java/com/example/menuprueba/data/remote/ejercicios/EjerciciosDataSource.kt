@@ -27,10 +27,10 @@ class EjerciciosDataSource : IRepo {
                     //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
                     listaVideos.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
                 }
-                Log.d("Lista de videos", "$listaVideos") //Muestra la lista
+
             }
             .addOnFailureListener {
-                Log.d("Lista de videos", "Error")
+
             }
             .await()
 
@@ -52,10 +52,10 @@ class EjerciciosDataSource : IRepo {
                     //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
                     listaVideos.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
                 }
-                Log.d("Lista de videos", "$listaVideos") //Muestra la lista
+
             }
             .addOnFailureListener {
-                Log.d("Lista de videos", "Error")
+
             }
             .await()
 
@@ -76,10 +76,8 @@ class EjerciciosDataSource : IRepo {
                     //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
                     listaVideos.add(ejercicios) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
                 }
-                Log.d("Lista de videos", "$listaVideos") //Muestra la lista
             }
             .addOnFailureListener {
-                Log.d("Lista de videos", "Error")
             }
             .await()
 
@@ -101,10 +99,8 @@ class EjerciciosDataSource : IRepo {
                     //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
                     lista.add(todo) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
                 }
-                Log.d("VP1", "$lista") //Muestra la lista
             }
             .addOnFailureListener {
-                Log.d("Lista de rutinas", "Error")
             }
             .await()
         return Result.Success(lista)
@@ -123,10 +119,8 @@ class EjerciciosDataSource : IRepo {
                     //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
                     lista.add(todo) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
                 }
-                Log.d("Lista de rutinas", "$lista") //Muestra la lista
             }
             .addOnFailureListener {
-                Log.d("Lista de rutinas", "Error")
             }
             .await()
         return Result.Success(lista)
@@ -139,7 +133,6 @@ class EjerciciosDataSource : IRepo {
         authResult.currentUser?.uid?.let { uid ->
             val docRef = db.collection("users").document(uid)
             docRef.update("points", FieldValue.increment(puntuacion)).await()
-            Log.d("Increment", "Aumento de puntuacion")
         }
 
     }
@@ -153,7 +146,6 @@ class EjerciciosDataSource : IRepo {
             docRef.update("repRoutine1", FieldValue.increment(routine1)).await()
             docRef.update("repRoutine2", FieldValue.increment(routine2)).await()
             docRef.update("repRoutine3", FieldValue.increment(routine3)).await()
-            Log.d("Increment", "Aumento de puntuacion")
         }
     }
 

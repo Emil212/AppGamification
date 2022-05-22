@@ -56,16 +56,12 @@ class RutinasFragment() : Fragment(R.layout.fragment_rutinas) {
                     val titulos = makeListTitulos(newList)
                     val detalles = makeListDescripcion(newList)
                     val vP = makeListVP(newList)
-                    Log.d("VP2:", "$lista")
-                    //Log.d("TP:", "${makeListTitulos(makeList(lista))[1].length}")
-                    //Log.d("DP:", "${makeListDescripcion(makeList(lista))[1].length}")
                     val adapter = CustomAdapter(titulos, detalles, vP, requireContext())
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
                     ////////////////////Envia dato prueba
                     val iRutina = 0
                     val result = iRutina
-                    Log.d("iRutina", "$iRutina sendr" )
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     ////////////////////Fin de enviar dato prueba
 

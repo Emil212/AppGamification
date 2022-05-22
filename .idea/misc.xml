@@ -36,7 +36,7 @@
         <entry key="..\:/Users/aldan/AndroidStudioProjects/MenuPrueba/app/src/main/res/menu/main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/drawable/ic_logros.xml" value="0.2203125" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/drawable/side_nav_bar.xml" value="0.2203125" />
-        <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/activity_main.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/fragment_ayuda.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/fragment_lista_ejercicios.xml" value="0.22" />
@@ -46,6 +46,7 @@
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/fragment_presentacion.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/fragment_recovery_password.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/fragment_registration.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/fragment_rutinas.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/fragment_videos.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/aldan/OneDrive/Documents/APP/AppGamification/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
@@ -96,8 +97,6 @@
         <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/mattb/Downloads/Gamificacion 14_Abril/AppGamification/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21458333333333332" />
-        <entry key="..\:/Users/mattb/Downloads/Gamificacion 17_mayo/AppGamification/app/src/main/res/layout/fragment_ayuda.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/mattb/Downloads/Gamificacion 17_mayo/AppGamification/app/src/main/res/layout/fragment_logros.xml" value="0.36762402088772844" />
       </map>
     </option>
   </component>

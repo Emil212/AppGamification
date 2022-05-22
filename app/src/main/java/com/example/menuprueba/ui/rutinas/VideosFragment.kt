@@ -67,7 +67,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         var indexRutina: Int
         setFragmentResultListener("requestKey2") { key, bundle ->  //recibe dato
             indexRutina = bundle.get("bundleKey2") as Int //recibe dato
-            Log.d("iRutina", "$indexRutina receivev")
             //indexRutina es el indice de la rutna
             when (indexRutina) {
                 0 -> {
@@ -97,33 +96,31 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         routine2: Long,
         routine3: Long
     ) {
-        showRoutine(video0, 5000, 5000)
+        showRoutine(video0, 10000, 5000)
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 5000, 5000)
+                    showRoutine(video1, 10000, 5000)
                 }
                 2 -> {
-                    showRoutine(video2, 5000, 5000)
+                    showRoutine(video2, 10000, 5000)
                 }
                 3 -> {
-                    showRoutine(video3, 5000, 5000)
+                    showRoutine(video3, 10000, 5000)
                 }
                 4 -> {
-                    showRoutine(video4, 5000, 5000)
+                    showRoutine(video4, 10000, 5000)
                 }
                 5 -> {
-                    showRoutine(video5, 5000, 5000)
+                    showRoutine(video5, 10000, 5000)
                 }
                 6 -> {
-                    showRoutine(video6, 5000, 5000)
+                    showRoutine(video6, 10000, 5000)
                 }
                 7 -> {
-                    showRoutine(video7, 5000, 5000)
+                    showRoutine(video7, 10000, 5000)
                 }
                 else -> {
-                    //puntuacion
-                    Log.d("Puntos", "Ganaste $puntuacion puntos")
                     val result = puntuacion.toString()
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
@@ -145,21 +142,20 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         routine2: Long,
         routine3: Long
     ) {
-        showRoutine(video0, 5000, 5000)
+        showRoutine(video0, 10000, 5000)
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 5000, 5000)
+                    showRoutine(video1, 10000, 5000)
                 }
                 2 -> {
-                    showRoutine(video2, 5000, 5000)
+                    showRoutine(video2, 10000, 5000)
                 }
                 3 -> {
-                    showRoutine(video3, 5000, 5000)
+                    showRoutine(video3, 10000, 5000)
                 }
                 else -> {
                     //puntuacion
-                    Log.d("Puntos", "Ganaste $puntuacion puntos")
                     val result = puntuacion.toString()
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
@@ -178,15 +174,15 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         routine2: Long,
         routine3: Long
     ) {
-        showRoutine(video0, 5000, 5000)
+        showRoutine(video0, 10000, 5000)
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 5000, 5000)
+                    showRoutine(video1, 10000, 5000)
                 }
                 else -> {
                     //puntuacion
-                    Log.d("Puntos", "Ganaste $puntuacion puntos")
+
                     val result = puntuacion.toString()
                     setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                     findNavController().navigate(R.id.action_videosFragment_to_congratulationsFragment)
@@ -201,7 +197,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         viewModel.incrementPuntuacion(puntuacion).observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Loading -> {
-                    Log.d("Cargando", "Cargando puntuacion")
                 }
 
                 is Result.Success -> {
@@ -228,7 +223,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
             .observe(viewLifecycleOwner, { result ->
                 when (result) {
                     is Result.Loading -> {
-                        Log.d("Cargando", "Cargando puntuacion")
                     }
 
                     is Result.Success -> {
@@ -279,7 +273,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                 Glide
                     .with(this@VideosFragment)
                     .load(elemento)
-                    //.placeholder(R.drawable.ic_loading)//carga el drawable en lo que se ejecuta "load()"
+                    .placeholder(R.drawable.ic_loading)//carga el drawable en lo que se ejecuta "load()"
                     .fitCenter()
                     .centerCrop()
                     .into(imageview)
@@ -318,7 +312,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
             override fun onTick(p0: Long) {
                 hideButton()
                 binding.cancel.isEnabled = true
-                Log.d("onTick Descanso", "Descanso")
                 Glide
                     .with(this@VideosFragment)
                     .load(Break)
@@ -358,7 +351,6 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                 }
                 is Result.Success -> {
                     val lista = result.data //Lista de tipo MutableList<videosGif>
-                    Log.d("Lista ", "${makeListVideos(lista)}")
                     val videos = makeListVideos(lista)
                     playListRoutine(
                         videos[0],
@@ -395,7 +387,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                 }
                 is Result.Success -> {
                     val lista = result.data //Lista de tipo MutableList<videosGif>
-                    Log.d("Lista ", "${makeListVideos(lista)}")
+
                     val videos = makeListVideos(lista)
                     playListRoutine(
                         videos[0],
@@ -428,7 +420,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                 }
                 is Result.Success -> {
                     val lista = result.data //Lista de tipo MutableList<videosGif>
-                    Log.d("Lista ", "${makeListVideos(lista)}")
+
                     val videos = makeListVideos(lista)
                     playListRoutine(
                         videos[0],
