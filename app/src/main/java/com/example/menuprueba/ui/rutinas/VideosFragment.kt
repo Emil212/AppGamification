@@ -361,7 +361,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                         videos[5],
                         videos[6],
                         videos[7],
-                        200,
+                        100,
                         1,
                         0,
                         0
@@ -425,7 +425,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
                     playListRoutine(
                         videos[0],
                         videos[1],
-                        200,
+                        300,
                         0,
                         0,
                         1

@@ -25,6 +25,7 @@
         android:background="#00000000"
         android:padding="1dp"
         android:text=""
+        android:textColor="@color/black"
         android:textAlignment="center"
         android:textSize="40dp"
         android:textStyle="bold"
