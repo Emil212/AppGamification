@@ -7,7 +7,6 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.rutinas.VideosFragment"
-    android:background="@color/white"
     >
 
     <ProgressBar
@@ -36,7 +35,6 @@
         android:layout_below="@+id/imageView"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
         android:textSize="70sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
