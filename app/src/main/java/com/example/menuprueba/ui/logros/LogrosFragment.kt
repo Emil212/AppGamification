@@ -92,47 +92,47 @@ class LogrosFragment : Fragment(R.layout.fragment_logros), IOnBackPressed {
 
     @SuppressLint("SetTextI18n")
     private fun calcLevel(Points: Long){
-        while ((Points>=0) and (Points <=300)){
+        while ((Points>=0) and (Points <300)){
             binding.textGoals.text = "Nivel 1: $Points / 300 XP"
             break
         }
 
-        while ((Points>=301) and (Points <=1000)){
+        while ((Points>=300) and (Points <1000)){
             binding.textGoals.text = "Nivel 2: $Points / 1000 XP"
             break
         }
 
-        while ((Points>=1001) and (Points <= 2500)){
+        while ((Points>=1000) and (Points < 2500)){
             binding.textGoals.text = "Nivel 3: $Points / 2500 XP"
             break
         }
 
-        while ((Points>=2501) and (Points <= 5500)){
+        while ((Points>=2500) and (Points < 5500)){
             binding.textGoals.text = "Nivel 4: $Points / 5500 XP"
             break
         }
 
-        while ((Points>=5501) and (Points <=11500)){
+        while ((Points>=5500) and (Points <11500)){
             binding.textGoals.text = "Nivel 5: $Points / 11500 XP"
             break
         }
 
-        while ((Points>=115001) and (Points <=23500)){
+        while ((Points>=115000) and (Points <23500)){
             binding.textGoals.text = "Nivel 6: $Points / 23500 XP"
             break
         }
 
-        while ((Points>=23501) and (Points <=47500)){
+        while ((Points>=23500) and (Points <47500)){
             binding.textGoals.text = "Nivel 7: $Points / 47500 XP"
             break
         }
 
-        while ((Points>=47501) and (Points <=98500)){
+        while ((Points>=47500) and (Points <98500)){
             binding.textGoals.text = "Nivel 8: $Points / 98500 XP"
             break
         }
 
-        while (Points>=98501){
+        while (Points>=98500){
             binding.textGoals.text = "Nivel Máximo: $Points / ∞ XP"
             break
         }
