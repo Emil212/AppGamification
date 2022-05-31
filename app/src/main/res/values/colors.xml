@@ -12,5 +12,6 @@
     <color name = "border_lock">#2F808080</color>
     <color name = "filling_unlock">#2F3FFF</color>
     <color name = "filling_lock">@android:color/transparent</color>
+    <color name= "button">#bc0ea2</color>
 
 </resources>

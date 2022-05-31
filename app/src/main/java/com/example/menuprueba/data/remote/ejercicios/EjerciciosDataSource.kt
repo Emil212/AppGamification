@@ -84,9 +84,8 @@ class EjerciciosDataSource : IRepo {
         return Result.Success(listaVideos)
     }
 
-    ////////Obtiene la información para los CardView (Título, descroipción y ista previa)
+    ////////Obtiene la información para los CardView (Título, descripción y vista previa)
     override suspend fun getAllRepo(): Result<MutableList<All>> {
-        //val source = Source.CACHE
         val db = FirebaseFirestore.getInstance()
         val lista =
             mutableListOf<All>()
@@ -95,9 +94,8 @@ class EjerciciosDataSource : IRepo {
             .addOnSuccessListener {
                 for (documento in it) {
                     val todo =
-                        documento.toObject(All::class.java)         //Toma los valores del documento
-                    //la variable documento es donde se almacena la información        // y los pasa al objeto de tipo Ejercicios (DataClass)
-                    lista.add(todo) //Toma la lista editable y le agrega el nuevo objeto (DataClass)
+                        documento.toObject(All::class.java)
+                    lista.add(todo)
                 }
             }
             .addOnFailureListener {
@@ -129,18 +127,15 @@ class EjerciciosDataSource : IRepo {
     override suspend fun incrementPuntuacion(puntuacion: Long) {
         val authResult = FirebaseAuth.getInstance()
         val db = FirebaseFirestore.getInstance()
-
         authResult.currentUser?.uid?.let { uid ->
             val docRef = db.collection("users").document(uid)
             docRef.update("points", FieldValue.increment(puntuacion)).await()
         }
-
     }
 
     override suspend fun incrementRoutines(routine1 : Long, routine2 : Long, routine3 : Long){
         val authResult = FirebaseAuth.getInstance()
         val db = FirebaseFirestore.getInstance()
-
         authResult.currentUser?.uid?.let { uid ->
             val docRef = db.collection("users").document(uid)
             docRef.update("repRoutine1", FieldValue.increment(routine1)).await()

@@ -96,29 +96,29 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         routine2: Long,
         routine3: Long
     ) {
-        showRoutine(video0, 10000, 5000)
+        showRoutine(video0, 30000, 45000) //Duración de 30 segundos y descanso de 45 segundos
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 10000, 5000)
+                    showRoutine(video1, 30000, 45000)
                 }
                 2 -> {
-                    showRoutine(video2, 10000, 5000)
+                    showRoutine(video2, 30000, 45000)
                 }
                 3 -> {
-                    showRoutine(video3, 10000, 5000)
+                    showRoutine(video3, 30000, 45000)
                 }
                 4 -> {
-                    showRoutine(video4, 10000, 5000)
+                    showRoutine(video4, 30000, 45000)
                 }
                 5 -> {
-                    showRoutine(video5, 10000, 5000)
+                    showRoutine(video5, 30000, 45000)
                 }
                 6 -> {
-                    showRoutine(video6, 10000, 5000)
+                    showRoutine(video6, 30000, 45000)
                 }
                 7 -> {
-                    showRoutine(video7, 10000, 5000)
+                    showRoutine(video7, 30000, 45000)
                 }
                 else -> {
                     val result = puntuacion.toString()
@@ -142,17 +142,17 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         routine2: Long,
         routine3: Long
     ) {
-        showRoutine(video0, 10000, 5000)
+        showRoutine(video0, 30000, 45000) //Duración de 30 segundos y descanso de 45 segundos
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 10000, 5000)
+                    showRoutine(video1, 30000, 45000)
                 }
                 2 -> {
-                    showRoutine(video2, 10000, 5000)
+                    showRoutine(video2, 30000, 45000)
                 }
                 3 -> {
-                    showRoutine(video3, 10000, 5000)
+                    showRoutine(video3, 30000, 45000)
                 }
                 else -> {
                     //puntuacion
@@ -174,11 +174,11 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
         routine2: Long,
         routine3: Long
     ) {
-        showRoutine(video0, 10000, 5000)
+        showRoutine(video0, 900000, 120000) //Duración de 15 minutos y descanso de 2 minutos
         binding.siguinte.setOnClickListener {
             when (indexContador) {
                 1 -> {
-                    showRoutine(video1, 10000, 5000)
+                    showRoutine(video1, 900000, 120000)
                 }
                 else -> {
                     //puntuacion

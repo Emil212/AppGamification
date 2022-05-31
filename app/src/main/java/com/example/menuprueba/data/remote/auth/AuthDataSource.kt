@@ -12,6 +12,7 @@ import kotlinx.coroutines.tasks.await
 //Logica con firebase para poder logear al usuario
 
 class AuthDataSource {
+
     suspend fun signIn(email: String, password: String): FirebaseUser? {
         val authResult =
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).await()
@@ -30,7 +31,6 @@ class AuthDataSource {
 
     fun logOut() {
         FirebaseAuth.getInstance().signOut()
-
     }
 
 }
